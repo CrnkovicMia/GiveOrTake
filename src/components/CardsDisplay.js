@@ -10,7 +10,7 @@ export const CardDisplay = () =>{
     const arrayDataItems = cards.map((cards) => <div>{cards}</div>);
 
     return (
-        <div class="card-row">
+        <div className="card-row">
             {arrayDataItems}
         </div>
     );

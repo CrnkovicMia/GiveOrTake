@@ -3,7 +3,6 @@ import '../style/Login.css';
 import {Link} from "react-router-dom";
 import {LoginFunction} from './LoginFunction.js';
 import { Login } from './Login';
-import { useState } from 'react';
 
 export const NavBar = () =>{
     const [modal, setModal] = LoginFunction();

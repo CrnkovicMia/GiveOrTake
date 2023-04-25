@@ -15,29 +15,25 @@ export const Login = () =>{
                  <div onClick={setModal} className="overlay"></div>
                  <div className="modal-content">
                  <div class="popup">
-               <div class="type">Prijava</div> 
-               <div class="typeButton">
-                   <button class="prijavaButton">Prijava</button>
-                   <button class="registracijaButton" onClick={()=>{setLog(!log)}}>Registracija</button>
+               <div className="type">Prijava</div> 
+               <div className="typeButton">
+                   <button className="prijavaButton">Prijava</button>
+                   <button className="registracijaButton" onClick={()=>{setLog(!log)}}>Registracija</button>
                </div>
-               <div class="googleSignUp">
-                   <button class="googleButton">
-                       <span class="googleImage"><img src={require('../images/google.png')} class="googleImageImg"/></span>
-                      <span class="googleText">Continue with Google</span>
+               <div className="googleSignUp">
+                   <button className="googleButton">
+                       <span className="googleImage"><img src={require('../images/google.png')} className="googleImageImg"/></span>
+                      <span className="googleText">Continue with Google</span>
                    </button>
                </div>
                <h5><span>ili putem maila</span></h5>
-               <div class="input">
-                   <input type="email" placeholder="Email" class="emailInput"/>
-                   <input type="password" placeholder="Lozinka" class="passInput"/>
+               <div className="input">
+                   <input type="email" placeholder="Email" className="emailInput"/>
+                   <input type="password" placeholder="Lozinka" className="passInput"/>
                </div>
-               <div class="loginButton">
-                   <button class="loginButtonB">Prijavi se</button>
+               <div className="loginButton">
+                   <button className="loginButtonB">Prijavi se</button>
                </div>
-            {/*  <span className="close-modal" onClick={setModal}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 256 256"><path fill="currentColor" d="M208 32H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Zm-42.34 122.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/>
-                        </svg>
-                      </span>*/}
            </div>
                  </div>
                </div>
@@ -45,29 +41,29 @@ export const Login = () =>{
                <div className="modal">
                <div onClick={setModal} className="overlay"></div>
                <div className="modal-content">
-               <div class="popup">
-             <div class="type">Registracija</div>
-             <div class="typeButton">
-                 <button class="prijavaButtonReg" onClick={()=>{setLog(!log)}}>Prijava</button>
-                 <button class="registracijaButtonReg">Registracija</button>
+               <div className="popup">
+             <div className="type">Registracija</div>
+             <div className="typeButton">
+                 <button className="prijavaButtonReg" onClick={()=>{setLog(!log)}}>Prijava</button>
+                 <button className="registracijaButtonReg">Registracija</button>
              </div>
-             <div class="googleSignUp">
-                 <button class="googleButton">
-                     <span class="googleImage"><img src={require('../images/google.png')} class="googleImageImg"/></span>
-                    <span class="googleText">Continue with Google</span>
+             <div className="googleSignUp">
+                 <button className="googleButton">
+                     <span className="googleImage"><img src={require('../images/google.png')} className="googleImageImg"/></span>
+                    <span className="googleText">Continue with Google</span>
                  </button>
              </div>
              <h5><span>ili putem maila</span></h5>
-             <div class="inputPersonal">
-                 <input type="text" placeholder="Ime" class="emailInput"/>
-                 <input type="text" placeholder="Prezime" class="passInput"/>
+             <div className="inputPersonal">
+                 <input type="text" placeholder="Ime" className="emailInput"/>
+                 <input type="text" placeholder="Prezime" className="passInput"/>
              </div>
-             <div class="input">
-                 <input type="email" placeholder="Email" class="emailInput"/>
-                 <input type="password" placeholder="Lozinka" class="passInput"/>
+             <div className="input">
+                 <input type="email" placeholder="Email" className="emailInput"/>
+                 <input type="password" placeholder="Lozinka" className="passInput"/>
              </div>
-             <div class="loginButton">
-                 <button class="loginButtonB">Registriraj se</button>
+             <div className="loginButton">
+                 <button className="loginButtonB">Registriraj se</button>
              </div>
          </div>
                </div>
