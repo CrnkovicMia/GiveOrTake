@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import './style/App.css';
+import {NavBar} from "./components/NavBar";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {Home} from "./pages/Home";
+import { Footer } from './components/Footer';
+
+import { useState, useEffect } from 'react';
+import PulseLoader from "react-spinners/PulseLoader";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect (() => {
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false)
+    })
+
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        loading ?
+        <div class="Loader"><PulseLoader color={'#138B3C'} loading={loading} size={10} />
+         </div>
+        :
+        <div>
+         <Router>
+           <NavBar/>
+           <Routes>
+             <Route path="/" element={<Home/>}/>
+           </Routes>
+           <Footer/>
+           </Router>
+        </div>
+      }
     </div>
   );
 }

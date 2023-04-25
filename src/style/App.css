@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #433e49;
+}
+a{
+  text-decoration: none;
+  color: #433e49;
+}
+h2{
+  font-weight: normal;
+}
+.Loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.cursors:hover{
+  cursor: pointer;
+}
+.buttonStyle{
+  border: none;
+  color: #F5F5F5;
+  background-color: #138B3C;
+}

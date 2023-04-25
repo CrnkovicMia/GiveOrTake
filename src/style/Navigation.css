@@ -1,0 +1,234 @@
+.header{
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0.5px 0px 2px grey;
+  background-color: rgba(240, 240, 240,0.8);
+}
+.navTop{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  width: 90%;
+  height: 100%;
+}
+.logoSection{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+}
+.logoImage{
+  height: 80%;
+  margin-left: -10px;
+}
+.loginNewPostSection{
+  flex:1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 16px;
+}
+.hamburgerMenu{
+  display: none;
+  width:2.5em;
+  fill:"none"; 
+  stroke:#433e49;
+  stroke-linecap:"round"; 
+  stroke-linejoin:"round"; 
+  stroke-width:1.5;
+}
+.pagesLink{
+  display: block;
+  text-decoration: none;
+  font-size: 1em;
+}
+.pagesLinkNaslovnica{
+  padding-right: 0.625em;
+}
+.pagesLinkOnama{
+  padding-right: 1.875em;
+}
+.pagesLink a, .categoryLink a{
+  transition: color 0.15s;
+}
+.pagesLink a:hover, .categoryLink a:hover{
+  color:#49C474;
+}
+.pagesLink a:active, .categoryLink a:active{
+  text-decoration: underline;
+  text-decoration-color: #49C474;
+  color: #433e49;
+}
+.novaObjavaButton{
+  margin-right: 5px;
+  width: 133px;
+  height: 34px;
+  font-size: 0.875em;
+  border:none;
+  background-color: #138B3C;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 0.75em;
+}
+.plusSignIcon{
+  width:1.5em; 
+  height:1.5em;
+  fill: white; 
+}
+.novaObjavaButton:hover > .plusSignIcon{
+  fill:#138B3C;
+}
+.novaObjavaButton:hover{
+  border-style: solid;
+  border-color: #138B3C;
+  border-width: thin;
+  color: #138B3C;
+  background-color: rgba(240, 240, 240,0.8);
+}
+.loginImageDiv{
+  display: flex;
+  align-items: center;
+
+}
+.loginImage{
+  width:2.125em;
+  fill: #433e49;
+  transition: content 0.15s;
+}
+.loginImage:hover{
+  fill: #138B3C;
+}
+
+/*NavBottrom*/
+.categoryHeader{
+  display: flex;
+  height: 65px;
+  justify-content: center;
+  background-color: rgba(240, 240, 240,0.8);
+  box-shadow: 0px 0.5px 2px grey;
+}
+.navBottom{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+
+}
+.categoryList{
+  flex: 2;
+  font-size: 16px;
+}
+.searchInput{
+  flex: 1;
+  text-align: right;
+  position: relative;
+}
+.searchIcon{
+  position:absolute;
+  right: 16em;
+  bottom: 2px;
+  width: 1.6em;
+  height: 1.6em;
+  stroke: #777679;
+  fill:white; 
+}
+.showMoreButton{
+  display: none;
+}
+.categoryLink{
+  padding-left: 15px;
+  text-decoration: none;
+  font-size:0.9357em;
+}
+.searchInputElement{
+  padding-left: 25px;
+  width: 257px;
+  height: 25px;
+  border-radius: 10px;
+  border-color: #777679;
+  border-width: thin;
+}
+
+@media only screen and (max-width:479.99px) {
+  .categoryList{
+      display: none;
+  }
+  .hamburgerMenu{
+      display: block;
+  } 
+  .pagesLink, .loginImageDiv{
+      display: none;
+  }
+}
+  @media only screen and (min-width: 480px) and (max-width: 559.99px){
+  .categoryList{
+      display: none;
+  } 
+  .hamburgerMenu{
+      display: block;
+  } 
+  .pagesLink, .loginImageDiv{
+      display: none;
+  }
+}
+@media only screen and (min-width: 560px) and (max-width: 768.99px){
+  .categoryList{
+      display: none;
+  }
+  .hamburgerMenu{
+      display: block;
+  } 
+  .pagesLink, .loginImageDiv{
+      display: none;
+  }
+  .loginNewPostSection{ 
+      font-size: 12px;
+  }
+  .novaObjavaButton{
+      width: 80px;
+      height: 22px;
+  }
+  .categoryList{
+      font-size: 14px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px){
+  .loginNewPostSection{
+      font-size: 12px;
+  }
+  .novaObjavaButton{
+      width: 90px;
+      height: 25px;
+  }
+  .categoryList{
+      font-size: 10px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width:1279.99px){
+  .loginNewPostSection{
+      font-size: 14px;
+  }
+  .novaObjavaButton{
+      width: 100px;
+      height: 25px;
+  }
+  .categoryList{
+      font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px){
+  .novaObjavaButton{
+      width: 120px;
+      height: 30px;
+  }
+  .loginImage{
+      width: 30px;
+  }
+  .loginImage:hover{
+      width: 34px;
+  }
+}   

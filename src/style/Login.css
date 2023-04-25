@@ -1,0 +1,157 @@
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   position: fixed;
+   z-index:250; 
+}
+.overlay {
+    background: rgba(49,49,49,0.8);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+   position: fixed
+}
+.close-modal {
+    position:absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.popup{
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 150px;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    position: relative;
+}
+.type{
+    border-bottom: solid #959595;
+    border-width: 2px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.typeButton{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    padding: 25px 0;
+}
+.prijavaButton ,.registracijaButton{
+    width: 30%;
+    padding: 8px 0;
+}
+.prijavaButton{
+    margin-right: 10px;
+    border: none;
+    background-color:#138B3C;
+    color: white;
+}
+.registracijaButton{
+    margin-left: 10px;
+    border-style: solid;
+    border-color: #138B3C;
+    background-color: white;
+    color: #138B3C;
+}
+.prijavaButton:hover, .registracijaButton:hover, .googleButton:hover, .loginButton:hover,
+.prijavaButtonReg:hover ,.registracijaButtonReg:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.googleSignUp{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.googleButton{
+    width: 40%; 
+    border: none;
+    color: grey; 
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.15);   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.googleImageImg{
+   width: 4em;
+   height: 3em;
+}
+.googleText{
+    font-size:0.875em;
+}
+h5 {
+ width: 100%; 
+text-align: center; 
+border-bottom: 2px solid grey; 
+line-height: 0.1em;
+margin: 10px 0 20px; 
+} 
+
+h5 span { 
+background:#fff;
+color: grey; 
+font-weight: lighter;
+padding:0 10px; 
+ }
+ .input, .inputPersonal{
+    display: flex;
+    justify-content: center;
+}
+.inputPersonal{
+    margin: 25px 0 20px 0;
+}
+.emailInput,.passInput{
+padding:10px 0px 10px 5px;
+background-color: rgba(217, 217, 217, 0.4);
+color: #989898;
+border: solid rgba(99, 99, 99, 0.931);
+border-width: thin;
+}
+.emailInput{
+margin-right: 5px;
+}
+.passInput{
+margin-left: 5px;
+}
+.loginButton{
+display: flex;
+justify-content: center;
+margin-top: 50px;
+}
+.loginButtonB{
+padding: 10px 0;
+width: 40%;
+border: none;
+color: white;
+background-color: #138B3C;
+margin-bottom: 50px;
+}
+.prijavaButtonReg ,.registracijaButtonReg{
+    width: 30%;
+    padding: 8px 0;
+}
+.registracijaButtonReg{
+    margin-left: 10px;
+    border: none;
+    background-color:#138B3C;
+    color: white;
+}
+.prijavaButtonReg{
+        margin-right: 10px;
+        border-style: solid;
+        border-color: #138B3C;
+        background-color: white;
+        color: #138B3C;
+}
