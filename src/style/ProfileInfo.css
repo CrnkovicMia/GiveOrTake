@@ -1,0 +1,303 @@
+.profilInformationTwo{
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    flex: 1;
+}
+.profileImageTwo,  .userInformationTwo,  .profileButtonTwo{
+    margin: 0 auto;
+    width: 65%;
+}
+.profileImageImageTwo{
+    width: 100%;
+    height: 12.5em;
+    border-radius: 50%;
+}
+.userInformationTwo,  .profileButtonTwo{
+    padding-top: 30px;
+}
+.informacijeTwo{
+   display: block;
+   text-align: left;
+   line-height: 1.5em;
+}
+.editButtonTwo, .newPostButtonTwo, .chatButtonTwo{
+    width: 85%;
+    height: 22%;
+    padding: 8px 0;
+    margin-bottom: 0.625em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editButtonSVGTwo, .chatButtonSVGTwo{
+    fill: white;
+    padding-right:2px;
+}
+.editButtonSVGTwo{
+    width: 1em;
+    height: 0.875em;
+}
+.newPostSVGTwo{
+    fill: white;
+    width: 1.25em;
+    height: 1.25em;
+}
+.chatButtonSVGTwo{
+    width: 1.125em;
+    height: 1.125em;
+}
+.tabTwo{
+    height: 1.875em;
+    display: flex;
+    justify-content: center;
+}
+.objavaButttonTwo, .spremljenoButtonTwo{
+    border: none;
+    width: 12%;
+    background-color: white;
+}
+.objavaButttonTwo:hover, .spremljenoButtonTwo:hover{
+  transform: scale(1.1);
+}
+.objavaButttonTwo:active, .spremljenoButtonTwo:active,
+.objavaButttonTwo:focus, .spremljenoButtonTwo:focus{
+   text-decoration: underline;
+   text-decoration-color: #49C474;
+   text-decoration-thickness: 2px;
+   background-color: white;
+   color: black;
+}
+.contentTwo{
+    flex: 3;    
+} 
+.myImagesTwo{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;    
+}
+.card-rowTwo{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    column-gap:20px;
+    row-gap: 40px;
+    width: 85%;
+    margin: 0 auto;
+    color: black;
+    font-size: 16px;
+    transition: opacity 0.15s;
+}
+.card-wrapperTwo{
+    max-height: 250px;
+}
+.card-wrapperTwo:hover > .cardTwo{
+    box-shadow: 2px 2px 15px rgba(4, 78, 30, 0.75);
+}
+.cardTwo{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 4px 15px rgb(0,0,0,0.25);
+    position: relative;
+}
+.cardTwo :hover > .višeButtonTwo{
+    transform: scale(1.1);
+}
+.cardImageDivTwo{
+    width: 100%;
+    height: 11.25em;
+    pointer-events: none;
+    position:relative;
+}
+.circleDivTwo{
+    max-width: 18px;
+    height: 18px;
+    position: absolute;
+    fill: white;
+    top: 5px;
+    right: 5px;
+    transition: all .2s ease-in-out;
+    z-index: 100;
+}
+.penDivTwo{
+    max-width: 18px;
+    height: 18px;
+    position: absolute;
+    fill: white;
+    top: 5px;
+    left: 5px;
+    transition: all .2s ease-in-out;
+    z-index: 100; 
+}
+.absoluteSVGImageTwo{
+    width:1.25em;
+    height:1.25em;
+    fill: rgba(255, 255, 255, 0.9);
+    stroke: rgba(0, 0, 0, 0.696);
+}
+.absoluteSVGImageGreenTwo{
+    width:1.25em;
+    height:1.25em;
+    fill: #5edf8b;
+    stroke: rgba(0, 0, 0, 0.696); 
+}
+.cardImageTwo{
+    width: 100%;
+    height:180px;
+    object-fit: cover;
+}
+.cardDescriptionTwo{
+    display:flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width:479.99px) {
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.profileImageTwo{
+    display: flex;
+    justify-content: center;
+}
+.userInformationTwo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.profileButtonTwo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.objavaButttonTwo, .spremljenoButtonTwo{
+    width: 20%;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 559.99px){ 
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(45%,45%));
+}
+.profilBodyTwo{
+    flex-direction: column;
+}
+.profileImageTwo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userInformationTwo{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.profileButtonTwo{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 85%;
+}
+.profileImageImageTwo{
+    height: 170px;
+    width: 70%;
+}
+.editButtonTwo, .newPostButtonTwo, .chatButtonTwo{
+    width: 30%;
+    height:35px;
+}
+.objavaButttonTwo, .spremljenoButtonTwo{
+    width: 15%;
+}
+
+}
+@media only screen and (min-width: 560px) and (max-width: 768.99px){    
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(45%,45%));
+}
+.profilBodyTwo{
+    flex-direction: column;
+}
+.profileImageTwo{
+    display: flex;
+    justify-content: center;
+}
+.userInformationTwo{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.profileButtonTwo{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 85%;
+}
+.profileImageImageTwo{
+    height: 170px;
+    width: 70%;
+}
+.editButtonTwo, .newPostButtonTwo, .chatButtonTwo{
+    width: 30%;
+    height:35px;
+}
+.objavaButttonTwo, .spremljenoButtonTwo{
+    width: 16%;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px){
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.profilInformationTwo{
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+}
+.profileImageImageTwo{
+  width: 85%;
+  height: 150px;
+}
+.editButtonTwo, .newPostButtonTwo, .chatButtonTwo{
+    width: 80%;
+}
+}
+@media only screen and (min-width: 1024px) and (max-width:1279.99px){
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.profilInformationTwo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:80%;
+    margin:0 auto;
+    margin-bottom: 20px;
+}
+.profileImageTwo,.userInformationTwo,.profileButtonTwo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.profileImageTwo{
+    justify-content: left;
+    height: 50%;
+}
+.profileImageImageTwo{
+    width: 65%;
+    height: 8em;
+}
+.userInformationTwo, .profileButtonTwo{
+    display: block;
+    padding-top: 0;
+}
+.editButtonTwo, .newPostButtonTwo, .chatButtonTwo{
+    margin:  auto;
+    margin-top: 0.35em;
+    width: 80%;
+}
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px){
+.card-rowTwo{
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+}

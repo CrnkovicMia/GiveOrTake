@@ -3,8 +3,17 @@ import '../style/Login.css';
 import {Link, useSearchParams} from "react-router-dom";
 import {LoginFunction} from './LoginFunction.js';
 import { Login } from './Login';  
-import { useState } from 'react';
 import { Hamburger } from './Menu';
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import '../style/Swiper.css';
+
+import { Pagination, Navigation } from "swiper";
+import { useEffect, useState } from 'react';
+
 
 export const NavBar = (props) =>{
 
@@ -31,6 +40,32 @@ export const NavBar = (props) =>{
         window.location.reload(false);
     }
 
+    const [categoryDisplay, setCategoryDisplay] = useState(6);
+    useEffect(() => {
+        function handleResize() {
+            if (window.innerWidth <= 479.99) {
+                setCategoryDisplay(2);
+              } 
+            if (window.innerWidth >= 480 && window.innerWidth<559.99) {
+                setCategoryDisplay(3);
+              } 
+            if (window.innerWidth >= 560 && window.innerWidth<768.99) {
+                setCategoryDisplay(4);
+              } 
+          if (window.innerWidth >= 768 && window.innerWidth<1023.99) {
+            setCategoryDisplay(4);
+          } 
+          if (window.innerWidth >= 1024 && window.innerWidth<1280) {
+            setCategoryDisplay(5);
+          } 
+          if(window.innerWidth >= 1280 && window.innerWidth<1440){
+            setCategoryDisplay(6);
+          }
+        }
+        handleResize();
+        window.addEventListener("resize", handleResize);
+      }, []);
+
     return(
     <div className="navigacija">
              {modal && <Login/>} 
@@ -48,9 +83,9 @@ export const NavBar = (props) =>{
                     </svg>
                    <Hamburger/>
                 <label className="pagesLink pagesLinkNaslovnica"><Link to="/">Naslovnica</Link></label> 
-                <label className="pagesLink pagesLinkOnama"> <Link to="/">O nama</Link></label>
+                <label className="pagesLink pagesLinkOnama"> <Link to="/onama">O nama</Link></label>
                 <label className="pagesLink">
-                    <button className="novaObjavaButton cursors">
+                   <Link to="/novaObjava"> <button className="novaObjavaButton cursors">
                         <span className="plusSignIcon">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
@@ -59,9 +94,10 @@ export const NavBar = (props) =>{
                         </span>
                     <span>Nova objava</span>
                     </button>
+                    </Link>
                 </label>
                 { props.sessionUser ? (
-                    <div className="loginImageDiv" onClick={setModal}>
+                    <Link to="/profil"><div className="loginImageDiv" onClick={setModal}>
                         <svg xmlns="http://www.w3.org/2000/svg" 
                         width="24" 
                         height="24"
@@ -70,6 +106,7 @@ export const NavBar = (props) =>{
                             fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 12l-4-4m4 4l-4 4m4-4H5m5 9a9 9 0 1 0 0-18"/>
                         </svg>
                     </div>
+                    </Link>
                 ) : (
                     <div className="loginImageDiv" onClick={setModal}>
                         <svg 
@@ -97,7 +134,30 @@ export const NavBar = (props) =>{
                 <label className="categoryLink"><Link to="/?kategorija=Sport i oprema">Sport i oprema</Link></label>
                 <label className="categoryLink"><Link to="/?kategorija=Kućni ljubimci">Kućni ljubimci</Link></label>
                 <label className="categoryLink"><Link to="/?kategorija=Literatura">Literatura</Link></label>
+                <label className="categoryLink"><Link to="/?kategorija=Ostalo">Ostalo</Link></label>
             </div>
+            <div className="swiperbar">
+      <>
+        <Swiper
+          slidesPerView={categoryDisplay}
+          spaceBetween={0}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>Odjeća</SwiperSlide> 
+          <SwiperSlide>Obuća</SwiperSlide>
+          <SwiperSlide>Igračke</SwiperSlide>
+          <SwiperSlide>Za dom</SwiperSlide>
+          <SwiperSlide>Tehnologija</SwiperSlide>
+          <SwiperSlide>Novorođenčad</SwiperSlide>
+          <SwiperSlide>Sport i oprema</SwiperSlide>
+          <SwiperSlide>Kućni ljubimci</SwiperSlide>
+          <SwiperSlide>Literatura</SwiperSlide>
+          <SwiperSlide>Ostalo</SwiperSlide>
+        </Swiper>
+      </>
+            </div>  
             <div className="searchInput">
                 <input type="text" placeholder="Pretraživanje..." className="searchInputElement" onKeyDown={handleKeyPress} onChange={handleChange}/>
                 <svg 

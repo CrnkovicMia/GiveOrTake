@@ -1,11 +1,17 @@
 import './style/App.css';
 import {NavBar} from "./components/NavBar";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
 import {Home} from "./pages/Home";
+import { NewPost } from './pages/NewPost';
+import {AboutUs} from './pages/AboutUs';
+import { Profil } from './pages/Profil';
+
 import { Footer } from './components/Footer';
 import { supabase } from './lib/supabaseClient';
 import { useState, useEffect } from 'react';
 import PulseLoader from "react-spinners/PulseLoader";
+import { ItemView } from './pages/ItemView';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -58,6 +64,10 @@ function App() {
            <NavBar sessionUser={user}/>
            <Routes>
              <Route path="/" element={<Home/>}/>
+             <Route path="/novaObjava" element={<NewPost/>}/>
+             <Route path="/proizvod" element={<ItemView/>}/>
+             <Route path="/onama" element={<AboutUs/>}/>
+             <Route path="/profil" element={<Profil/>}/>
            </Routes>
            <Footer/>
            </Router>

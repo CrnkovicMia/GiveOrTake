@@ -1,0 +1,238 @@
+.newPostMain{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+}
+.newPostTitle{
+    display: flex;
+    padding: 10px 0;
+    font-size:24px;
+    font-family: 'Bitter', serif;
+}
+.newPostElements{
+    display: flex;
+    flex-direction: row;
+}
+.elementsLeft{
+    display: flex;
+    flex:3;
+    text-align: left;
+}
+.elementOne{
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px 0 15px;
+    flex: 1;
+}
+.elementTwo{
+    display: flex;
+    flex-direction: column;
+    flex: 1 ;
+    padding: 0 60px 0 15px;
+}
+.elementsRight{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 15px;
+    flex: 2;
+}
+.newPostNaslov{
+    width: 235px;
+    height: 28px;
+    border-color: #ADADAD;
+    border-style: solid;
+    border-width: thin;
+}
+.newPostKategorija{
+    width: 240px;
+}
+label{
+    padding: 15px 0;
+}
+.newPostOpis{
+    width: 95%;
+    height: 80%;
+    border-color: #ADADAD;
+    border-style: solid;
+    border-width: thin;
+}
+.newPostImages{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+}
+.newPostLeft, .newPostRight{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+.mainImage{
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    width: 35%;
+    height: 220px;
+    background-color: rgba(0,0,0,0.1);
+    margin: 40px 15px 0 15px;
+    border: solid grey 2px;
+    transition: all 0.15s;
+}
+.mainImage:hover{
+    transform: scale(1.05);
+    border-color: rgba(0,0,0,0.7);
+    border-width: 3px;
+}
+.mainImageInside{
+    display: flex;
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.imageInside{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+}
+.plusIcon{
+    fill: rgba(0,0,0,0.3);
+    width: 50px;
+    height: 50px;
+}
+.newPostButton{
+    display: flex;
+    justify-content: right;
+    margin-top: 40px;
+}
+.addButton{
+    border:none;
+    padding: 10px;
+    width: 18%;
+    height: 60px;
+    color: white;
+    font-size: 16px;
+    background-color: #138B3C;
+    transition: all 0.15s;
+}
+.addButton:hover{
+    transform: scale(1.1);
+}
+span{
+    text-align: center;
+}
+@media only screen and (max-width:479.99px) {
+    .newPostElements, .elementsLeft, .newPostLeft, .newPostRight{
+        flex-direction: column; 
+    }
+    .newPostOpis{
+        height: 200px;
+    }
+    .newPostImages{
+        flex-direction: column;
+        font-size: 14px;
+    }
+    .mainImage{
+        width: 60%;
+        height: 200px;
+    }
+    .newPostLeft, .newPostRight{
+        align-items: center;
+        text-align: center;
+    }
+    .newPostButton{
+        justify-content: center;
+    }
+    .addButton{
+        width: 50%;
+        height: 40px;
+        font-size: 12px;
+
+    }
+   
+}
+@media only screen and (min-width: 480px) and (max-width: 559.99px){
+    .newPostElements, .elementsLeft{
+        flex-direction: column; 
+    }
+    .newPostOpis{
+        height: 200px;
+    }
+    .newPostImages{
+        flex-direction: column;
+        font-size: 14px;
+    }
+    .mainImage{
+        height: 170px;
+    }
+    .addButton{
+        width: 45%;
+        height: 40px;
+        font-size: 14px;
+    }
+
+}
+@media only screen and (min-width: 560px) and (max-width: 768.99px){
+    .newPostElements{
+        flex-direction: column; 
+    }
+    .newPostOpis{
+        height: 200px;
+        width: 550px;
+    }
+    .newPostImages{
+        flex-direction: column;
+        width: 550px;
+        font-size: 16px;
+    }
+    .addButton{
+        width: 35%;
+        height: 40px;
+        font-size: 14px;
+        /*margin-right: -80px;*/
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px){
+    .newPostElements{
+        flex-direction: column;
+    }
+    .newPostOpis{
+        height: 200px;
+    }
+    .newPostImages{
+        flex-direction: column;
+        font-size: 18px;
+    }
+    .mainImage{
+        width: 35%;
+    }
+    .addButton{
+        width: 30%;
+        height: 40px;
+        margin-right: 40px;
+        font-size: 16px;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width:1279.99px){
+    .newPostNaslov{
+        width: 200px;
+    }
+    .newPostKategorija{
+        width: 205px;
+    }
+    .mainImage{
+        height: 170px;
+    }
+    .newPostImages{
+        font-size: 18px;
+    }
+    .addButton{
+        width: 20%;
+    }
+}

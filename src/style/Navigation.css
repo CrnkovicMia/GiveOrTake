@@ -200,7 +200,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 .categoryList{
   flex: 2;
-  font-size: 16px;
+  font-size: 14px;
 }
 .searchInput{
   flex: 1;
@@ -230,9 +230,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-color: #777679;
   border-width: thin;
 }
+.swiperbar{
+  display: none;
+}
 
 @media only screen and (max-width:479.99px) {
-  .categoryList{
+  .categoryHeader{
       display: none;
   }
   .hamburgerMenu{
@@ -243,14 +246,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 }
   @media only screen and (min-width: 480px) and (max-width: 559.99px){
-  .categoryList{
+    .categoryList, .searchInput{
       display: none;
-  } 
+    }
   .hamburgerMenu{
       display: block;
   } 
   .pagesLink, .loginImageDiv{
       display: none;
+  }
+  .swiperbar{
+    display: flex;
+    font-size: 12px;
+    width: 90%;
+  }
+  .swiper-wrapper{
+    padding-left: 40px;
   }
 }
 @media only screen and (min-width: 560px) and (max-width: 767.99px){
@@ -260,9 +271,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .hamburgerMenu{
       display: block;
   } 
-  .pagesLink, .loginImageDiv{
-      display: none;
-  }
+  .pagesLink, .loginImageDiv, .searchInput{
+    display: none;
+}
   .loginNewPostSection{ 
       font-size: 12px;
   }
@@ -272,6 +283,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
   .categoryList{
       font-size: 14px;
+  }
+  .swiperbar{
+    display: block;
+    font-size: 12px;
+    width: 100%;
+  }
+  .swiper-wrapper{
+    padding-left: 40px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023.99px){
@@ -283,7 +302,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
       height: 25px;
   }
   .categoryList{
-      font-size: 10px;
+    display: none;
+  }
+  .swiperbar{
+    display: flex;
+    font-size: 12px;
+    width: 60%;
+  }
+  .searchInput{
+    width: 20%  ;
+  }
+  .searchInputElement{
+    width: 200px;
+    height: 25px;
+  }
+  .searchIcon{
+    right: 12.5em;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width:1279.99px){
@@ -295,7 +329,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
       height: 25px;
   }
   .categoryList{
-      font-size: 12px;
+    display: none;
+  }
+  .swiperbar{
+    display: flex;
+    font-size: 12px;
+    width: 70%;
   }
 }
 @media only screen and (min-width: 1280px) and (max-width: 1440px){
@@ -308,5 +347,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
   .loginImage:hover{
       width: 34px;
+  }
+  .categoryList{
+    display: none;
+  }
+  .swiperbar{
+    display: flex;
+    font-size: 12px;
+    width: 70%;
   }
 }   

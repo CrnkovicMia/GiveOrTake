@@ -1,0 +1,118 @@
+.mainAboutUs{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+}
+.one, .two, .three{
+    display: flex;
+    text-align: left;
+}
+.oneLeft, .oneRight,.twoLeft, .twoRight {
+    flex: 1;
+}
+.oneRight{
+    display: flex;
+    justify-content: center;
+}
+.imageOne{
+    width: 65%;
+}
+label{
+    text-decoration: underline;
+    text-decoration-color:#138B3C;
+    font-family: 'Bitter', serif;
+    font-size: 20px;
+}
+.two, .three{
+    margin-top: 40px;
+}
+.twoRight, .oneLeft{
+    align-items: center;
+}
+
+
+
+  @media only screen and (max-width:479.99px) {
+    .mainAboutUs{
+        font-size: 12px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .one, .two, .three{
+       flex-direction: column;
+    }
+    .imageOne{
+        width:80%;
+        margin: 40px 0;
+    }
+    .twoLeft{
+        order:2;
+        display: flex;
+        justify-content:center;
+    }
+  }
+  @media only screen and (min-width: 480px) and (max-width: 559.99px){
+    .mainAboutUs{
+        font-size: 12px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .one, .two, .three{
+       flex-direction: column;
+    }
+    .imageOne{
+        width:80%;
+        margin: 40px 0;
+    }
+    .twoLeft{
+        order:2;
+        display: flex;
+        justify-content:center;
+    }
+  }
+  @media only screen and (min-width: 560px) and (max-width: 767.99px){
+    .mainAboutUs{
+        font-size: 12px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .one, .two, .three{
+       flex-direction: column;
+    }
+    .imageOne{
+        width:80%;
+        margin: 40px 0;
+    }
+    .twoLeft{
+        order:2;
+        display: flex;
+        justify-content:center;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023.99px){
+    .mainAboutUs{
+        font-size: 12px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .imageOne{
+        height: 90%;
+        width: 90%;
+    }
+  }
+  @media only screen and (min-width: 1024px) and (max-width:1279.99px){
+    .mainAboutUs{
+        font-size: 14px;
+    }
+    label{
+        font-size: 18px;
+    }
+  }
+  @media only screen and (min-width: 1280px) and (max-width: 1440px){
+  }   

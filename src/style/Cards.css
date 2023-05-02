@@ -29,6 +29,12 @@
    font-size: 0.875em;
    line-height: 1.5em;
 }
+.itemDescription p{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 .cardDescription{
     width: 100%;
     display: flex;

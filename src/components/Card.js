@@ -1,6 +1,8 @@
 import '../style/Cards.css';
 import { useState} from 'react';
 import { supabase } from '../lib/supabaseClient';
+import {Link} from 'react-router-dom';
+
 export const Card = (props) => {
     
     const [active, setActive] = useState(false);
@@ -41,14 +43,13 @@ return (
                    <img src={require('../images/location.png')} alt="loaction" class="locationImageImage"/>
                     <span class="CityName">{props.card.location}</span>
                 </div>
-                <div class="viseButtonDiv">
+                <Link to="/proizvod"><div class="viseButtonDiv">
                     <button class="višeButton cursors buttonStyle">Više &#8594;</button>
                 </div>
+                </Link>
             </div>
         </div>
     </div>
 </div>
 );
 };
-
-}
