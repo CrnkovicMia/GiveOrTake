@@ -38,6 +38,7 @@
   stroke-linejoin:"round"; 
   stroke-width:1.5;
 }
+
 .pagesLink{
   display: block;
   text-decoration: none;
@@ -102,6 +103,85 @@
   fill: #138B3C;
 }
 
+.searchIconHide{
+  display: none;
+}
+
+/*MENU*/
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  display: inline-block;
+  width: 36px;
+  height: 30px;
+  right: 36px;
+  top: 22px;
+  justify-self: end;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #0e0e0e;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #000000;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  margin-top: -35px;
+  background: #ffffff;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  overflow: hidden !important;
+  box-shadow: 0px 1px 3px grey;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  padding: 1.2em;
+  border-bottom: solid 0.5px;
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 /*NavBottrom*/
 .categoryHeader{
   display: flex;
@@ -136,9 +216,7 @@
   stroke: #777679;
   fill:white; 
 }
-.showMoreButton{
-  display: none;
-}
+
 .categoryLink{
   padding-left: 15px;
   text-decoration: none;
@@ -175,7 +253,7 @@
       display: none;
   }
 }
-@media only screen and (min-width: 560px) and (max-width: 768.99px){
+@media only screen and (min-width: 560px) and (max-width: 767.99px){
   .categoryList{
       display: none;
   }
@@ -210,7 +288,7 @@
 }
 @media only screen and (min-width: 1024px) and (max-width:1279.99px){
   .loginNewPostSection{
-      font-size: 14px;
+      font-size: 12px;
   }
   .novaObjavaButton{
       width: 100px;
