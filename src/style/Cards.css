@@ -35,6 +35,12 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+.itemName h4{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
 .cardDescription{
     width: 100%;
     display: flex;

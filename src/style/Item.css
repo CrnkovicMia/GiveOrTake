@@ -112,7 +112,7 @@
 }
 .otherPhotosImg{
     width: 100%;
-    height:80%;
+    height:70%;
 }
 .otherPhotos,.kontaktirajButton, .heartImag, .heartImageRed{
     transition: all 0.15s;

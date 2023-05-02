@@ -2,6 +2,8 @@ import '../style/Navigation.css';
 import '../style/Login.css';
 import {Link, useSearchParams} from "react-router-dom";
 import {LoginFunction} from './LoginFunction.js';
+import { ProfilDropDown } from './ProfilDropDown';
+
 import { Login } from './Login';  
 import { Hamburger } from './Menu';
 
@@ -35,6 +37,11 @@ export const NavBar = (props) =>{
             return event.target.value;
         })
     }
+
+    const [profilClick, setProfilClick] = useState(false);
+    const handeProfilClick = () =>{
+        setProfilClick(!profilClick);
+    };
 
     const refreshPage = () =>{
         window.location.reload(false);
@@ -97,7 +104,7 @@ export const NavBar = (props) =>{
                     </Link>
                 </label>
                 { props.sessionUser ? (
-                    <Link to="/profil"><div className="loginImageDiv" onClick={setModal}>
+                    <div className="loginImageDiv" /*onClick={setModal}*/ onClick={()=>{handeProfilClick()}}>
                         <svg xmlns="http://www.w3.org/2000/svg" 
                         width="24" 
                         height="24"
@@ -105,8 +112,8 @@ export const NavBar = (props) =>{
                         <path 
                             fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 12l-4-4m4 4l-4 4m4-4H5m5 9a9 9 0 1 0 0-18"/>
                         </svg>
+                        {profilClick && <ProfilDropDown/>}
                     </div>
-                    </Link>
                 ) : (
                     <div className="loginImageDiv" onClick={setModal}>
                         <svg 

@@ -2,8 +2,7 @@
   height: 70px;
   display: flex;
   justify-content: center;
-  box-shadow: 0.5px 0px 2px grey;
-  background-color: rgba(240, 240, 240,0.8);
+  background-color: white;
 }
 .navTop{
   display: flex;
@@ -56,9 +55,10 @@
 .pagesLink a:hover, .categoryLink a:hover{
   color:#49C474;
 }
-.pagesLink a:active, .categoryLink a:active{
+.pagesLinkOnama a:active,.pagesLinkNaslovnica:active, .categoryLink a:active,.pagesLinkOnama a:focus,.pagesLinkNaslovnica:hover, .categoryLink a:focus {
   text-decoration: underline;
   text-decoration-color: #49C474;
+  text-decoration-thickness:2px;
   color: #433e49;
 }
 .novaObjavaButton{
@@ -187,8 +187,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   display: flex;
   height: 65px;
   justify-content: center;
+  box-shadow: 0px -2px 8px rgba(0,0,0,0.2);
   background-color: rgba(240, 240, 240,0.8);
-  box-shadow: 0px 0.5px 2px grey;
 }
 .navBottom{
   width: 90%;
@@ -213,10 +213,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   bottom: 2px;
   width: 1.6em;
   height: 1.6em;
-  stroke: #777679;
+  stroke: #787777;
   fill:white; 
 }
-
 .categoryLink{
   padding-left: 15px;
   text-decoration: none;
@@ -226,9 +225,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding-left: 25px;
   width: 257px;
   height: 25px;
-  border-radius: 10px;
-  border-color: #777679;
-  border-width: thin;
+  color: #787777;
+  border-color: rgba(72, 72, 72, 0.5);
+  border-style: solid;
+  border-width: 1px;
 }
 .swiperbar{
   display: none;
