@@ -18,7 +18,6 @@ export const CardDisplay = () =>{
       console.log(cardNumber)
     }
 
-
     
 
     useEffect(() => {

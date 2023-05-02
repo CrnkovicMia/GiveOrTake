@@ -10,8 +10,9 @@ export const LoadButton =(props)=>{
     return (
         <div class="ucitajViše">
         <button class="ucitajViseButton cursors buttonStyle" onClick={loadMoreCards}>
+
             Učitaj više
-            <div class="downArrow"><img src={require('../images/downArrow.png')} alt="downArrow" class="downArrowImagw"/></div>
+            <div className="downArrow"><img src={require('../images/downArrow.png')} alt="downArrow" className="downArrowImagw"/></div>
         </button>
     </div>
     );

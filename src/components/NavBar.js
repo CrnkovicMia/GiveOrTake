@@ -2,11 +2,12 @@ import '../style/Navigation.css';
 import '../style/Login.css';
 import {Link, useSearchParams} from "react-router-dom";
 import {LoginFunction} from './LoginFunction.js';
-import { Login } from './Login';
+import { Login } from './Login';  
 import { useState } from 'react';
 import { Hamburger } from './Menu';
 
 export const NavBar = (props) =>{
+
 
     const [modal, setModal] = LoginFunction();
 
