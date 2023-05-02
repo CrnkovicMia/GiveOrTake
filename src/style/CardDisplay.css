@@ -21,7 +21,7 @@
         grid-template-columns: repeat(auto-fill, minmax(100px, 46%));
     }
 }
-@media only screen and (min-width: 560px) and (max-width: 768.99px){
+@media only screen and (min-width: 560px) and (max-width: 767.99px){
     .card-row{
         grid-template-columns: repeat(auto-fill, minmax(100px, 30%));
     }
