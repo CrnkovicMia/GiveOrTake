@@ -14,9 +14,11 @@ export class Hamburger extends React.Component {
         <div className='hamburgerMenu'>
         <Menu right>
             <Link to="/">Naslovnica</Link>
-            <Link to="/">O nama</Link>
-            <a id="contact" className="menu-item" href="/contact">Login</a>
-            <a onClick={ this.showSettings } className="menu-item--small" href="">Nova Objava</a>
+            <Link to="/onama">O nama</Link>
+            <Link to="/novaObjava">Nova Objava</Link>
+            <Link to="/login">Login</Link>
+             {/* <a id="contact" className="menu-item" href="/contact">Login</a>
+            <a onClick={ this.showSettings } className="menu-item--small" to="/novaObjava">Nova Objava</a>*/}
         </Menu>
         </div>
     );

@@ -244,6 +244,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .pagesLink, .loginImageDiv{
       display: none;
   }
+  .searchIconHide{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 2px 15px 0 0;
+    fill:black;
+  }
 }
   @media only screen and (min-width: 480px) and (max-width: 559.99px){
     .categoryList, .searchInput{
@@ -262,6 +269,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
   .swiper-wrapper{
     padding-left: 40px;
+  }
+  .searchIconHide{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 2px 15px 0 0;
+    fill:black;
   }
 }
 @media only screen and (min-width: 560px) and (max-width: 767.99px){
@@ -291,6 +305,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
   .swiper-wrapper{
     padding-left: 40px;
+  }
+  .searchIconHide{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 2px 15px 0 0;
+    fill:black;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023.99px){

@@ -1,4 +1,4 @@
-/*import "../style/LinkedItems.css";
+import "../style/LinkedItems.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,12 +7,18 @@ import "swiper/css/navigation";
 
 import { Pagination, Navigation } from "swiper";
 import { useEffect, useState } from 'react';
+import { supabase } from "../lib/supabaseClient";
+import { useSearchParams } from "react-router-dom";
 
 
 import {Card} from './Card';
 
 export const LinkedItems = ()  => {
    const [categoryDisplay, setCategoryDisplay] = useState(5);
+   const category = searchParams.get('kategorija');
+   const [cardList, setCards] = useState([]);
+   const [searchParams] = useSearchParams();
+   const [cardNumber, setCardNumber] = useState(14);
 
    async function getCards() {
      const categoryId = await supabase.from('Category').select('id, name').eq('name', category).single();
@@ -26,7 +32,7 @@ export const LinkedItems = ()  => {
  }
 
 
- const arrayDataItems = cardList.map((card) => <div key={card.id}><Card card={card}/></div>);
+ const arrayDataItems = cardList.map((card) => <SwiperSlide key={card.id}><Card card={card}/></SwiperSlide>);
 
     useEffect(() => {
         function handleResize() {
@@ -58,7 +64,7 @@ export const LinkedItems = ()  => {
           cards.push(<Card/>);
       }
   
-      const arrayDataItems = cards.map((cards) => <div className='cardMargin'><SwiperSlide>{cards}</SwiperSlide></div>);
+   /*   const arrayDataItems = cards.map((cards) => <div className='cardMargin'><SwiperSlide>{cards}</SwiperSlide></div>);*/
     return(
         <>
         <div className="povezaniProizvodi">
@@ -77,4 +83,4 @@ export const LinkedItems = ()  => {
         </div>
         </>
     );
-};*/
+};

@@ -1,6 +1,7 @@
 import '../style/ProfileInfo.css';
-
+import { Link } from 'react-router-dom';
 import { ProfilCard } from './ProfileCard';
+
 export const ProfileInfo = () =>{
     const cards = [];
     for(var i=0; i < 10;i++){
@@ -31,7 +32,7 @@ export const ProfileInfo = () =>{
                 </span> 
                     <span>Uredi profil</span>
                 </button>
-              <button class="newPostButtonTwo singatureColor">
+              <Link to="/novaobjava"><button class="newPostButtonTwo singatureColor">
                     <span>
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
@@ -42,6 +43,7 @@ export const ProfileInfo = () =>{
                 </span> 
                    <span>Nova objava</span>
                 </button>
+                </Link>
                <button class="chatButtonTwo singatureColor">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" 

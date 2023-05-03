@@ -155,3 +155,53 @@ margin-bottom: 50px;
         background-color: white;
         color: #138B3C;
 }
+@media only screen and (max-width:479.99px) {
+    .popup{
+        font-size: 12px;
+        width: 85%;
+    }
+    .googleButton{
+        width: 55%; 
+    }
+    .prijavaButton ,.registracijaButton,  .emailInput, .passInput{
+        width: 40%;
+    }
+
+}
+@media only screen and (min-width: 480px) and (max-width: 559.99px){
+    .popup{
+        font-size: 14px;
+        width: 80%;
+    }
+    .googleButton{
+        width: 48%; 
+    }
+    .prijavaButton ,.registracijaButton{
+        width: 35%;
+    }
+
+}
+@media only screen and (min-width: 560px) and (max-width: 767.99px){
+    .popup{
+        font-size: 14px;
+        width: 75%;
+    }
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px){
+    .popup{
+        font-size: 16px;
+        width: 60%;
+    }
+
+}
+@media only screen and (min-width: 1024px) and (max-width:1279.99px){
+    .popup{
+        font-size: 16px;
+        width: 40%;
+    }
+    .googleButton{
+        width: 45%; 
+    }
+  
+}

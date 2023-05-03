@@ -6,6 +6,7 @@ import {Home} from "./pages/Home";
 import { NewPost } from './pages/NewPost';
 import {AboutUs} from './pages/AboutUs';
 import { Profil } from './pages/Profil';
+import { Login } from './components/Login';
 
 import { Footer } from './components/Footer';
 import { supabase } from './lib/supabaseClient';
@@ -68,6 +69,7 @@ function App() {
              <Route path="/proizvod" element={<ItemView/>}/>
              <Route path="/onama" element={<AboutUs/>}/>
              <Route path="/profil" element={<Profil/>}/>
+             <Route path="/login" element={<Login/>}/>
            </Routes>
            <Footer/>
            </Router>

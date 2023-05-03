@@ -21,12 +21,12 @@ export const Login = () =>{
         })
       }
 
-    {/*LOG OUT */}  
+    {/*LOG OUT  
     const logOut = async() => {
         await supabase.auth.signOut();
         setModal()
         navigate("/")
-    } 
+    } */} 
 
     {/*LOGIN MAIL */}  
     function handleChangeLogin(event){
@@ -99,9 +99,9 @@ export const Login = () =>{
                 <div class="loginButton">
                     <button class="loginButtonB"  onClick={loginEmail}>Prijavi se</button>
                 </div>
-               <div class="loginButton" onClick={logOut}>
+              {/* <div class="loginButton" onClick={logOut}>
                    <button class="loginButtonB">Odjavi se</button>
-               </div>   
+               </div>   */}
             {/*  <span className="close-modal" onClick={setModal}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 256 256"><path fill="currentColor" d="M208 32H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Zm-42.34 122.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/>
                         </svg>
