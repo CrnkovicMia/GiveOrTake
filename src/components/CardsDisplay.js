@@ -1,12 +1,13 @@
 import { Card } from "./Card";
 import '../style/CardDisplay.css';
 import { supabase } from "../lib/supabaseClient";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { LoadButton } from "./LoadButton";
 
 export const CardDisplay = () =>{
     const [cardList, setCards] = useState([]);
+    // const memoisedCardList = useMemo()
     const [searchParams] = useSearchParams();
     const [cardNumber, setCardNumber] = useState(14);
 
@@ -21,10 +22,10 @@ export const CardDisplay = () =>{
     
 
     useEffect(() => {
-        getCards();
-        console.log(category);
+      getCards();
+      console.log(category);
         
-    }, [searchParams,cardNumber]);
+    }, [searchParams, cardNumber]);
 
     useEffect(() => {
       setCardNumber(15);
@@ -45,10 +46,8 @@ export const CardDisplay = () =>{
           const { data, error } = await supabase.from('Card').select().eq('categoryId', categoryId.data.id);
           console.log(data)
           setCards(data);
-          
-
         }
-        else{
+        else if(!searchInput && !category){
           const { data } = await supabase.from("Card").select().range(0,cardNumber);
           setCards(data);
         }
