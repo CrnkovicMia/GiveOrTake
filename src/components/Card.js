@@ -43,7 +43,7 @@ return (
                    <img src={require('../images/location.png')} alt="loaction" class="locationImageImage"/>
                     <span class="CityName">{props.card.location}</span>
                 </div>
-                <Link to="/proizvod"><div class="viseButtonDiv">
+                <Link to={`/proizvod?id=${props.card.id}`}><div class="viseButtonDiv">
                     <button class="višeButton cursors buttonStyle">Više &#8594;</button>
                 </div>
                 </Link>
