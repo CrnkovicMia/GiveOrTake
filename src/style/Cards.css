@@ -1,139 +1,150 @@
-.card-wrapper{
-    max-height: 300px;
+.card-wrapper {
+  max-height: 300px;
 }
-.card-wrapper:hover > .card{
-    box-shadow: 2px 2px 15px rgba(4, 78, 30, 0.75);
-}
-.card{
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 10px;
-    box-shadow: 0px 4px 15px rgb(0,0,0,0.25);
-    position: relative;
-}
-.card :hover > .višeButton{
-    transform: scale(1.1);
-}
-.cardImageDiv{
-    width: 100%;
-    height: 11.25em;
-    pointer-events: none;
-}
-.cardImage{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.itemDescription{
-   font-size: 0.875em;
-   line-height: 1.5em;
-}
-.itemDescription p{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-.itemName h4{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-.cardDescription{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 15px;
-}
-.cardDescriptionLeft{
-    width: 60%;
-    padding-left: 10px;
-}
-.itemName{
-    width: 100%;
-}
-h4{
-    margin: 0;
-}
-.cardDescriptionRight{
-    width: 30%;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-.locationImageImage{
-    width:15%;
-}
-.CityName{
-    font-size: 0.75em;
-}
-.place{
+/*.card-wrapper:hover > .card{
+    box-shadow: 2px 2px 15px 4px rgba(0, 0, 0, 0.25);
+}*/
+.card {
+  background-color: white;
   width: 100%;
-  height: 50%;
+  height: 100%;
+  padding-bottom: 10px;
+  box-shadow: 0px 4px 15px rgb(0, 0, 0, 0.25);
+  position: relative;
 }
-.višeButton{
-    /*border: none;
-    background-color: rgba(4, 78, 30, 0.75);
-    color: #F5F5F5;*/
-    font-size: 0.625em;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 80%;
-    transition: all .2s ease-in-out;
+.card :hover > .višeButton {
+  transform: scale(1.1);
 }
-.heartImage{
-    max-width: 18px;
-    height: 18px;
-    fill: white;
-    stroke: #433e49;
-    stroke-width: 10px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    transition: all 0.15s;
-    z-index: 100;
+.cardImageDiv {
+  width: 100%;
+  height: 11.25em;
+  pointer-events: none;
 }
-.heartImage :hover{
-    transform: scale(1.1);
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.heartImageRed{
-    max-width: 18px;
-    height: 18px;
-    position: absolute;
-    fill: red;
-    stroke: #433e49;
-    stroke-width: 10px;
-    top: 5px;
-    right: 5px;
-    transition: all .2s ease-in-out;
-    z-index: 100;
+.itemDescription p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 0.8em;
+  line-height: 1.5em;
 }
-.viseButtonDiv{
-    height: 50%;
+.itemName h4 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
-@media only screen and (max-width:479.99px) {
-    .card{
-        font-size: 10px;
-    }
+.cardDescription {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
 }
-@media only screen and (min-width: 480px) and (max-width: 559.99px){
-    .card{
-        font-size: 14px;
-    }
+.cardDescriptionLeft {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 6px;
 }
-@media only screen and (min-width: 560px) and (max-width: 767.99px){
-    .card{
-        font-size: 10px;
-    }
+.itemName {
+  flex: 4;
+  font-family: "Bitter", serif;
 }
-@media only screen and (min-width: 768px) and (max-width: 1023.99px){
-    .card{
-        font-size: 12px;
-    }
+.place {
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-@media only screen and (min-width: 1024px) and (max-width:1279.99px){
-    .card{
-        font-size: 14px;
-    }
+.locationImageImage {
+  width: 15%;
+  height: 55%;
+}
+.CityName {
+  font-size: 0.75em;
+  margin-left: 2px;
+}
+h4 {
+  margin: 0;
+}
+.cardDescriptionRight,
+.itemDescription {
+  display: flex;
+  flex-direction: column;
+}
+.itemDescription {
+  padding: 2px 6px 0 6px;
+}
+/*.cardDescriptionRight{
+    padding: 2px 8px 0 0;
+}*/
+.viseButtonDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 5px;
+}
+.višeButton {
+  width: 30%;
+  font-size: 0.625em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  transition: all 0.2s ease-in-out;
+}
+.heartImage {
+  max-width: 18px;
+  height: 18px;
+  fill: white;
+  stroke: #433e49;
+  stroke-width: 10px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transition: all 0.15s;
+  z-index: 100;
+}
+.heartImage :hover {
+  transform: scale(1.1);
+}
+.heartImageRed {
+  max-width: 18px;
+  height: 18px;
+  position: absolute;
+  fill: red;
+  stroke: #433e49;
+  stroke-width: 10px;
+  top: 5px;
+  right: 5px;
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+}
+@media only screen and (max-width: 479.99px) {
+  .card {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+  .card {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+  .card {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .card {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
+  .card {
+    font-size: 14px;
+  }
 }

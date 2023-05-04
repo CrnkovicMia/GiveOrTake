@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-export const LoginFunction = () =>{
-        const [state, setState] = useState(false);
+export const LoginFunction = () => {
+  const [state, setState] = useState(false);
 
-        const setModal =() =>{
-            setState((prev) => !prev);
-            console.log(state);
-        };
-        
+  const setModal = () => {
+    setState((prev) => !prev);
+    console.log(state);
+  };
 
-        return [state, setModal];
-} 
+  return [state, setModal];
+};

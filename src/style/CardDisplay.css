@@ -1,43 +1,43 @@
-.card-row{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    column-gap:20px;
-    row-gap: 60px;
-    width: 85%;
-    margin: 0 auto;
-    color: black;
-    font-size: 16px;
-    transition: opacity 0.15s;
-    position: relative;
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  column-gap: 20px;
+  row-gap: 60px;
+  width: 85%;
+  margin: 0 auto;
+  color: black;
+  font-size: 16px;
+  transition: opacity 0.15s;
+  position: relative;
 }
 
-@media only screen and (max-width:479.99px) {
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(38%,45%));
-    }
+@media only screen and (max-width: 479.99px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(38%, 45%));
+  }
 }
-@media only screen and (min-width: 480px) and (max-width: 559.99px){
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(100px, 46%));
-    }
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 46%));
+  }
 }
-@media only screen and (min-width: 560px) and (max-width: 767.99px){
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(100px, 30%));
-    }
+@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 30%));
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 1023.99px){
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    }
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
 }
-@media only screen and (min-width: 1024px) and (max-width:1279.99px){
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+@media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 }
-@media only screen and (min-width: 1280px) and (max-width: 1440px){
-    .card-row{
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    }
-}   
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .card-row {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+}

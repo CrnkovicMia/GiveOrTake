@@ -1,35 +1,35 @@
-body{
+body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #433e49;
 }
-a{
+a {
   text-decoration: none;
   color: #433e49;
 }
-h2{
+h2 {
   font-weight: normal;
 }
-.Loader{
+.Loader {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 100vh;
 }
-.cursors:hover{
+.cursors:hover {
   cursor: pointer;
 }
-.buttonStyle{
+.buttonStyle {
   border: none;
-  color: #F5F5F5;
-  background-color: #138B3C;
+  color: #f5f5f5;
+  background-color: #138b3c;
 }
-.singatureColor{
-  background-color: #138B3C;
+.singatureColor {
+  background-color: #138b3c;
   border: none;
   color: white;
 }
-.singatureColor:hover{
+.singatureColor:hover {
   background-color: rgba(19, 139, 60, 0.7);
 }

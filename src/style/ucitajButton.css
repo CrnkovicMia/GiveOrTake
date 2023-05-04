@@ -1,51 +1,48 @@
-.ucitajViše{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    transition: all .2s ease-in-out; 
-    margin-top: 60px;
-    
+.ucitajViše {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  margin-top: 60px;
 }
-.ucitajViseButton{
-    width: 10%;
-    height:35px;
-    text-align:center;
+.ucitajViseButton {
+  width: 10%;
+  height: 35px;
+  text-align: center;
 }
-.ucitajViše :hover{
-    transform: scale(1.1);
-
+.ucitajViše :hover {
+  transform: scale(1.1);
 }
-.downArrow{
-    display: inline-block;
-    padding-left: 5px;
+.downArrow {
+  display: inline-block;
+  padding-left: 5px;
 }
-.downArrowImagw{
-    width: 10px;
+.downArrowImagw {
+  width: 10px;
 }
 
-@media only screen and (max-width:479.99px) {
-    .ucitajViseButton{
-        width: 100px;
-        font-size: 10px;
-    }
+@media only screen and (max-width: 479.99px) {
+  .ucitajViseButton {
+    width: 100px;
+    font-size: 10px;
+  }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 559.99px){
-    .ucitajViseButton{
-        width: 100px;
-        font-size: 12px;
-    }
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+  .ucitajViseButton {
+    width: 100px;
+    font-size: 12px;
+  }
 }
-@media only screen and (min-width: 560px) and (max-width: 767.99px){
-
-    .ucitajViseButton{
-        width: 100px;
-        font-size: 12px;
-    }
+@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+  .ucitajViseButton {
+    width: 100px;
+    font-size: 12px;
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 1023.99px){
-    .ucitajViseButton{
-        width: 100px;
-        font-size: 12px;
-    }
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .ucitajViseButton {
+    width: 100px;
+    font-size: 12px;
+  }
 }

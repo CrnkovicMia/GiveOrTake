@@ -1,109 +1,115 @@
-.header{
-  height: 70px;
+.header {
+  height: 80px;
   display: flex;
   justify-content: center;
   background-color: white;
 }
-.navTop{
+.navTop {
   display: flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   width: 90%;
-  height: 100%;
+  height: 95%;
 }
-.logoSection{
+.logoSection {
   display: flex;
   justify-content: left;
   align-items: center;
-  height: 100%;
+  height: 95%;
 }
-.logoImage{
+.logoImage {
   height: 80%;
   margin-left: -10px;
 }
-.loginNewPostSection{
-  flex:1;
+.loginNewPostSection {
+  flex: 1;
   display: flex;
   justify-content: right;
   align-items: center;
   font-size: 16px;
 }
-.hamburgerMenu{
+.hamburgerMenu {
   display: none;
-  width:2.5em;
-  fill:"none"; 
-  stroke:#433e49;
-  stroke-linecap:"round"; 
-  stroke-linejoin:"round"; 
-  stroke-width:1.5;
+  width: 2.5em;
+  fill: "none";
+  stroke: #433e49;
+  stroke-linecap: "round";
+  stroke-linejoin: "round";
+  stroke-width: 1.5;
 }
 
-.pagesLink{
+.pagesLink {
   display: block;
   text-decoration: none;
   font-size: 1em;
 }
-.pagesLinkNaslovnica{
+.pagesLinkNaslovnica {
   padding-right: 0.625em;
 }
-.pagesLinkOnama{
+.pagesLinkOnama {
   padding-right: 1.875em;
 }
-.pagesLink a, .categoryLink a{
+.pagesLink a,
+.categoryLink a {
   transition: color 0.15s;
 }
-.pagesLink a:hover, .categoryLink a:hover{
-  color:#49C474;
+.pagesLink a:hover,
+.categoryLink a:hover {
+  color: #49c474;
 }
-.pagesLinkOnama a:active,.pagesLinkNaslovnica:active, .categoryLink a:active,.pagesLinkOnama a:focus,.pagesLinkNaslovnica:hover, .categoryLink a:focus {
+.pagesLinkOnama a:active,
+.pagesLinkNaslovnica:active,
+.categoryLink a:active,
+.pagesLinkOnama a:focus,
+.pagesLinkNaslovnica:hover,
+.categoryLink a:focus {
   text-decoration: underline;
-  text-decoration-color: #49C474;
-  text-decoration-thickness:2px;
+  text-decoration-color: #49c474;
+  text-decoration-thickness: 2px;
   color: #433e49;
 }
-.novaObjavaButton{
+.novaObjavaButton {
   margin-right: 5px;
   width: 133px;
   height: 34px;
   font-size: 0.875em;
-  border:none;
-  background-color: #138B3C;
+  border: none;
+  background-color: #138b3c;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-right: 0.75em;
 }
-.plusSignIcon{
-  width:1.5em; 
-  height:1.5em;
-  fill: white; 
+.plusSignIcon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: white;
 }
-.novaObjavaButton:hover > .plusSignIcon{
-  fill:#138B3C;
+.novaObjavaButton:hover > .plusSignIcon {
+  fill: #138b3c;
 }
-.novaObjavaButton:hover{
+.novaObjavaButton:hover {
   border-style: solid;
-  border-color: #138B3C;
+  border-color: #138b3c;
   border-width: thin;
-  color: #138B3C;
-  background-color: rgba(240, 240, 240,0.8);
+  color: #138b3c;
+  background-color: rgba(240, 240, 240, 0.8);
 }
-.loginImageDiv{
+.loginImageDiv {
   display: flex;
   align-items: center;
-
 }
-.loginImage{
-  width:2.125em;
+.loginImage {
+  width: 2.125em;
   fill: #433e49;
   transition: content 0.15s;
 }
-.loginImage:hover{
-  fill: #138B3C;
+.loginImage:hover {
+  fill: #138b3c;
 }
 
-.searchIconHide{
+.searchIconHide {
   display: none;
 }
 
@@ -183,45 +189,44 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /*NavBottrom*/
-.categoryHeader{
+.categoryHeader {
   display: flex;
   height: 65px;
   justify-content: center;
-  box-shadow: 0px -2px 8px rgba(0,0,0,0.2);
-  background-color: rgba(240, 240, 240,0.8);
+  box-shadow: inset 0px 11px 8px -10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(240, 240, 240, 0.8);
 }
-.navBottom{
+.navBottom {
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-
 }
-.categoryList{
+.categoryList {
   flex: 2;
   font-size: 14px;
 }
-.searchInput{
+.searchInput {
   flex: 1;
   text-align: right;
   position: relative;
 }
-.searchIcon{
-  position:absolute;
+.searchIcon {
+  position: absolute;
   right: 16em;
   bottom: 2px;
   width: 1.6em;
   height: 1.6em;
   stroke: #787777;
-  fill:white; 
+  fill: white;
 }
-.categoryLink{
+.categoryLink {
   padding-left: 15px;
   text-decoration: none;
-  font-size:0.9357em;
+  font-size: 0.9357em;
 }
-.searchInputElement{
+.searchInputElement {
   padding-left: 25px;
   width: 257px;
   height: 25px;
@@ -230,151 +235,156 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-style: solid;
   border-width: 1px;
 }
-.swiperbar{
+.swiperbar {
   display: none;
 }
 
-@media only screen and (max-width:479.99px) {
-  .categoryHeader{
-      display: none;
+@media only screen and (max-width: 479.99px) {
+  .categoryHeader {
+    display: none;
   }
-  .hamburgerMenu{
-      display: block;
-  } 
-  .pagesLink, .loginImageDiv{
-      display: none;
+  .hamburgerMenu {
+    display: block;
   }
-  .searchIconHide{
+  .pagesLink,
+  .loginImageDiv {
+    display: none;
+  }
+  .searchIconHide {
     display: block;
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
-    fill:black;
+    fill: black;
   }
 }
-  @media only screen and (min-width: 480px) and (max-width: 559.99px){
-    .categoryList, .searchInput{
-      display: none;
-    }
-  .hamburgerMenu{
-      display: block;
-  } 
-  .pagesLink, .loginImageDiv{
-      display: none;
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+  .categoryList,
+  .searchInput {
+    display: none;
   }
-  .swiperbar{
+  .hamburgerMenu {
+    display: block;
+  }
+  .pagesLink,
+  .loginImageDiv {
+    display: none;
+  }
+  .swiperbar {
     display: flex;
     font-size: 12px;
     width: 90%;
   }
-  .swiper-wrapper{
+  .swiper-wrapper {
     padding-left: 40px;
   }
-  .searchIconHide{
+  .searchIconHide {
     display: block;
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
-    fill:black;
+    fill: black;
   }
 }
-@media only screen and (min-width: 560px) and (max-width: 767.99px){
-  .categoryList{
-      display: none;
-  }
-  .hamburgerMenu{
-      display: block;
-  } 
-  .pagesLink, .loginImageDiv, .searchInput{
+@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+  .categoryList {
     display: none;
-}
-  .loginNewPostSection{ 
-      font-size: 12px;
   }
-  .novaObjavaButton{
-      width: 80px;
-      height: 22px;
+  .hamburgerMenu {
+    display: block;
   }
-  .categoryList{
-      font-size: 14px;
+  .pagesLink,
+  .loginImageDiv,
+  .searchInput {
+    display: none;
   }
-  .swiperbar{
+  .loginNewPostSection {
+    font-size: 12px;
+  }
+  .novaObjavaButton {
+    width: 80px;
+    height: 22px;
+  }
+  .categoryList {
+    font-size: 14px;
+  }
+  .swiperbar {
     display: block;
     font-size: 12px;
     width: 100%;
   }
-  .swiper-wrapper{
+  .swiper-wrapper {
     padding-left: 40px;
   }
-  .searchIconHide{
+  .searchIconHide {
     display: block;
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
-    fill:black;
+    fill: black;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 1023.99px){
-  .loginNewPostSection{
-      font-size: 12px;
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .loginNewPostSection {
+    font-size: 12px;
   }
-  .novaObjavaButton{
-      width: 90px;
-      height: 25px;
+  .novaObjavaButton {
+    width: 90px;
+    height: 25px;
   }
-  .categoryList{
+  .categoryList {
     display: none;
   }
-  .swiperbar{
+  .swiperbar {
     display: flex;
     font-size: 12px;
     width: 60%;
   }
-  .searchInput{
-    width: 20%  ;
+  .searchInput {
+    width: 20%;
   }
-  .searchInputElement{
+  .searchInputElement {
     width: 200px;
     height: 25px;
   }
-  .searchIcon{
+  .searchIcon {
     right: 12.5em;
   }
 }
-@media only screen and (min-width: 1024px) and (max-width:1279.99px){
-  .loginNewPostSection{
-      font-size: 12px;
+@media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
+  .loginNewPostSection {
+    font-size: 12px;
   }
-  .novaObjavaButton{
-      width: 100px;
-      height: 25px;
+  .novaObjavaButton {
+    width: 100px;
+    height: 25px;
   }
-  .categoryList{
+  .categoryList {
     display: none;
   }
-  .swiperbar{
+  .swiperbar {
     display: flex;
     font-size: 12px;
     width: 70%;
   }
 }
-@media only screen and (min-width: 1280px) and (max-width: 1440px){
-  .novaObjavaButton{
-      width: 120px;
-      height: 30px;
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+  .novaObjavaButton {
+    width: 120px;
+    height: 30px;
   }
-  .loginImage{
-      width: 30px;
+  .loginImage {
+    width: 30px;
   }
-  .loginImage:hover{
-      width: 34px;
+  .loginImage:hover {
+    width: 34px;
   }
-  .categoryList{
+  .categoryList {
     display: none;
   }
-  .swiperbar{
+  .swiperbar {
     display: flex;
     font-size: 12px;
     width: 70%;
   }
-}   
+}

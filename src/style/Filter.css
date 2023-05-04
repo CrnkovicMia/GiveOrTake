@@ -1,41 +1,41 @@
-.filterSort{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    color: black;
-    z-index:1000;
-    background-color: white;
-    right:110px;
-    width: 17%;
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.85);
-    margin: 0 auto;
-    margin-top: 50px;
+.filterSort {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  color: black;
+  z-index: 1000;
+  background-color: white;
+  right: 110px;
+  width: 17%;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.85);
+  margin: 0 auto;
+  margin-top: 50px;
 }
-.xButton{
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    fill: grey;
-    top: 8px;
-    right: 8px;
+.xButton {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: grey;
+  top: 8px;
+  right: 8px;
 }
-.filterText{
-    text-align: left;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
+.filterText {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
-.filterCity{
-    text-align: left;
+.filterCity {
+  text-align: left;
 }
-.primjeni{
-    display: flex;
-    justify-content: center;
+.primjeni {
+  display: flex;
+  justify-content: center;
 }
-.primjeniButton{
-    margin: 20px 0;
-    padding: 10px;
-    border: none;
-    color: white;
-    background-color: #138B3C;
+.primjeniButton {
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  background-color: #138b3c;
 }
