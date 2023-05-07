@@ -1,5 +1,7 @@
 import "../style/Navigation.css";
 import "../style/Login.css";
+import "../style/Swiper.css";
+
 import { Link, useSearchParams } from "react-router-dom";
 import { LoginFunction } from "./LoginFunction.js";
 import { ProfilDropDown } from "./ProfilDropDown";
@@ -8,13 +10,6 @@ import { SearchBarSmallScreen } from "./SerchBarSmallScreen";
 import { Login } from "./Login";
 import { Hamburger } from "./Menu";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "../style/Swiper.css";
-
-import { Pagination, Navigation } from "swiper";
 import { useEffect, useState } from "react";
 
 export const NavBar = (props) => {
@@ -50,26 +45,35 @@ export const NavBar = (props) => {
     window.location.reload(false);
   };
 
-  const [categoryDisplay, setCategoryDisplay] = useState(6);
+  const [iteWidth, setItemWidth] = useState(126);
+  const outerContainer = document.getElementsByClassName("outer-container")[0];
+
+  const handleNextClick = () => {
+    outerContainer.scrollBy(iteWidth, 0);
+  };
+  const handlePrevClikc = () => {
+    outerContainer.scrollBy(-iteWidth, 0);
+  };
+
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth <= 479.99) {
-        setCategoryDisplay(2);
-      }
       if (window.innerWidth >= 480 && window.innerWidth < 559.99) {
-        setCategoryDisplay(3);
+        setItemWidth(153);
       }
       if (window.innerWidth >= 560 && window.innerWidth < 768.99) {
-        setCategoryDisplay(4);
+        setItemWidth(165);
       }
-      if (window.innerWidth >= 768 && window.innerWidth < 1023.99) {
-        setCategoryDisplay(4);
+      if (window.innerWidth >= 768 && window.innerWidth < 849.99) {
+        setItemWidth(98);
+      }
+      if (window.innerWidth >= 850 && window.innerWidth < 1023.99) {
+        setItemWidth(110);
       }
       if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
-        setCategoryDisplay(5);
+        setItemWidth(120);
       }
-      if (window.innerWidth >= 1280 && window.innerWidth < 1440) {
-        setCategoryDisplay(6);
+      if (window.innerWidth >= 1280) {
+        setItemWidth(125);
       }
     }
     handleResize();
@@ -200,27 +204,88 @@ export const NavBar = (props) => {
               <Link to="/?kategorija=Ostalo">Ostalo</Link>
             </label>
           </div>
-          <div className="swiperbar">
-            <>
-              <Swiper
-                slidesPerView={categoryDisplay}
-                spaceBetween={0}
-                navigation={true}
-                modules={[Pagination, Navigation]}
-                className="mySwiper"
+          <div className="slideList">
+            <div className="bar">
+              <button
+                type="button"
+                className="button"
+                id="button-prev"
+                onClick={handlePrevClikc}
               >
-                <SwiperSlide>Odjeća</SwiperSlide>
-                <SwiperSlide>Obuća</SwiperSlide>
-                <SwiperSlide>Igračke</SwiperSlide>
-                <SwiperSlide>Za dom</SwiperSlide>
-                <SwiperSlide>Tehnologija</SwiperSlide>
-                <SwiperSlide>Novorođenčad</SwiperSlide>
-                <SwiperSlide>Sport i oprema</SwiperSlide>
-                <SwiperSlide>Kućni ljubimci</SwiperSlide>
-                <SwiperSlide>Literatura</SwiperSlide>
-                <SwiperSlide>Ostalo</SwiperSlide>
-              </Swiper>
-            </>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m11 18l-6-6l6-6l1.4 1.4L7.825 12l4.575 4.6L11 18Zm6.6 0l-6-6l6-6L19 7.4L14.425 12L19 16.6L17.6 18Z"
+                  />
+                </svg>
+              </button>
+              <div className="outer-container">
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Odjeća">Odjeća</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Obuća">Obuća</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Igračke">Igračke</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Za dom">Za dom</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Tehnologija">Tehnologija</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Novorođenčad">Novorođenčad</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Sport i oprema">Sport i oprema</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Kućni ljubimci">Kućni ljubimci</Link>
+                </div>
+                <div className="category">
+                  <Link to="/?kategorija=Literatura">Literatura</Link>
+                </div>
+                <div className="category">
+                  {" "}
+                  <Link to="/?kategorija=Ostalo">Ostalo</Link>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="button"
+                id="button-next"
+                onClick={() => {
+                  handleNextClick();
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M6.4 18L5 16.6L9.575 12L5 7.4L6.4 6l6 6l-6 6Zm6.6 0l-1.4-1.4l4.575-4.6L11.6 7.4L13 6l6 6l-6 6Z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div className="searchInput">
             <input

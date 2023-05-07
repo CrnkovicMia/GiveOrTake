@@ -85,16 +85,23 @@ h4 {
 }*/
 .viseButtonDiv {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   width: 100%;
   padding-bottom: 5px;
 }
 .višeButton {
-  width: 30%;
-  font-size: 0.625em;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  width: 28%;
+  font-size: 0.6875em;
+  padding: 4px 0;
+  margin: 8px 15px 0 0;
   transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viseSVG {
+  width: 1.75em;
+  height: 1.75em;
 }
 .heartImage {
   max-width: 18px;

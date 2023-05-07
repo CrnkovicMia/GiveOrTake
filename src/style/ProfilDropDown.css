@@ -17,3 +17,22 @@
 .logout:hover {
   background-color: rgba(19, 139, 60, 0.15);
 }
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+}
+@media only screen and (min-width: 560px) and (max-width: 768.99px) {
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .dropdow {
+    font-size: 12px;
+    width: 8%;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
+  .dropdow {
+    font-size: 12px;
+  }
+  .korisnickiprofil,
+  .logout {
+    padding: 6px;
+  }
+}

@@ -212,17 +212,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   text-align: right;
   position: relative;
 }
-.searchIcon {
-  position: absolute;
-  right: 16em;
-  bottom: 2px;
-  width: 1.6em;
-  height: 1.6em;
-  stroke: #787777;
-  fill: white;
-}
 .categoryLink {
-  padding-left: 15px;
+  padding-left: 20px;
   text-decoration: none;
   font-size: 0.9357em;
 }
@@ -235,7 +226,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-style: solid;
   border-width: 1px;
 }
-.swiperbar {
+.searchIcon {
+  position: absolute;
+  top: 1px;
+  right: 16em;
+  width: 1.6em;
+  height: 1.6em;
+  stroke: #787777;
+  fill: white;
+}
+.slideList {
   display: none;
 }
 
@@ -257,6 +257,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
     margin: 2px 15px 0 0;
     fill: black;
   }
+  .slideList {
+    display: flex;
+    flex: 2;
+  }
 }
 @media only screen and (min-width: 480px) and (max-width: 559.99px) {
   .categoryList,
@@ -270,14 +274,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .loginImageDiv {
     display: none;
   }
-  .swiperbar {
-    display: flex;
-    font-size: 12px;
-    width: 90%;
-  }
-  .swiper-wrapper {
-    padding-left: 40px;
-  }
   .searchIconHide {
     display: block;
     width: 30px;
@@ -285,8 +281,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
     margin: 2px 15px 0 0;
     fill: black;
   }
+  .slideList {
+    display: flex;
+    flex: 2;
+  }
 }
-@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+@media only screen and (min-width: 560px) and (max-width: 768px) {
   .categoryList {
     display: none;
   }
@@ -308,20 +308,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .categoryList {
     font-size: 14px;
   }
-  .swiperbar {
-    display: block;
-    font-size: 12px;
-    width: 100%;
-  }
-  .swiper-wrapper {
-    padding-left: 40px;
-  }
   .searchIconHide {
     display: block;
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
     fill: black;
+  }
+  .slideList {
+    display: flex;
+    flex: 2;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023.99px) {
@@ -335,11 +331,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .categoryList {
     display: none;
   }
-  .swiperbar {
-    display: flex;
-    font-size: 12px;
-    width: 60%;
-  }
   .searchInput {
     width: 20%;
   }
@@ -348,7 +339,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
     height: 25px;
   }
   .searchIcon {
-    right: 12.5em;
+    right: 12.4em;
+  }
+  .slideList {
+    display: flex;
+    flex: 2;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
@@ -362,10 +357,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .categoryList {
     display: none;
   }
-  .swiperbar {
+  .slideList {
     display: flex;
-    font-size: 12px;
-    width: 70%;
+    flex: 2;
   }
 }
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
@@ -382,9 +376,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .categoryList {
     display: none;
   }
-  .swiperbar {
+  .slideList {
     display: flex;
-    font-size: 12px;
-    width: 70%;
+    flex: 2;
   }
 }
