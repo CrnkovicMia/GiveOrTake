@@ -58,25 +58,29 @@
   display: flex;
   justify-content: center;
 }
-.objavaButttonTwo,
-.spremljenoButtonTwo {
+.buttonAcitve {
   border: none;
   width: 12%;
   background-color: white;
-}
-.objavaButttonTwo:hover,
-.spremljenoButtonTwo:hover {
-  transform: scale(1.1);
-}
-.objavaButttonTwo:active,
-.spremljenoButtonTwo:active,
-.objavaButttonTwo:focus,
-.spremljenoButtonTwo:focus {
   text-decoration: underline;
   text-decoration-color: #49c474;
   text-decoration-thickness: 2px;
   background-color: white;
   color: black;
+}
+.buttonInactive {
+  border: none;
+  width: 12%;
+  background-color: white;
+}
+
+.buttonAcitve:hover,
+.buttonInactive:hover {
+  transform: scale(1.1);
+}
+.alert {
+  display: flex;
+  justify-content: center;
 }
 .contentTwo {
   flex: 3;

@@ -1,8 +1,13 @@
 import "../style/ProfileInfo.css";
 import { Link } from "react-router-dom";
 import { ProfilCard } from "./ProfileCard";
+import { useState } from "react";
 
 export const ProfileInfo = () => {
+  const [active, setActive] = useState(true);
+  const handleActive = () => {
+    setActive(!active);
+  };
   const cards = [];
   for (var i = 0; i < 10; i++) {
     cards.push(<ProfilCard />);
@@ -72,11 +77,29 @@ export const ProfileInfo = () => {
       </div>
       <div className="contentTwo">
         <div className="tabTwo">
-          <button className="objavaButttonTwo">OBJAVE</button>
-          <button className="spremljenoButtonTwo">SPREMLJENO</button>
+          <button
+            className={active ? "buttonAcitve" : "buttonInactive"}
+            onClick={() => {
+              handleActive();
+            }}
+          >
+            OBJAVE
+          </button>
+          <button
+            className={active ? "buttonInactive" : "buttonAcitve"}
+            onClick={() => {
+              handleActive();
+            }}
+          >
+            SPREMLJENO
+          </button>
         </div>
         <div className="myImagesTwp">
-          <div className="card-rowTwo">{arrayDataItems}</div>
+          {active ? (
+            <div className="card-rowTwo">{arrayDataItems}</div>
+          ) : (
+            <p className="alert">Vaše objave biti će vidljive ubrzo</p>
+          )}
         </div>
       </div>
     </>
