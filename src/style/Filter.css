@@ -39,3 +39,54 @@
   color: white;
   background-color: #138b3c;
 }
+@media only screen and (max-width: 479.99px) {
+  .filterSort {
+    width: 50%;
+    font-size: 12px;
+    right: 30px;
+    margin-top: 28px;
+  }
+  .primjeniButton {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 559.99px) {
+  .filterSort {
+    width: 40%;
+    font-size: 12px;
+    right: 50px;
+    margin-top: 40px;
+  }
+  .primjeniButton {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 560px) and (max-width: 767.99px) {
+  .filterSort {
+    width: 30%;
+    font-size: 12px;
+    right: 50px;
+    margin-top: 40px;
+  }
+  .primjeniButton {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023.99px) {
+  .filterSort {
+    width: 25%;
+    font-size: 14px;
+    right: 50px;
+  }
+  .primjeniButton {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
+  .filterSort {
+    width: 20%;
+    right: 50px;
+  }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+}
