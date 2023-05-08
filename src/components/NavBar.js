@@ -2,7 +2,7 @@ import "../style/Navigation.css";
 import "../style/Login.css";
 import "../style/Swiper.css";
 
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, NavLink } from "react-router-dom";
 import { LoginFunction } from "./LoginFunction.js";
 import { ProfilDropDown } from "./ProfilDropDown";
 import { SearchBarSmallScreen } from "./SerchBarSmallScreen";
@@ -111,13 +111,15 @@ export const NavBar = (props) => {
             </span>
             <Hamburger />
             <label className="pagesLink pagesLinkNaslovnica">
-              <Link to="/" id="gumb">
+              <NavLink to="/" id="gumb" activeClassName="active">
                 Naslovnica
-              </Link>
+              </NavLink>
             </label>
             <label className="pagesLink pagesLinkOnama">
               {" "}
-              <Link to="/onama">O nama</Link>
+              <NavLink to="/onama" activeClassName="active">
+                O nama
+              </NavLink>
             </label>
             <label className="pagesLink">
               <Link to="/novaObjava">

@@ -7,6 +7,7 @@ import { NewPost } from "./pages/NewPost";
 import { AboutUs } from "./pages/AboutUs";
 import { Profil } from "./pages/Profil";
 import { Login } from "./components/Login";
+import { BackArrow } from "./components/BackArrow";
 
 import { Footer } from "./components/Footer";
 import { supabase } from "./lib/supabaseClient";
@@ -18,11 +19,22 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState(null);
+  const [showButton, setShowButton] = useState();
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+
+      const handleScrollButtonVisibilty = () => {
+        window.pageYOffset > 200 ? setShowButton(true) : setShowButton(false);
+      };
+
+      window.addEventListener("scroll", handleScrollButtonVisibilty);
+
+      return () => {
+        window.removeEventListener("scroll", handleScrollButtonVisibilty);
+      };
     });
 
     const session = supabase.auth.getSession();
@@ -58,6 +70,7 @@ function App() {
         <div>
           <Router>
             <NavBar sessionUser={user} />
+            {showButton && <BackArrow />}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/novaObjava" element={<NewPost />} />

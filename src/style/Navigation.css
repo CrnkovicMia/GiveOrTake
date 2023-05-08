@@ -37,7 +37,6 @@
   stroke-linejoin: "round";
   stroke-width: 1.5;
 }
-
 .pagesLink {
   display: block;
   text-decoration: none;
@@ -57,11 +56,15 @@
 .categoryLink a:hover {
   color: #49c474;
 }
-.pagesLinkOnama a:active,
-.pagesLinkNaslovnica:active,
+.active {
+  text-decoration: underline;
+  text-decoration-color: #49c474;
+  text-decoration-thickness: 2px;
+  color: #433e49;
+}
 .categoryLink a:active,
 .pagesLinkOnama a:focus,
-.pagesLinkNaslovnica:hover,
+.pagesLinkNaslovnica a:focus,
 .categoryLink a:focus {
   text-decoration: underline;
   text-decoration-color: #49c474;
