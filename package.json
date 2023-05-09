@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.6.1",
+    "@hookform/resolvers": "^3.1.0",
     "@supabase/supabase-js": "^2.21.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "base64-arraybuffer": "^1.0.2",
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-native": "^0.71.6",
     "react-native-web": "^0.19.1",
     "react-router-dom": "^6.10.0",
@@ -20,7 +23,8 @@
     "reactjs-popup": "^2.0.5",
     "select": "^1.1.2",
     "swiper": "^9.2.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^3.21.4"
   },
   "scripts": {
     "start": "react-scripts start",

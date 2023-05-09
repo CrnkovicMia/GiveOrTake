@@ -94,7 +94,7 @@ export const ProfileInfo = () => {
             SPREMLJENO
           </button>
         </div>
-        <div className="myImagesTwp">
+        <div className="myImagesTwo">
           {active ? (
             <div className="card-rowTwo">{arrayDataItems}</div>
           ) : (

@@ -86,6 +86,7 @@
   flex: 3;
 }
 .myImagesTwo {
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -103,9 +104,6 @@
 }
 .card-wrapperTwo {
   max-height: 250px;
-}
-.card-wrapperTwo:hover > .cardTwo {
-  box-shadow: 2px 2px 15px rgba(4, 78, 30, 0.75);
 }
 .cardTwo {
   background-color: white;

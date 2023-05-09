@@ -107,11 +107,12 @@
   font-size: 0.8em;
   padding: 10px 0 30px 0;
 }
-.heartImage {
+.heartImageTwo {
   stroke: black;
+  stroke-width: 8px;
   fill: white;
 }
-.heartImageRed {
+.heartImageRedTwo {
   fill: red;
 }
 .otherPhotos {

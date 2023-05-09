@@ -27,7 +27,7 @@ function App() {
       setLoading(false);
 
       const handleScrollButtonVisibilty = () => {
-        window.pageYOffset > 200 ? setShowButton(true) : setShowButton(false);
+        window.pageYOffset > 500 ? setShowButton(true) : setShowButton(false);
       };
 
       window.addEventListener("scroll", handleScrollButtonVisibilty);
@@ -73,7 +73,10 @@ function App() {
             {showButton && <BackArrow />}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/novaObjava" element={<NewPost userSession={user}/>} />
+              <Route
+                path="/novaObjava"
+                element={<NewPost userSession={user} />}
+              />
               <Route path="/proizvod" element={<ItemView />} />
               <Route path="/onama" element={<AboutUs />} />
               <Route path="/profil" element={<Profil />} />

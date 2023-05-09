@@ -1,29 +1,44 @@
 import "../style/Filter.css";
 import Select from "react-select";
 import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 import { useEffect } from "react";
 
 export const Filter = () => {
-  const optionsCity = [
-    { value: "1", label: "Zagreb" },
-    { value: "2", label: "Pula" },
-    { value: "3", label: "Rovinj" },
-    { value: "4", label: "Rijeka" },
-  ];
+  const [cities, setCities] = useState();
+  const [colors, setColors] = useState();
+  const [sizes, setSizes] = useState();
 
-  const optionsColor = [
-    { value: "1", label: "Plava" },
-    { value: "2", label: "Zelena" },
-    { value: "3", label: "Ljubičasta" },
-    { value: "4", label: "Crvena" },
-  ];
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
 
-  const optionsSize = [
-    { value: "1", label: "XS" },
-    { value: "2", label: "S" },
-    { value: "3", label: "M" },
-    { value: "4", label: "L" },
-  ];
+  useEffect(() => {
+    getInformation();
+  }, []);
+
+  async function getInformation() {
+    const { data: cityData } = await supabase.from("City").select("id, name");
+    setCities(cityData);
+
+    const { data: colorData } = await supabase.from("Color").select("id, name");
+    setColors(colorData);
+
+    const { data: sizeData } = await supabase.from("Size").select("id, name");
+    setSizes(sizeData);
+  }
+
+  const optionsLocation = cities?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
+
+  const optionsColor = colors?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
+
+  const optionsSize = sizes?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
 
   const optionsSort = [
     { value: "1", label: "Najnovije" },
@@ -31,6 +46,16 @@ export const Filter = () => {
     { value: "3", label: "Od A-Z" },
     { value: "4", label: "OD Z-A" },
   ];
+
+  function handleChangeLocation(e) {
+    setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
+  }
+  function handleChangeSize(e) {
+    setSelectedSize(Array.isArray(e) ? e.map((x) => x.value) : []);
+  }
+  function handleChangeColor(e) {
+    setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
+  }
   const [active, setActive] = useState(true);
 
   const handleClick = () => {
@@ -59,7 +84,7 @@ export const Filter = () => {
           </div>
           <div className="filterCity">
             <Select
-              options={optionsCity}
+              options={optionsLocation}
               isMulti
               placeholder="Grad"
               styles={{
@@ -69,6 +94,7 @@ export const Filter = () => {
                   backgroundColor: "#F0F0F0",
                 }),
               }}
+              onChange={handleChangeLocation}
             />
           </div>
           <div className="filterCity">
@@ -83,6 +109,7 @@ export const Filter = () => {
                   backgroundColor: "#F0F0F0",
                 }),
               }}
+              onChange={handleChangeColor}
             />
           </div>
           <div className="filterCity">
@@ -97,6 +124,7 @@ export const Filter = () => {
                   backgroundColor: "#F0F0F0",
                 }),
               }}
+              onChange={handleChangeSize}
             />
           </div>
           <div className="filterText">Sortiranje</div>

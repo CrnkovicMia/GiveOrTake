@@ -59,20 +59,35 @@ label {
   border-style: solid;
   border-width: thin;
 }
+.newPostLeft {
+  display: flex;
+  flex-direction: column;
+}
 .newPostImages {
   display: flex;
   flex-direction: row;
   font-size: 20px;
+}
+.newPostLeftDiv {
+  display: flex;
+  justify-content: space-around;
 }
 .newPostLeft,
 .newPostRight {
   flex: 1;
   display: flex;
   justify-content: space-around;
+  position: relative;
 }
-.errorMsg{
+.errorMsg,
+.errorMsg2 {
   color: red;
   font-size: 0.75em;
+}
+.errorMsg2 {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }
 .mainImage {
   display: flex;
@@ -141,6 +156,12 @@ label {
 }
 span {
   text-align: center;
+}
+.notLoggedIn {
+  margin: 200px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media only screen and (max-width: 479.99px) {
   .newPostElements,
