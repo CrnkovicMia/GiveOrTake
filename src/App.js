@@ -73,7 +73,7 @@ function App() {
             {showButton && <BackArrow />}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/novaObjava" element={<NewPost />} />
+              <Route path="/novaObjava" element={<NewPost userSession={user}/>} />
               <Route path="/proizvod" element={<ItemView />} />
               <Route path="/onama" element={<AboutUs />} />
               <Route path="/profil" element={<Profil />} />

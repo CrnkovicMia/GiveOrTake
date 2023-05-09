@@ -70,6 +70,10 @@ label {
   display: flex;
   justify-content: space-around;
 }
+.errorMsg{
+  color: red;
+  font-size: 0.75em;
+}
 .mainImage {
   display: flex;
   align-items: center;
@@ -88,8 +92,9 @@ label {
 }
 .mainImageInside {
   display: flex;
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -97,8 +102,9 @@ label {
 .imageInside {
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   justify-content: center;
   align-items: center;
 }
