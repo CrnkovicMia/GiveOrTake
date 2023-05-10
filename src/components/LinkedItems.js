@@ -8,40 +8,73 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { useSearchParams } from "react-router-dom";
 
 import { Card } from "./Card";
 
-export const LinkedItems = () => {
+export const LinkedItems = (props) => {
   const [categoryDisplay, setCategoryDisplay] = useState(5);
-  const category = searchParams.get("kategorija");
-  const [cardList, setCards] = useState([]);
-  const [searchParams] = useSearchParams();
-  const [cardNumber, setCardNumber] = useState(14);
+  const cardLinked = [];
+  // const [cardLinked, setCardLiked] = useState([]);
+  const cards = [];
+  //const [cards, setCards] = useState();
+  const [list, setList] = useState([]);
 
-  async function getCards() {
-    const categoryId = await supabase
-      .from("Category")
-      .select("id, name")
-      .eq("name", category)
-      .single();
-    console.log("catId: ", categoryId.data.id);
-    const { data, error } = await supabase
-      .from("Card")
-      .select()
-      .eq("categoryId", categoryId.data.id);
-    console.log(data);
-    setCards(data);
+  async function setLinkedCard() {
+    const cardLinked = [];
+    const cardIds = new Set();
 
-    console.log(cardList);
+    for (var i = 0; i < props.IDCategory.length; i++) {
+      const { data: linkedData, error } = await supabase
+        .from("cardCategory")
+        .select()
+        .eq("categoryId", props.IDCategory[i]);
+
+      if (error) {
+        console.error("Error fetching linked card data:", error);
+        return;
+      }
+
+      linkedData.forEach((linkedItem) => cardIds.add(linkedItem.cardId));
+
+      cardLinked.push(linkedData);
+      console.log("cardLinked");
+      console.log(cardLinked);
+    }
+
+    for (const id of cardIds) {
+      const { data: cardData, error } = await supabase
+        .from("Card")
+        .select()
+        .eq("id", id);
+
+      if (error) {
+        console.error("Error fetching card data:", error);
+        return;
+      }
+
+      cards.push(cardData);
+    }
+
+    const cardsTwo = cards.map((card) => (
+      <Card card={card[0]} key={card[0].id} />
+    ));
+
+    console.log("cardsTwo");
+    console.log(cardsTwo);
+
+    const cardElements = cardsTwo.map((card, index) => (
+      <div className="cardMargin" key={index}>
+        <SwiperSlide>{card}</SwiperSlide>
+      </div>
+    ));
+
+    setList(cardElements);
+
+    console.log("list");
+    console.log(list);
   }
 
-  const arrayDataItems = cardList.map((card) => (
-    <SwiperSlide key={card.id}>
-      <Card card={card} />
-    </SwiperSlide>
-  ));
-
+  setLinkedCard();
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 479.99) {
@@ -65,14 +98,9 @@ export const LinkedItems = () => {
     }
     handleResize();
     window.addEventListener("resize", handleResize);
+    //setLinkedCard();
   }, []);
 
-  const cards = [];
-  for (var i = 0; i < 10; i++) {
-    cards.push(<Card />);
-  }
-
-  /*   const arrayDataItems = cards.map((cards) => <div className='cardMargin'><SwiperSlide>{cards}</SwiperSlide></div>);*/
   return (
     <>
       <div className="povezaniProizvodi">
@@ -86,7 +114,7 @@ export const LinkedItems = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {arrayDataItems}
+          {list}
         </Swiper>
       </div>
     </>

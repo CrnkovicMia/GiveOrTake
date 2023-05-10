@@ -15,6 +15,10 @@ export const Item = () => {
   });
   const [clicked, setActive] = useState(false);
   const [searchParams] = useSearchParams();
+  const [active, setActiveButton] = useState(false);
+  const handleActive = () => {
+    setActiveButton(!active);
+  };
 
   const itemId = searchParams.get("id");
   const imgUrl =
@@ -32,14 +36,26 @@ export const Item = () => {
     setActive(!clicked);
   };
 
+  const [idCat, setIdCat] = useState();
+
   async function getCard() {
     const { data } = await supabase
       .from("Card")
       .select()
       .eq("id", itemId)
       .single();
+
+    const { data: categoryData, error } = await supabase
+      .from("cardCategory")
+      .select("*")
+      .eq("cardId", itemId);
+
+    const categoryIds = categoryData.map((data) => {
+      return data.categoryId;
+    });
+    setIdCat(categoryIds);
+
     setCard(data);
-    console.log(card);
   }
 
   const imag = [
@@ -78,8 +94,24 @@ export const Item = () => {
         <div className="itemInfoDiv">
           <div className="infoTop">
             <div className="itemButtons">
-              <button className="opisButton">OPIS</button>
-              <button className="recenzijeButton">RECENZIJE</button>
+              <button
+                className={active ? "opisButton" : "opisButtonActive"}
+                onClick={() => {
+                  handleActive();
+                }}
+              >
+                OPIS
+              </button>
+              <button
+                className={
+                  !active ? "recenzijeButton" : "recenzijeButtonActive"
+                }
+                onClick={() => {
+                  handleActive();
+                }}
+              >
+                RECENZIJE
+              </button>
             </div>
             <span
               onClick={() => {
@@ -97,63 +129,69 @@ export const Item = () => {
               </svg>
             </span>
           </div>
-          <div className="itemInfo">
-            <div className="infoLeft">
-              <span className="spanTitle">
-                <strong>{card.title}</strong>
-              </span>
-              <span className="location">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M12 2c3.31 0 6 2.66 6 5.95C18 12.41 12 19 12 19S6 12.41 6 7.95C6 4.66 8.69 2 12 2m0 4a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 13c0 2.21-3.58 4-8 4s-8-1.79-8-4c0-1.29 1.22-2.44 3.11-3.17l.64.91C6.67 17.19 6 17.81 6 18.5c0 1.38 2.69 2.5 6 2.5s6-1.12 6-2.5c0-.69-.67-1.31-1.75-1.76l.64-.91C18.78 16.56 20 17.71 20 19Z"
-                  />
-                </svg>
-                <label>{card.location}</label>
-              </span>
-              <span className="textChange">{card.description}</span>
-            </div>
-            <div className="infoRight">
-              <div className="properties">
-                <span className="line">
-                  <strong>Kategorija: </strong>
+          {!active ? (
+            <div className="itemInfo">
+              <div className="infoLeft">
+                <span className="spanTitle">
+                  <strong>{card.title}</strong>
                 </span>
-                <span className="line">
-                  <strong>Veličina: </strong>
+                <span className="location">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M12 2c3.31 0 6 2.66 6 5.95C18 12.41 12 19 12 19S6 12.41 6 7.95C6 4.66 8.69 2 12 2m0 4a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 13c0 2.21-3.58 4-8 4s-8-1.79-8-4c0-1.29 1.22-2.44 3.11-3.17l.64.91C6.67 17.19 6 17.81 6 18.5c0 1.38 2.69 2.5 6 2.5s6-1.12 6-2.5c0-.69-.67-1.31-1.75-1.76l.64-.91C18.78 16.56 20 17.71 20 19Z"
+                    />
+                  </svg>
+                  <label>{card.location}</label>
                 </span>
-                <span className="line">
-                  <strong>Boja: </strong>
-                </span>
-                <span className="line">
-                  <strong>Datum objave: </strong>
-                </span>
-                <span className="line">
-                  <strong>Istek oglasa: </strong>
-                </span>
-                <span className="line">
-                  <strong>Pregledi: </strong>
-                </span>
+                <span className="textChange">{card.description}</span>
               </div>
-              <div className="propertiesValues">
-                <span className="line">Obuća</span>
-                <span className="line">42</span>
-                <span className="line">Plava</span>
-                <span className="line">27.04.2023.</span>
-                <span className="line">13 dana</span>
-                <span className="line">3</span>
+              <div className="infoRight">
+                <div className="properties">
+                  <span className="line">
+                    <strong>Kategorija: </strong>
+                  </span>
+                  <span className="line">
+                    <strong>Veličina: </strong>
+                  </span>
+                  <span className="line">
+                    <strong>Boja: </strong>
+                  </span>
+                  <span className="line">
+                    <strong>Datum objave: </strong>
+                  </span>
+                  <span className="line">
+                    <strong>Istek oglasa: </strong>
+                  </span>
+                  <span className="line">
+                    <strong>Pregledi: </strong>
+                  </span>
+                </div>
+                <div className="propertiesValues">
+                  <span className="line">Obuća</span>
+                  <span className="line">42</span>
+                  <span className="line">Plava</span>
+                  <span className="line">27.04.2023.</span>
+                  <span className="line">13 dana</span>
+                  <span className="line">3</span>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <p className="alert">Recenzije će biti vidljive ubrzo</p>
+          )}
+
           <div className="itemInfoBottom">
             <button className="kontaktirajButton">Kontaktiraj vlasnika</button>
           </div>
         </div>
       </div>
+      <LinkedItems IDCategory={idCat} />
     </>
   );
 };

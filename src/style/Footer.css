@@ -50,6 +50,17 @@
 }
 
 @media only screen and (max-width: 479.99px) {
+  .footerDiv {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .SiteMap,
+  .kontakt {
+    margin-top: 15px;
+    padding-left: 20px;
+    width: 50%;
+  }
   .socialMedia {
     text-align: left;
   }

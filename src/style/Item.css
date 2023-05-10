@@ -26,14 +26,25 @@
   border: none;
   background-color: white;
 }
+.opisButtonActive,
+.recenzijeButtonActive {
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+  text-decoration-color: #49c474;
+  text-decoration-thickness: 2px;
+  background-color: white;
+}
 .recenzijeButton {
   margin-left: 10px;
 }
 .recenzijeButton:hover,
-.opisButton:hover {
-  transform: scale(1.1);
+.opisButton:hover,
+.opisButtonActive:hover,
+.recenzijeButtonActive:hover {
+  transform: scale(1.05);
 }
-.recenzijeButton:active,
+/*.recenzijeButton:active,
 .opisButton:active,
 .recenzijeButton:focus,
 .opisButton:focus {
@@ -42,7 +53,7 @@
   text-decoration-thickness: 2px;
   background-color: white;
   color: black;
-}
+}*/
 .itemInfo {
   display: flex;
   flex-direction: row;
@@ -54,6 +65,7 @@
 }
 .textChange {
   font-size: 0.8em;
+  line-height: 1.5em;
   text-align: left;
 }
 .infoLeft,

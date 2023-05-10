@@ -15,7 +15,8 @@
 }
 .korisnickiprofil:hover,
 .logout:hover {
-  background-color: rgba(19, 139, 60, 0.15);
+  background-color: rgba(19, 139, 60, 0.85);
+  color: white;
 }
 @media only screen and (min-width: 480px) and (max-width: 559.99px) {
 }

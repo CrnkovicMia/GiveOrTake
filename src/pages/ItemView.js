@@ -1,10 +1,9 @@
-import { Item } from '../components/Item.js';
-import { LinkedItems } from '../components/LinkedItems.js';
+import { Item } from "../components/Item.js";
 
-export const ItemView = () =>{
-    return(
-        <>
-         <Item/>
-        </>
-    );
+export const ItemView = () => {
+  return (
+    <>
+      <Item />
+    </>
+  );
 };
