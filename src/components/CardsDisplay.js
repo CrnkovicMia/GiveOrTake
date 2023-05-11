@@ -52,10 +52,19 @@ export const CardDisplay = () => {
         .eq("name", category)
         .single();
       console.log("catId: ", categoryId.data.id);
-      const { data, error } = await supabase
-        .from("Card")
+      const { data: cardIds } = await supabase
+        .from("cardCategory")
         .select()
         .eq("categoryId", categoryId.data.id);
+        console.log("CardId: ",cardIds)
+      const cardIdArray = cardIds.map((id)=>{
+        return id.cardId
+      })
+      console.warn("CardId: ",cardIds)
+      const { data } = await supabase
+        .from("Card")
+        .select() 
+        .in("id", cardIdArray);
       console.log(data);
       setCards(data);
     }if(filterLocation || filterColor || filterSize){
