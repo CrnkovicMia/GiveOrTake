@@ -20,7 +20,6 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [showButton, setShowButton] = useState();
-
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -29,13 +28,13 @@ function App() {
       const handleScrollButtonVisibilty = () => {
         window.pageYOffset > 500 ? setShowButton(true) : setShowButton(false);
       };
-
       window.addEventListener("scroll", handleScrollButtonVisibilty);
 
       return () => {
         window.removeEventListener("scroll", handleScrollButtonVisibilty);
       };
     });
+    
 
     const session = supabase.auth.getSession();
     setUser(session?.user);
@@ -44,7 +43,7 @@ function App() {
       (event, session) => {
         switch (event) {
           case "SIGNED_IN":
-            setUser(session?.user);
+            setUser(session?.user)
             break;
 
           case "SIGNED_OUT":
@@ -79,7 +78,7 @@ function App() {
               />
               <Route path="/proizvod" element={<ItemView />} />
               <Route path="/onama" element={<AboutUs />} />
-              <Route path="/profil" element={<Profil />} />
+              <Route path="/profil" element={<Profil userSession={user}/>} />
               <Route path="/login" element={<Login />} />
             </Routes>
             <Footer />

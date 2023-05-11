@@ -1,8 +1,11 @@
 import "../style/ProfileInfo.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const ProfilCard = () => {
+export const ProfilCard = (props) => {
   const [active, setActive] = useState(false);
+
+  const imgUrl =
+    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
   const handleClick = () => {
     setActive(!active);
   };
@@ -36,13 +39,13 @@ export const ProfilCard = () => {
         </div>
         <div className="cardImageDivTwo">
           <img
-            src={require("../images/portret.png")}
+            src={imgUrl+props.card.picture}
             alt="cardImag"
             className="cardImageTwo"
           />
         </div>
         <div className="cardDescriptionTwo">
-          <p>Nike Air Jordan 1s</p>
+          <p>{props.card.title}</p>
         </div>
       </div>
     </div>

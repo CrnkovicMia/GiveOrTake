@@ -1,19 +1,83 @@
 import "../style/ProfileInfo.css";
 import { Link } from "react-router-dom";
 import { ProfilCard } from "./ProfileCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props) => {
+  var cardList = []
+   const [cards, setCards] = useState([]);
+  const [profile, setProfile] = useState({
+    username: "-", email: "-", donationNumber: -1, profilePic: "-" ,id:0
+  })
+  
+
+  
+   async function getProfile(){
+     const { data } = await supabase
+       .from('profiles')
+       .select()
+       .single()
+     setProfile(data)
+     console.log(data)
+    }
+    
+
+  /*async function getCards(){
+    const { data } = await supabase
+      .from('Card')
+      .select()
+      .eq("postedBy", props.userSession.id)
+    console.log("postedBy: ", props.userSession.id)
+    console.log("Cards" , data)
+    cardList=data
+    console.log("bbb" , cardList)
+    cardList.map((cardL)=>{
+      cards.push(<ProfilCard key={cardL.id} card={cardL}/>);
+    })
+    console.log("lll" , cardList)
+  }*/
+
+  async function getCards(){
+    const { data } = await supabase
+      .from('Card')
+      .select()
+      .eq("postedBy", props.userSession.id)
+    console.log("postedBy: ", props.userSession.id)
+    console.log("Cards" , data)
+    cardList=data
+    console.log("bbb" , cardList)
+    const newCards = cardList.map((cardL)=>{
+      return <ProfilCard key={cardL.id} card={cardL}/>;
+    })
+    console.log("lll" , cardList)
+    return newCards
+  }
+  
+  useEffect(()=>{
+    console.log("ooooo",cards)
+    getProfile().then(() => {
+      getCards().then(newCards => {
+        setCards(newCards)
+      })
+    })
+  },[])
+ 
+  
   const [active, setActive] = useState(true);
   const handleActive = () => {
     setActive(!active);
   };
-  const cards = [];
-  for (var i = 0; i < 10; i++) {
-    cards.push(<ProfilCard />);
-  }
+  
+  
 
   const arrayDataItems = cards.map((cards) => <div>{cards}</div>);
+
+  useEffect(()=>{
+    console.log("ooooo",cards)
+    getProfile()
+    getCards()
+  },[])
   return (
     <>
       <div className="profilInformationTwo">
@@ -24,13 +88,13 @@ export const ProfileInfo = () => {
             className="profileImageImageTwo"
           />
         </div>
-        <div className="userInformationTwo">
+        <div className="userInformationTwo">  
           <span className="informacijeTwo">
-            <strong>user_name</strong>
+            <strong>{profile.username}</strong>
           </span>
-          <span className="informacijeTwo">username@gmail.com</span>
-          <span className="informacijeTwo">Broj darivanja: x</span>
-          <span className="informacijeTwo">Broj aktivnih objava: X</span>
+          <span className="informacijeTwo">{profile.email}</span>
+          <span className="informacijeTwo">Broj darivanja: {profile.donationNumber}</span>
+          <span className="informacijeTwo">Broj aktivnih objava: 0</span>
         </div>
         <div className="profileButtonTwo">
           <button className="editButtonTwo singatureColor">
@@ -96,7 +160,7 @@ export const ProfileInfo = () => {
         </div>
         <div className="myImagesTwo">
           {active ? (
-            <div className="card-rowTwo">{arrayDataItems}</div>
+            <div className="card-rowTwo">{cards}</div>
           ) : (
             <p className="alert">Vaše objave biti će vidljive ubrzo</p>
           )}
