@@ -1,4 +1,5 @@
 import "../style/LinkedItems.css";
+import "../style/Slider.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -62,9 +63,14 @@ export const LinkedItems = (props) => {
     console.log("cardsTwo");
     console.log(cardsTwo);
 
-    const cardElements = cardsTwo.map((card, index) => (
+    /* const cardElements = cardsTwo.map((card, index) => (
       <div className="cardMargin" key={index}>
         <SwiperSlide>{card}</SwiperSlide>
+      </div>
+    ));*/
+    const cardElements = cardsTwo.map((card, index) => (
+      <div className="categoryTwo" key={index}>
+        {card}
       </div>
     ));
 
@@ -75,30 +81,44 @@ export const LinkedItems = (props) => {
   }
 
   setLinkedCard();
+
+  const [iteWidth, setItemWidth] = useState(126);
+  const outerContainer =
+    document.getElementsByClassName("outer-containerTwo")[0];
+
+  const handleNextClick = () => {
+    outerContainer.scrollBy(iteWidth, 0);
+  };
+  const handlePrevClikc = () => {
+    outerContainer.scrollBy(-iteWidth, 0);
+  };
+
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth <= 479.99) {
-        setCategoryDisplay(2);
+      if (window.innerWidth < 480) {
+        setItemWidth(190);
       }
       if (window.innerWidth >= 480 && window.innerWidth < 559.99) {
-        setCategoryDisplay(2);
+        setItemWidth(190);
       }
       if (window.innerWidth >= 560 && window.innerWidth < 768.99) {
-        setCategoryDisplay(3);
+        setItemWidth(195);
       }
-      if (window.innerWidth >= 768 && window.innerWidth < 1023.99) {
-        setCategoryDisplay(3);
+      if (window.innerWidth >= 768 && window.innerWidth < 849.99) {
+        setItemWidth(184);
+      }
+      if (window.innerWidth >= 850 && window.innerWidth < 1023.99) {
+        setItemWidth(205);
       }
       if (window.innerWidth >= 1024 && window.innerWidth < 1280) {
-        setCategoryDisplay(4);
+        setItemWidth(225);
       }
-      if (window.innerWidth > 1280) {
-        setCategoryDisplay(5);
+      if (window.innerWidth >= 1280) {
+        setItemWidth(225);
       }
     }
     handleResize();
     window.addEventListener("resize", handleResize);
-    //setLinkedCard();
   }, []);
 
   return (
@@ -107,7 +127,7 @@ export const LinkedItems = (props) => {
         <span>Povezani proizvodi</span>
       </div>
       <div className="swiperDiv">
-        <Swiper
+        {/** <Swiper
           slidesPerView={categoryDisplay}
           spaceBetween={10}
           navigation={true}
@@ -115,7 +135,48 @@ export const LinkedItems = (props) => {
           className="mySwiper"
         >
           {list}
-        </Swiper>
+        </Swiper> */}
+        <div className="barTwo">
+          <button
+            type="button"
+            className="buttonTwo"
+            id="button-prev"
+            onClick={handlePrevClikc}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="m11 18l-6-6l6-6l1.4 1.4L7.825 12l4.575 4.6L11 18Zm6.6 0l-6-6l6-6L19 7.4L14.425 12L19 16.6L17.6 18Z"
+              />
+            </svg>
+          </button>
+          <div className="outer-containerTwo">{list}</div>
+          <button
+            type="button"
+            className="buttonTwo"
+            id="button-next"
+            onClick={() => {
+              handleNextClick();
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M6.4 18L5 16.6L9.575 12L5 7.4L6.4 6l6 6l-6 6Zm6.6 0l-1.4-1.4l4.575-4.6L11.6 7.4L13 6l6 6l-6 6Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </>
   );

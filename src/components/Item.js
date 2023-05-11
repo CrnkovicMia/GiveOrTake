@@ -60,9 +60,9 @@ export const Item = () => {
 
   const imag = [
     { id: 0, value: imgUrl + card.picture },
-    { id: 1, value: require("../images/image1.jpg") },
-    { id: 2, value: require("../images/image2.jpg") },
-    { id: 3, value: require("../images/cardImages/cardImage5.png") },
+    { id: 1, value: require("../images/logoImage.png") },
+    { id: 2, value: require("../images/logoImage.png") },
+    { id: 3, value: require("../images/logoImage.png") },
   ];
   const [sliderData, setsliderData] = useState(imag[0]);
 
