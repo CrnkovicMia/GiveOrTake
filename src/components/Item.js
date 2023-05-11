@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { LinkedItems } from "../components/LinkedItems.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSearchParams } from "react-router-dom";
+import { set } from "react-hook-form";
 
 export const Item = () => {
   const [card, setCard] = useState({
@@ -57,7 +58,96 @@ export const Item = () => {
 
     setCard(data);
   }
+  const [joinedCategoryName, setJoinedCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState();
+  async function getCategory() {
+    const { data, error } = await supabase
+      .from("Category")
+      .select("name")
+      .in("id", idCat)
+      .limit(idCat.length);
 
+    const categoryNames = data.map((category) => {
+      return category.name;
+    });
+    setCategoryName(categoryNames);
+    if (categoryName.length > 1) {
+      const newJoinedCategoryName = categoryName.join(", ");
+      setJoinedCategoryName(newJoinedCategoryName);
+    } else {
+      setJoinedCategoryName(categoryName);
+    }
+  }
+  getCategory();
+
+  const [sizeNum, setSizeNum] = useState();
+  const [viewSize, setViewSize] = useState();
+  async function getSize() {
+    const { data, error } = await supabase
+      .from("Card")
+      .select()
+      .eq("id", itemId)
+      .single();
+    if (data.sizeId == null) {
+      setSizeNum("/");
+    } else {
+      setSizeNum(data.sizeId);
+    }
+    getSizeName();
+  }
+  async function getSizeName() {
+    const { data, error } = await supabase
+      .from("Size")
+      .select()
+      .eq("id", sizeNum)
+      .single();
+    if (sizeNum == "/") {
+      setViewSize(sizeNum);
+    } else {
+      setViewSize(data.name);
+    }
+  }
+  //getSize();
+
+  const [color, setColor] = useState();
+  const [colorView, setColorView] = useState();
+  const [joinedColorName, setJoinedColorName] = useState("");
+  const colorIds = [];
+  async function getColor() {
+    const { data, error } = await supabase
+      .from("cardColor")
+      .select("colorId")
+      .eq("cardId", itemId);
+
+    /* const colorIds = data.map((item) => {
+      return item.colorId;
+    });*/
+    for (var i = 0; i < data.length; i++) {
+      colorIds.push(data.colorId);
+    }
+    //console.log("colorIds: ", colorIds);
+    setColor(colorIds);
+    // console.log("colorIds: ", color);
+    getColorName();
+  }
+  async function getColorName() {
+    const { data, error } = await supabase
+      .from("Color")
+      .select()
+      .in("id", color);
+
+    const names = data.map((item) => {
+      return item.name;
+    });
+    setColorView(names);
+    if (colorView.length > 1) {
+      const newJoinedCategoryName = colorView.join(", ");
+      setJoinedColorName(newJoinedCategoryName);
+    } else {
+      setJoinedColorName(colorView);
+    }
+  }
+  //getColor();
   const imag = [
     { id: 0, value: imgUrl + card.picture },
     { id: 1, value: require("../images/logoImage.png") },
@@ -70,7 +160,6 @@ export const Item = () => {
     const slider = imag[index];
     setsliderData(slider);
   };
-
   return (
     <>
       <div className="mainContenr">
@@ -173,9 +262,9 @@ export const Item = () => {
                   </span>
                 </div>
                 <div className="propertiesValues">
-                  <span className="line">Obuća</span>
-                  <span className="line">42</span>
-                  <span className="line">Plava</span>
+                  <span className="line">{joinedCategoryName}</span>
+                  <span className="line">/</span>
+                  <span className="line">/</span>
                   <span className="line">27.04.2023.</span>
                   <span className="line">13 dana</span>
                   <span className="line">3</span>
@@ -191,7 +280,7 @@ export const Item = () => {
           </div>
         </div>
       </div>
-      <LinkedItems IDCategory={idCat} />
+      <LinkedItems IDCategory={idCat} IDItem={itemId} />
     </>
   );
 };

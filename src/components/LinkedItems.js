@@ -28,7 +28,8 @@ export const LinkedItems = (props) => {
       const { data: linkedData, error } = await supabase
         .from("cardCategory")
         .select()
-        .eq("categoryId", props.IDCategory[i]);
+        .eq("categoryId", props.IDCategory[i])
+        .neq("cardId", props.IDItem);
 
       if (error) {
         console.error("Error fetching linked card data:", error);
@@ -38,8 +39,8 @@ export const LinkedItems = (props) => {
       linkedData.forEach((linkedItem) => cardIds.add(linkedItem.cardId));
 
       cardLinked.push(linkedData);
-      console.log("cardLinked");
-      console.log(cardLinked);
+      // console.log("cardLinked");
+      //console.log(cardLinked);
     }
 
     for (const id of cardIds) {
@@ -60,8 +61,8 @@ export const LinkedItems = (props) => {
       <Card card={card[0]} key={card[0].id} />
     ));
 
-    console.log("cardsTwo");
-    console.log(cardsTwo);
+    // console.log("cardsTwo");
+    //console.log(cardsTwo);
 
     /* const cardElements = cardsTwo.map((card, index) => (
       <div className="cardMargin" key={index}>
@@ -76,8 +77,8 @@ export const LinkedItems = (props) => {
 
     setList(cardElements);
 
-    console.log("list");
-    console.log(list);
+    // console.log("list");
+    //console.log(list);
   }
 
   setLinkedCard();

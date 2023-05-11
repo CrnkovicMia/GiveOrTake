@@ -5,23 +5,21 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
 export const ProfileInfo = (props) => {
-  var cardList = []
-   const [cards, setCards] = useState([]);
+  var cardList = [];
+  const [cards, setCards] = useState([]);
   const [profile, setProfile] = useState({
-    username: "-", email: "-", donationNumber: -1, profilePic: "-" ,id:0
-  })
-  
+    username: "-",
+    email: "-",
+    donationNumber: -1,
+    profilePic: "-",
+    id: 0,
+  });
 
-  
-   async function getProfile(){
-     const { data } = await supabase
-       .from('profiles')
-       .select()
-       .single()
-     setProfile(data)
-     console.log(data)
-    }
-    
+  async function getProfile() {
+    const { data } = await supabase.from("profiles").select().single();
+    setProfile(data);
+    console.log(data);
+  }
 
   /*async function getCards(){
     const { data } = await supabase
@@ -38,46 +36,43 @@ export const ProfileInfo = (props) => {
     console.log("lll" , cardList)
   }*/
 
-  async function getCards(){
+  async function getCards() {
     const { data } = await supabase
-      .from('Card')
+      .from("Card")
       .select()
-      .eq("postedBy", props.userSession.id)
-    console.log("postedBy: ", props.userSession.id)
-    console.log("Cards" , data)
-    cardList=data
-    console.log("bbb" , cardList)
-    const newCards = cardList.map((cardL)=>{
-      return <ProfilCard key={cardL.id} card={cardL}/>;
-    })
-    console.log("lll" , cardList)
-    return newCards
+      .eq("postedBy", props.userSession.id);
+    console.log("postedBy: ", props.userSession.id);
+    console.log("Cards", data);
+    cardList = data;
+    console.log("bbb", cardList);
+    const newCards = cardList.map((cardL) => {
+      return <ProfilCard key={cardL.id} card={cardL} />;
+    });
+    console.log("lll", cardList);
+    return newCards;
   }
-  
-  useEffect(()=>{
-    console.log("ooooo",cards)
+
+  useEffect(() => {
+    console.log("ooooo", cards);
     getProfile().then(() => {
-      getCards().then(newCards => {
-        setCards(newCards)
-      })
-    })
-  },[])
- 
-  
+      getCards().then((newCards) => {
+        setCards(newCards);
+      });
+    });
+  }, []);
+
   const [active, setActive] = useState(true);
   const handleActive = () => {
     setActive(!active);
   };
-  
-  
 
   const arrayDataItems = cards.map((cards) => <div>{cards}</div>);
 
-  useEffect(()=>{
-    console.log("ooooo",cards)
-    getProfile()
-    getCards()
-  },[])
+  useEffect(() => {
+    console.log("ooooo", cards);
+    getProfile();
+    getCards();
+  }, []);
   return (
     <>
       <div className="profilInformationTwo">
@@ -88,13 +83,17 @@ export const ProfileInfo = (props) => {
             className="profileImageImageTwo"
           />
         </div>
-        <div className="userInformationTwo">  
+        <div className="userInformationTwo">
           <span className="informacijeTwo">
             <strong>{profile.username}</strong>
           </span>
           <span className="informacijeTwo">{profile.email}</span>
-          <span className="informacijeTwo">Broj darivanja: {profile.donationNumber}</span>
-          <span className="informacijeTwo">Broj aktivnih objava: {cards.length}</span>
+          <span className="informacijeTwo">
+            Broj darivanja: {profile.donationNumber}
+          </span>
+          <span className="informacijeTwo">
+            Broj aktivnih objava: {cards.length}
+          </span>
         </div>
         <div className="profileButtonTwo">
           <button className="editButtonTwo singatureColor">
@@ -109,20 +108,18 @@ export const ProfileInfo = (props) => {
             </span>
             <span>Uredi profil</span>
           </button>
-          <Link to="/novaobjava">
-            <button className="newPostButtonTwo singatureColor">
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="newPostSVGTwo"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
-                </svg>
-              </span>
-              <span>Nova objava</span>
-            </button>
-          </Link>
+          <button className="newPostButtonTwo singatureColor">
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="newPostSVGTwo"
+                viewBox="0 0 24 24"
+              >
+                <path d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+              </svg>
+            </span>
+            <span>Nova objava</span>
+          </button>
           <button className="chatButtonTwo singatureColor">
             <span>
               <svg

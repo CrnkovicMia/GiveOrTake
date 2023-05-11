@@ -30,14 +30,31 @@
 }
 .primjeni {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 .primjeniButton {
+  width: 60%;
   margin: 20px 0;
   padding: 10px;
   border: none;
   color: white;
   background-color: #138b3c;
+  transition: all 0.15s;
+}
+.obrišiButton {
+  width: 60%;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #138b3c;
+  color: #138b3c;
+  background-color: white;
+  transition: all 0.15s;
+}
+.obrišiButton:hover,
+.primjeniButton:hover {
+  transform: scale(1.05);
 }
 @media only screen and (max-width: 479.99px) {
   .filterSort {

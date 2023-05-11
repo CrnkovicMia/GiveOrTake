@@ -52,24 +52,27 @@ export const Filter = () => {
 
   function handleChangeLocation(e) {
     // setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
-    
-    setSelectedLocation(e.value)
+
+    setSelectedLocation(e.value);
   }
   function handleChangeSize(e) {
-    setSelectedSize(e.value)
+    setSelectedSize(e.value);
   }
   function handleChangeColor(e) {
-    setSelectedColor(e.value)
+    setSelectedColor(e.value);
   }
-  function handleChangeSort(e){
-    setSelectedSort(e.value)
+  function handleChangeSort(e) {
+    setSelectedSort(e.value);
   }
   const [active, setActive] = useState(true);
 
-
   async function filterCards() {
-
-    setSearchParams({location: selectedLocation, color: selectedColor, size: selectedSize, sort: selectedSort})
+    setSearchParams({
+      location: selectedLocation,
+      color: selectedColor,
+      size: selectedSize,
+      sort: selectedSort,
+    });
 
     /*if(selectedLocation){
     const { data } = await supabase
@@ -172,7 +175,12 @@ export const Filter = () => {
             />
           </div>
           <div className="primjeni">
-            <button className="primjeniButton" onClick={filterCards}>Zapamti promjene</button>
+            <button className="primjeniButton" onClick={filterCards}>
+              Zapamti filter
+            </button>
+            <button className="obrišiButton" onClick={filterCards}>
+              Obriši filter
+            </button>
           </div>
         </div>
       )}

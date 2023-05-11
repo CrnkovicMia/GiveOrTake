@@ -129,6 +129,7 @@
 }
 .otherPhotos {
   width: 23%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 .otherPhotosImg {
   width: 100%;
@@ -156,6 +157,7 @@
   width: 80%;
   height: 18.75em;
   object-fit: contain;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 .otherVersions {
   display: flex;
