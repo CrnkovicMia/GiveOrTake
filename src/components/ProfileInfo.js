@@ -94,7 +94,7 @@ export const ProfileInfo = (props) => {
           </span>
           <span className="informacijeTwo">{profile.email}</span>
           <span className="informacijeTwo">Broj darivanja: {profile.donationNumber}</span>
-          <span className="informacijeTwo">Broj aktivnih objava: 0</span>
+          <span className="informacijeTwo">Broj aktivnih objava: {cards.length}</span>
         </div>
         <div className="profileButtonTwo">
           <button className="editButtonTwo singatureColor">
