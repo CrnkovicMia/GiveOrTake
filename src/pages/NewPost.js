@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuid4 } from "uuid";
 import { decode } from "base64-arraybuffer";
+import { uuid } from "@supabase/gotrue-js/dist/module/lib/helpers";
 
 export const NewPost = (props) => {
   const [categories, setCategories] = useState();
@@ -59,6 +60,7 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
+      console.log("file1", file1.pic)
     }
   };
 
@@ -71,6 +73,7 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
+      console.log("file2", file2.pic)
     }
   };
 
@@ -83,6 +86,7 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
+      console.log(file3.pic)
     }
   };
 
@@ -95,6 +99,10 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
+      console.log(file4.pic)
+
+    }else{
+      console.log("pic 2 ne postoji!")
     }
   };
 
@@ -202,11 +210,32 @@ export const NewPost = (props) => {
     console.log(props.userSession.id);
     console.log(file1.pic);
 
+    const folderName = uuid4();
+    const mainPic = "/mainPic"+ uuid4()
     const { data, error } = await supabase.storage
       .from("got-img")
-      .upload(props.userSession.id + "/mainPic", file1.pic, {
+      .upload(props.userSession.id + "/" + folderName + mainPic, file1.pic, {
         contentType: "image/png",
       });
+    if(data){
+      await supabase.from("Card").insert("folderName", "picture", folderName, mainPic).eq("id", cardData.id)
+    }
+    const { data: img2 } = await supabase.storage
+      .from("got-img")
+      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file2.pic, {
+        contentType: "image/png",
+      });
+      await supabase.storage
+      .from("got-img")
+      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file3.pic, {
+        contentType: "image/png",
+      });
+      await supabase.storage
+      .from("got-img")
+      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file4.pic, {
+        contentType: "image/png",
+      });
+
   }
 
   function handleChangeForm(event) {
@@ -404,7 +433,7 @@ export const NewPost = (props) => {
                         type="file"
                         id="hiddenFileInput2"
                         style={{ display: "none" }}
-                        onChange={handleChangePic2}
+                        onChangeCapture={handleChangePic2}
                       />
                     </div>
                   </div>
@@ -449,7 +478,7 @@ export const NewPost = (props) => {
                       type="file"
                       id="hiddenFileInput3"
                       style={{ display: "none" }}
-                      onChange={handleChangePic3}
+                      onChangeCapture={handleChangePic3}
                     />
                   </div>
                 </div>
@@ -488,7 +517,7 @@ export const NewPost = (props) => {
                       type="file"
                       id="hiddenFileInput4"
                       style={{ display: "none" }}
-                      onChange={handleChangePic4}
+                      onChangeCapture={handleChangePic4}
                     />
                   </div>
                 </div>

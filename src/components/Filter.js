@@ -3,15 +3,18 @@ import Select from "react-select";
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export const Filter = () => {
   const [cities, setCities] = useState();
   const [colors, setColors] = useState();
   const [sizes, setSizes] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSort, setSelectedSort] = useState(null);
 
   useEffect(() => {
     getInformation();
@@ -48,16 +51,45 @@ export const Filter = () => {
   ];
 
   function handleChangeLocation(e) {
-    setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
+    // setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
+    
+    setSelectedLocation(e.value)
   }
   function handleChangeSize(e) {
-    setSelectedSize(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedSize(e.value)
   }
   function handleChangeColor(e) {
-    setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedColor(e.value)
+  }
+  function handleChangeSort(e){
+    setSelectedSort(e.value)
   }
   const [active, setActive] = useState(true);
 
+
+  async function filterCards() {
+
+    setSearchParams({location: selectedLocation, color: selectedColor, size: selectedSize, sort: selectedSort})
+
+    /*if(selectedLocation){
+    const { data } = await supabase
+      .from("Card")
+      .select()
+      .eq("locationId", selectedLocation)
+    }
+    if(selectedLocation){
+      const { data } = await supabase
+        .from("Card")
+        .select()
+        .eq("locationId", selectedLocation)
+      }
+    if(selectedLocation){
+        const { data } = await supabase
+          .from("Card")
+          .select()
+          .eq("locationId", selectedLocation)
+      }*/
+  }
   const handleClick = () => {
     setActive(!active);
   };
@@ -85,7 +117,6 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsLocation}
-              isMulti
               placeholder="Grad"
               styles={{
                 control: (baseStyles) => ({
@@ -100,7 +131,6 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsColor}
-              isMulti
               placeholder="Boja"
               styles={{
                 control: (baseStyles) => ({
@@ -115,7 +145,6 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsSize}
-              isMulti
               placeholder="Veličina"
               styles={{
                 control: (baseStyles) => ({
@@ -139,10 +168,11 @@ export const Filter = () => {
                   backgroundColor: "#F0F0F0",
                 }),
               }}
+              onChange={handleChangeSort}
             />
           </div>
           <div className="primjeni">
-            <button className="primjeniButton">Zapamti promjene</button>
+            <button className="primjeniButton" onClick={filterCards}>Zapamti promjene</button>
           </div>
         </div>
       )}

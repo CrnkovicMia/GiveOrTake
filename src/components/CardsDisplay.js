@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { LoadButton } from "./LoadButton";
+import { forEach, reverse } from "lodash";
 
 export const CardDisplay = () => {
   const [cardList, setCards] = useState([]);
@@ -13,6 +14,11 @@ export const CardDisplay = () => {
 
   const searchInput = searchParams.get("search");
   const category = searchParams.get("kategorija");
+  const filterLocation = searchParams.get("location");
+  const filterColor = searchParams.get("color");
+  const filterSize = searchParams.get("size");
+  const sort = searchParams.get("sort");
+
 
   function loadMoreCards(newCardNumber) {
     setCardNumber(cardNumber + newCardNumber);
@@ -52,6 +58,39 @@ export const CardDisplay = () => {
         .eq("categoryId", categoryId.data.id);
       console.log(data);
       setCards(data);
+    }if(filterLocation || filterColor || filterSize){
+      const query = supabase.from("Card").select("*, cardColor!inner(*)")
+      const filteredCards = []
+      if(filterLocation != "null"){
+        query.filter("locationId", "eq", filterLocation)
+        }
+      if(filterColor != "null") {
+        query.filter("cardColor.colorId", "eq", filterColor)
+        };
+      if(filterSize != "null"){
+        query.filter("sizeId", "eq", filterSize)
+      }
+      if(sort != "null"){
+        switch(sort){
+          case "1":
+            query.order("created_at", {ascending: false})
+            break;
+          case "2":
+            query.order("created_at", {ascending: true })
+            break;
+          case "3":
+            query.order("title", {ascending: true })
+            break;
+          case "4":
+            query.order("title", {ascending: false })
+            break;
+        }
+      }
+      query.range(0, cardNumber)
+      const { data } = await query;
+      console.log(data)
+      setCards(data)
+      
     } else if (!searchInput && !category) {
       const { data } = await supabase
         .from("Card")
@@ -61,6 +100,16 @@ export const CardDisplay = () => {
     }
 
     console.log(cardList);
+    if(sort){
+      switch(sort){
+        case 1:
+          cardList.sort((a, b) => new Date(a.created_at).valueOf() < new Date(b.created_at).valueOf())
+          break;
+        case 2:
+          cardList.sort((a, b) => new Date(a.created_at) > new Date(b.created_at))
+          break;
+      }
+    }
   }
 
   const arrayDataItems = cardList.map((card) => (
