@@ -1,0 +1,15 @@
+.menuDrop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background-color: white;
+  padding-left: 20px;
+  width: 80%;
+}
+.categoryMenu {
+  width: 38%;
+  font-size: 12px;
+  padding: 6px 0 6px 10px;
+  border-bottom: 1px solid black;
+}

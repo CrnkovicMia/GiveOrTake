@@ -5,6 +5,7 @@ import "../style/Navigation.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { LoginFunction } from "./LoginFunction.js";
+import { MenuCategory } from "./MenuCategory";
 
 export class Hamburger extends React.Component {
   showSettings(event) {
@@ -14,10 +15,16 @@ export class Hamburger extends React.Component {
     super(props);
     this.state = {
       modal: null,
+      show: false,
     };
+
     this.logOut = this.logOut.bind(this);
   }
-
+  showMore() {
+    this.setState((prevState) => ({
+      show: !prevState.show,
+    }));
+  }
   setModal() {
     const [modal, setModal] = LoginFunction();
     this.setState({ modal });
@@ -35,7 +42,10 @@ export class Hamburger extends React.Component {
           <Link to="/">Naslovnica</Link>
           <Link to="/onama">O nama</Link>
           <Link to="/novaObjava">Nova Objava</Link>
-          <Link to="/">Kategorije</Link>
+          <Link to="/" onClick={() => this.showMore()}>
+            Kategorije
+          </Link>
+          {this.state.show && <MenuCategory />}
           {!this.props.user ? (
             <Link to="/login">Login</Link>
           ) : (
