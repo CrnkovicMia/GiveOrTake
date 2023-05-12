@@ -9,12 +9,16 @@ export const Filter = () => {
   const [cities, setCities] = useState();
   const [colors, setColors] = useState();
   const [sizes, setSizes] = useState();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState();
+  const [active, setActive] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams(); 
 
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSort, setSelectedSort] = useState(null);
+
+  var selectRef = null;
 
   useEffect(() => {
     getInformation();
@@ -50,21 +54,35 @@ export const Filter = () => {
     { value: "4", label: "OD Z-A" },
   ];
 
-  function handleChangeLocation(e) {
-    // setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
 
-    setSelectedLocation(e.value);
+  function handleChangeLocation(e) {
+    if(e?.value == undefined){
+      setSelectedLocation(null)
+    }else{
+      setSelectedLocation(e?.value)
+    }
   }
   function handleChangeSize(e) {
-    setSelectedSize(e.value);
+    if(e?.value == undefined){
+      setSelectedSize(null);
+    }else{
+      setSelectedSize(e?.value);
+    }
   }
   function handleChangeColor(e) {
-    setSelectedColor(e.value);
+    if(e?.value == undefined){
+      setSelectedColor(null);
+    }else{
+      setSelectedColor(e?.value);
+    }
   }
   function handleChangeSort(e) {
-    setSelectedSort(e.value);
+    if(e?.value == undefined){
+      setSelectedSort(null);
+    }else{
+      setSelectedSort(e?.value);
+    }
   }
-  const [active, setActive] = useState(true);
 
   async function filterCards() {
     setSearchParams({
@@ -78,6 +96,9 @@ export const Filter = () => {
     setActive(!active);
   };
 
+  function clearValue(){
+    selectRef?.select.clearValue();
+  };
   return (
     <>
       {active && (
@@ -101,6 +122,7 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsLocation}
+              isClearable
               placeholder="Grad"
               styles={{
                 control: (baseStyles) => ({
@@ -115,6 +137,7 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsColor}
+              isClearable
               placeholder="Boja"
               styles={{
                 control: (baseStyles) => ({
@@ -129,6 +152,7 @@ export const Filter = () => {
           <div className="filterCity">
             <Select
               options={optionsSize}
+              isClearable
               placeholder="Veličina"
               styles={{
                 control: (baseStyles) => ({
@@ -144,6 +168,7 @@ export const Filter = () => {
           <div className="filterCity ">
             <Select
               options={optionsSort}
+              isClearable
               placeholder="Sortiraj"
               styles={{
                 control: (baseStyles) => ({
@@ -158,9 +183,6 @@ export const Filter = () => {
           <div className="primjeni">
             <button className="primjeniButton" onClick={filterCards}>
               Zapamti filter
-            </button>
-            <button className="obrišiButton" onClick={filterCards}>
-              Obriši filter
             </button>
           </div>
         </div>

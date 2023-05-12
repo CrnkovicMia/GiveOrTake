@@ -1,13 +1,25 @@
 import "../style/Cards.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../lib/supabaseClient";
+import { useEffect } from "react";
 
 const imgUrl =
     "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
 export const Card = (props) => {
   const [active, setActive] = useState(false);
-  
+  const [locationData, setLocation] = useState(" ");
+
+  useEffect(()=>{
+    getLocation()
+  },[])
+
+  const getLocation = async() => {
+      const { data } = await supabase.from("City").select("*").eq("id" ,props.card.locationId).single()
+      setLocation(data.name)
+  }
+
   const handleClick = () => {
     setActive(!active);
   };
@@ -47,7 +59,7 @@ export const Card = (props) => {
                 alt="loaction"
                 class="locationImageImage"
               />
-              <span class="CityName">{props.card.location}</span>
+              <span class="CityName">{locationData}</span>
             </div>
           </div>
           <div className="itemDescription">

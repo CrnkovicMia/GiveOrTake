@@ -53,11 +53,11 @@ export const NewPost = (props) => {
 
   const handleChangePic1 = (event) => {
     if (event.target?.files[0]) {
+      console.log("non")
       setFile1({
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
-      console.log("file1", file1.pic)
     }
   };
 
@@ -70,7 +70,6 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
-      console.log("file2", file2.pic)
     }
   };
 
@@ -83,7 +82,6 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
-      console.log(file3.pic)
     }
   };
 
@@ -96,10 +94,7 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
-      console.log(file4.pic)
 
-    }else{
-      console.log("pic 2 ne postoji!")
     }
   };
 
@@ -108,7 +103,6 @@ export const NewPost = (props) => {
       .from("Category")
       .select("id, name");
     setCategories(categoryData);
-    console.log(categoryData);
 
     const { data: cityData } = await supabase.from("City").select("id, name");
     setCities(cityData);
@@ -120,10 +114,21 @@ export const NewPost = (props) => {
     setSizes(sizeData);
   }
 
-  const optionsCategory = categories?.map((row) => ({ value: row.id, label: row.name }));
-  const optionsLocation = cities?.map((row) => ({ value: row.id, label: row.name }));
-  const optionsColor = colors?.map((row) => ({ value: row.id, label: row.name }));
-  const optionsSize = sizes?.map((row) => ({ value: row.id, label: row.name }));
+  const optionsCategory = categories?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
+
+  const optionsLocation = cities?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
+
+  const optionsColor = colors?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
+
+  const optionsSize = sizes?.map(function (row) {
+    return { value: row.id, label: row.name };
+  });
 
   const formSchema = z.object({
     title: z.string().min(1, "Naslov je obavezan!"),
@@ -143,26 +148,13 @@ export const NewPost = (props) => {
   });
 
   async function submitData() {
-    console.log("it worked", newPost);
-    console.log(
-      "Category",
-      selectedCategory,
-      "Location",
-      selectedLocation,
-      "size",
-      selectedSize,
-      "color",
-      selectedColor
-    );
     const { data: cardData } = await supabase
       .from("Card")
       .insert({
         title: newPost.title,
         description: newPost.description,
         picture: "/mainPic",
-      })
-      .select("id")
-      .single();
+      })  
     if (selectedCategory != null) {
       for (let i = 0; i < selectedCategory.length; i++) {
         await supabase
@@ -200,7 +192,8 @@ export const NewPost = (props) => {
         contentType: "image/png",
       });
     if(data){
-      await supabase.from("Card").insert("folderName", "picture", folderName, mainPic).eq("id", cardData.id)
+      console.log("cardData:",cardData)
+      await supabase.from("Card").insert({folderName: folderName, picture:folderName + "/" + mainPic}).eq("id", cardData.id)
     }
     await supabase.storage
       .from("got-img")
