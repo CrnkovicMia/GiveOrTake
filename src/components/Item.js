@@ -60,6 +60,10 @@ export const Item = () => {
   }
   const [joinedCategoryName, setJoinedCategoryName] = useState("");
   const [categoryName, setCategoryName] = useState();
+  const [itemColor, setItemColor] = useState();
+  const [dateTime, setDateTime] = useState();
+  const [postDate, setPostDate] = useState();
+
   async function getCategory() {
     const { data, error } = await supabase
       .from("Category")
@@ -77,77 +81,52 @@ export const Item = () => {
     } else {
       setJoinedCategoryName(categoryName);
     }
-  }
-  getCategory();
 
-  const [sizeNum, setSizeNum] = useState();
-  const [viewSize, setViewSize] = useState();
-  async function getSize() {
-    const { data, error } = await supabase
+    /*const { data: color, error: colorError } = await supabase
       .from("Card")
       .select()
       .eq("id", itemId)
       .single();
-    if (data.sizeId == null) {
-      setSizeNum("/");
-    } else {
-      setSizeNum(data.sizeId);
-    }
-    getSizeName();
-  }
-  async function getSizeName() {
-    const { data, error } = await supabase
-      .from("Size")
-      .select()
-      .eq("id", sizeNum)
+
+    setItemColor(color);
+    console.log("Boja: ", color);
+
+    if (colorError) {
+      console.log("Error fetching color id");
+    }*/
+    const { data: date, error: dateError } = await supabase
+      .from("Card")
+      .select("created_at")
+      .eq("id", itemId)
       .single();
-    if (sizeNum == "/") {
-      setViewSize(sizeNum);
+
+    const dateObj = new Date(date.created_at);
+    const normalTimestamp = dateObj.toISOString().split("T")[0];
+    setDateTime(normalTimestamp);
+    const currentDateObj = new Date();
+    const year = currentDateObj.getFullYear();
+    const month = String(currentDateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(currentDateObj.getDate()).padStart(2, "0");
+    const currentDate = `${year}/${month}/${day}`;
+
+    const days = getDaysBetweenDates(normalTimestamp, currentDate);
+    if (days > 30) {
+      setPostDate("istekao");
     } else {
-      setViewSize(data.name);
+      const remainingDays = 30 - days;
+      setPostDate(`${remainingDays} dana`);
     }
   }
-  //getSize();
+  getCategory();
+  function getDaysBetweenDates(date1, date2) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const startDate = new Date(date1);
+    const endDate = new Date(date2);
+    const timeDifference = Math.abs(endDate.getTime() - startDate.getTime());
+    const daysBetween = Math.round(timeDifference / oneDay);
 
-  const [color, setColor] = useState();
-  const [colorView, setColorView] = useState();
-  const [joinedColorName, setJoinedColorName] = useState("");
-  const colorIds = [];
-  async function getColor() {
-    const { data, error } = await supabase
-      .from("cardColor")
-      .select("colorId")
-      .eq("cardId", itemId);
-
-    /* const colorIds = data.map((item) => {
-      return item.colorId;
-    });*/
-    for (var i = 0; i < data.length; i++) {
-      colorIds.push(data.colorId);
-    }
-    //console.log("colorIds: ", colorIds);
-    setColor(colorIds);
-    // console.log("colorIds: ", color);
-    getColorName();
+    return daysBetween;
   }
-  async function getColorName() {
-    const { data, error } = await supabase
-      .from("Color")
-      .select()
-      .in("id", color);
-
-    const names = data.map((item) => {
-      return item.name;
-    });
-    setColorView(names);
-    if (colorView.length > 1) {
-      const newJoinedCategoryName = colorView.join(", ");
-      setJoinedColorName(newJoinedCategoryName);
-    } else {
-      setJoinedColorName(colorView);
-    }
-  }
-  //getColor();
   const imag = [
     { id: 0, value: imgUrl + card.picture },
     { id: 1, value: require("../images/logoImage.png") },
@@ -265,8 +244,8 @@ export const Item = () => {
                   <span className="line">{joinedCategoryName}</span>
                   <span className="line">/</span>
                   <span className="line">/</span>
-                  <span className="line">27.04.2023.</span>
-                  <span className="line">13 dana</span>
+                  <span className="line">{dateTime}</span>
+                  <span className="line">{postDate}</span>
                   <span className="line">3</span>
                 </div>
               </div>

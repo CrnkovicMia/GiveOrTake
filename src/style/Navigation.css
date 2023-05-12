@@ -264,6 +264,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
     display: flex;
     flex: 2;
   }
+  .header {
+    box-shadow: inset 0px -11px 8px -10px rgba(0, 0, 0, 0.1);
+  }
 }
 @media only screen and (min-width: 480px) and (max-width: 559.99px) {
   .categoryList,

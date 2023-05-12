@@ -38,6 +38,9 @@
   cursor: pointer;
   transition: all 0.15s;
 }
+.buttonTwoFalse {
+  display: none;
+}
 .buttonTwo:hover {
   transform: scale(1.1);
 }

@@ -35,6 +35,7 @@ export class Hamburger extends React.Component {
           <Link to="/">Naslovnica</Link>
           <Link to="/onama">O nama</Link>
           <Link to="/novaObjava">Nova Objava</Link>
+          <Link to="/">Kategorije</Link>
           {!this.props.user ? (
             <Link to="/login">Login</Link>
           ) : (

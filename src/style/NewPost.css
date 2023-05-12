@@ -165,10 +165,16 @@ span {
 }
 @media only screen and (max-width: 479.99px) {
   .newPostElements,
+  .newPostLeftDiv,
   .elementsLeft,
   .newPostLeft,
   .newPostRight {
     flex-direction: column;
+  }
+  .newPostLeftDiv {
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
   .newPostOpis {
     height: 200px;
@@ -187,7 +193,7 @@ span {
     text-align: center;
   }
   .newPostButton {
-    justify-content: center;
+    justify-content: right;
   }
   .addButton {
     width: 50%;
