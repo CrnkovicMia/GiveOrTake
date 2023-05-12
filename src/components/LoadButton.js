@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import "../style/ucitajButton.css";
+
 export const LoadButton = (props) => {
   const loadMoreCards = () => {
     props.cardLoad(15);

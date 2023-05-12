@@ -1,8 +1,8 @@
 import "../style/Login.css";
 import { LoginFunction } from "./LoginFunction.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [modal, setModal] = LoginFunction();
@@ -19,18 +19,6 @@ export const Login = () => {
     });
   };
 
-  {
-    /*LOG OUT  
-    const logOut = async() => {
-        await supabase.auth.signOut();
-        setModal()
-        navigate("/")
-    } */
-  }
-
-  {
-    /*LOGIN MAIL */
-  }
   function handleChangeLogin(event) {
     setLoginInfo((prevFormData) => {
       return {
@@ -43,19 +31,16 @@ export const Login = () => {
 
   const loginEmail = async () => {
     setModal();
-    const { data, error } = await supabase.auth.signInWithPassword({
+    await supabase.auth.signInWithPassword({
       email: loginInfo.email,
       password: loginInfo.password,
     });
   };
 
-  {
-    /*REGISTER */
-  }
   const signUp = async () => {
     console.error("Registracija");
     navigate("/");
-    const { data, error } = await supabase.auth.signUp({
+    await supabase.auth.signUp({
       email: registerInfo.email,
       password: registerInfo.password,
     });
@@ -97,6 +82,7 @@ export const Login = () => {
                       <span class="googleImage">
                         <img
                           src={require("../images/google.png")}
+                          alt="googleImg"
                           class="googleImageImg"
                         />
                       </span>
@@ -127,13 +113,6 @@ export const Login = () => {
                       Prijavi se
                     </button>
                   </div>
-                  {/* <div class="loginButton" onClick={logOut}>
-                   <button class="loginButtonB">Odjavi se</button>
-               </div>   */}
-                  {/*  <span className="close-modal" onClick={setModal}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 256 256"><path fill="currentColor" d="M208 32H48a16 16 0 0 0-16 16v160a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16Zm-42.34 122.34a8 8 0 0 1-11.32 11.32L128 139.31l-26.34 26.35a8 8 0 0 1-11.32-11.32L116.69 128l-26.35-26.34a8 8 0 0 1 11.32-11.32L128 116.69l26.34-26.35a8 8 0 0 1 11.32 11.32L139.31 128Z"/>
-                        </svg>
-                      </span>*/}
                 </div>
               </div>
             </div>
@@ -163,6 +142,7 @@ export const Login = () => {
                         <img
                           src={require("../images/google.png")}
                           className="googleImageImg"
+                          alt="googleImg"
                         />
                       </span>
                       <span className="googleText">Continue with Google</span>

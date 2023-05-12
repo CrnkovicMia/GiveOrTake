@@ -73,25 +73,6 @@ export const Filter = () => {
       size: selectedSize,
       sort: selectedSort,
     });
-
-    /*if(selectedLocation){
-    const { data } = await supabase
-      .from("Card")
-      .select()
-      .eq("locationId", selectedLocation)
-    }
-    if(selectedLocation){
-      const { data } = await supabase
-        .from("Card")
-        .select()
-        .eq("locationId", selectedLocation)
-      }
-    if(selectedLocation){
-        const { data } = await supabase
-          .from("Card")
-          .select()
-          .eq("locationId", selectedLocation)
-      }*/
   }
   const handleClick = () => {
     setActive(!active);

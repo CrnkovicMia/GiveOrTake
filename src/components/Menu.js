@@ -3,7 +3,6 @@ import React from "react";
 import { supabase } from "../lib/supabaseClient";
 import "../style/Navigation.css";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { LoginFunction } from "./LoginFunction.js";
 import { MenuCategory } from "./MenuCategory";
 
@@ -35,7 +34,6 @@ export class Hamburger extends React.Component {
     this.setModal();
   }
   render() {
-    // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
     return (
       <div className="hamburgerMenu">
         <Menu right>

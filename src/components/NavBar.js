@@ -6,19 +6,21 @@ import { Link, useSearchParams, NavLink } from "react-router-dom";
 import { LoginFunction } from "./LoginFunction.js";
 import { ProfilDropDown } from "./ProfilDropDown";
 import { SearchBarSmallScreen } from "./SerchBarSmallScreen";
-
 import { Login } from "./Login";
 import { Hamburger } from "./Menu";
-
 import { useEffect, useState } from "react";
 
 export const NavBar = (props) => {
   const [modal, setModal] = LoginFunction();
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState();
-
   const [searchDrop, setSearchDrop] = useState(false);
+  const [profilClick, setProfilClick] = useState(false);
+  const [iteWidth, setItemWidth] = useState(126);
+
+  const outerContainer = document.getElementsByClassName("outer-container")[0];
+
+
   const handleSearchClick = () => {
     setSearchDrop(!searchDrop);
   };
@@ -36,18 +38,9 @@ export const NavBar = (props) => {
     });
   };
 
-  const [profilClick, setProfilClick] = useState(false);
   const handeProfilClick = () => {
     setProfilClick(!profilClick);
   };
-
-  const refreshPage = () => {
-    window.location.reload(false);
-  };
-
-  const [iteWidth, setItemWidth] = useState(126);
-  const outerContainer = document.getElementsByClassName("outer-container")[0];
-
   const handleNextClick = () => {
     outerContainer.scrollBy(iteWidth, 0);
   };
@@ -137,7 +130,7 @@ export const NavBar = (props) => {
             {props.sessionUser ? (
               <div
                 className="loginImageDiv"
-                /*onClick={setModal}*/ onClick={() => {
+                  onClick={() => {
                   handeProfilClick();
                 }}
               >

@@ -1,11 +1,10 @@
 import "../style/ProfileInfo.css";
-import { Link } from "react-router-dom";
 import { ProfilCard } from "./ProfileCard";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
 export const ProfileInfo = (props) => {
-  var cardList = [];
+  const [active, setActive] = useState(true);
   const [cards, setCards] = useState([]);
   const [profile, setProfile] = useState({
     username: "-",
@@ -14,6 +13,8 @@ export const ProfileInfo = (props) => {
     profilePic: "-",
     id: 0,
   });
+    
+  var cardList = [];
 
   async function getProfile() {
     const { data } = await supabase.from("profiles").select().single();
@@ -21,39 +22,21 @@ export const ProfileInfo = (props) => {
     console.log(data);
   }
 
-  /*async function getCards(){
-    const { data } = await supabase
-      .from('Card')
-      .select()
-      .eq("postedBy", props.userSession.id)
-    console.log("postedBy: ", props.userSession.id)
-    console.log("Cards" , data)
-    cardList=data
-    console.log("bbb" , cardList)
-    cardList.map((cardL)=>{
-      cards.push(<ProfilCard key={cardL.id} card={cardL}/>);
-    })
-    console.log("lll" , cardList)
-  }*/
-
   async function getCards() {
     const { data } = await supabase
       .from("Card")
       .select()
       .eq("postedBy", props.userSession.id);
-    console.log("postedBy: ", props.userSession.id);
-    console.log("Cards", data);
+
     cardList = data;
-    console.log("bbb", cardList);
     const newCards = cardList.map((cardL) => {
       return <ProfilCard key={cardL.id} card={cardL} />;
     });
-    console.log("lll", cardList);
+
     return newCards;
   }
 
   useEffect(() => {
-    console.log("ooooo", cards);
     getProfile().then(() => {
       getCards().then((newCards) => {
         setCards(newCards);
@@ -61,15 +44,11 @@ export const ProfileInfo = (props) => {
     });
   }, []);
 
-  const [active, setActive] = useState(true);
   const handleActive = () => {
     setActive(!active);
   };
 
-  const arrayDataItems = cards.map((cards) => <div>{cards}</div>);
-
   useEffect(() => {
-    console.log("ooooo", cards);
     getProfile();
     getCards();
   }, []);

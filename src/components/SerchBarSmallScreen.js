@@ -14,7 +14,7 @@ export const SearchBarSmallScreen = () => {
   };
 
   const handleChange = (event) => {
-    setSearchInput((prevFormData) => {
+    setSearchInput(() => {
       return event.target.value;
     });
   };

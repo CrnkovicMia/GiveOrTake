@@ -44,16 +44,6 @@
 .recenzijeButtonActive:hover {
   transform: scale(1.05);
 }
-/*.recenzijeButton:active,
-.opisButton:active,
-.recenzijeButton:focus,
-.opisButton:focus {
-  text-decoration: underline;
-  text-decoration-color: #49c474;
-  text-decoration-thickness: 2px;
-  background-color: white;
-  color: black;
-}*/
 .itemInfo {
   display: flex;
   flex-direction: row;

@@ -7,14 +7,16 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuid4 } from "uuid";
-import { decode } from "base64-arraybuffer";
-import { uuid } from "@supabase/gotrue-js/dist/module/lib/helpers";
 
 export const NewPost = (props) => {
   const [categories, setCategories] = useState();
   const [cities, setCities] = useState();
   const [colors, setColors] = useState();
   const [sizes, setSizes] = useState();
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [newPost, setNewPost] = useState({
     title: "",
     description: "",
@@ -24,7 +26,6 @@ export const NewPost = (props) => {
     colorId: 0,
     picture: null,
   });
-
   const [file1, setFile1] = useState({
     url: null,
     pic: null,
@@ -42,11 +43,6 @@ export const NewPost = (props) => {
     pic: null,
   });
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [selectedSize, setSelectedSize] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(null);
-
   useEffect(() => {
     getInformation();
   }, []);
@@ -54,6 +50,7 @@ export const NewPost = (props) => {
   const handleClick = (event) => {
     document.getElementById("hiddenFileInput1").click();
   };
+
   const handleChangePic1 = (event) => {
     if (event.target?.files[0]) {
       setFile1({
@@ -123,21 +120,10 @@ export const NewPost = (props) => {
     setSizes(sizeData);
   }
 
-  const optionsCategory = categories?.map(function (row) {
-    return { value: row.id, label: row.name };
-  });
-
-  const optionsLocation = cities?.map(function (row) {
-    return { value: row.id, label: row.name };
-  });
-
-  const optionsColor = colors?.map(function (row) {
-    return { value: row.id, label: row.name };
-  });
-
-  const optionsSize = sizes?.map(function (row) {
-    return { value: row.id, label: row.name };
-  });
+  const optionsCategory = categories?.map((row) => ({ value: row.id, label: row.name }));
+  const optionsLocation = cities?.map((row) => ({ value: row.id, label: row.name }));
+  const optionsColor = colors?.map((row) => ({ value: row.id, label: row.name }));
+  const optionsSize = sizes?.map((row) => ({ value: row.id, label: row.name }));
 
   const formSchema = z.object({
     title: z.string().min(1, "Naslov je obavezan!"),
@@ -150,7 +136,6 @@ export const NewPost = (props) => {
 
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -169,7 +154,7 @@ export const NewPost = (props) => {
       "color",
       selectedColor
     );
-    const { error: cardError, data: cardData } = await supabase
+    const { data: cardData } = await supabase
       .from("Card")
       .insert({
         title: newPost.title,
@@ -180,39 +165,36 @@ export const NewPost = (props) => {
       .single();
     if (selectedCategory != null) {
       for (let i = 0; i < selectedCategory.length; i++) {
-        const { data, error } = await supabase
+        await supabase
           .from("cardCategory")
           .insert({ cardId: cardData.id, categoryId: selectedCategory[i] });
       }
     }
     if (selectedLocation != null) {
       for (let i = 0; i < selectedLocation.length; i++) {
-        const { data, error } = await supabase
+        await supabase
           .from("cardLocation")
           .insert({ cardId: cardData.id, locationId: selectedLocation[i] });
       }
     }
     if (selectedColor != null) {
       for (let i = 0; i < selectedColor.length; i++) {
-        const { data, error } = await supabase
+        await supabase
           .from("cardColor")
           .insert({ cardId: cardData.id, colorId: selectedColor[i] });
       }
     }
     if (selectedSize != null) {
       for (let i = 0; i < selectedSize.length; i++) {
-        const { data, error } = await supabase
+        await supabase
           .from("cardSize")
           .insert({ cardId: cardData.id, sizeId: selectedSize[i] });
       }
     }
 
-    console.log(props.userSession.id);
-    console.log(file1.pic);
-
     const folderName = uuid4();
     const mainPic = "/mainPic"+ uuid4()
-    const { data, error } = await supabase.storage
+    const { data } = await supabase.storage
       .from("got-img")
       .upload(props.userSession.id + "/" + folderName + mainPic, file1.pic, {
         contentType: "image/png",
@@ -220,7 +202,7 @@ export const NewPost = (props) => {
     if(data){
       await supabase.from("Card").insert("folderName", "picture", folderName, mainPic).eq("id", cardData.id)
     }
-    const { data: img2 } = await supabase.storage
+    await supabase.storage
       .from("got-img")
       .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file2.pic, {
         contentType: "image/png",
@@ -374,6 +356,7 @@ export const NewPost = (props) => {
                       <img
                         className="mainImageInside"
                         src={file1.url}
+                        alt="firstImage"
                         onClick={handleClick}
                       />
                     ) : (
@@ -404,6 +387,7 @@ export const NewPost = (props) => {
                         <img
                           className="imageInside"
                           src={file2.url}
+                          alt="secondImage"
                           onClick={handleClick2}
                         />
                       ) : (
@@ -449,6 +433,7 @@ export const NewPost = (props) => {
                       <img
                         className="imageInside"
                         src={file3.url}
+                        alt="thirdImage"
                         onClick={handleClick3}
                       />
                     ) : (
@@ -488,6 +473,7 @@ export const NewPost = (props) => {
                       <img
                         className="imageInside"
                         src={file4.url}
+                        alt="lastImage"
                         onClick={handleClick4}
                       />
                     ) : (

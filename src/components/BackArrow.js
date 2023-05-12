@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "../style/BackArrow.css";
 export const BackArrow = () => {
   const handleScrollToTop = () => {

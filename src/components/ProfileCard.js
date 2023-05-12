@@ -1,14 +1,16 @@
 import "../style/ProfileInfo.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const ProfilCard = (props) => {
   const [active, setActive] = useState(false);
 
   const imgUrl =
     "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
+
   const handleClick = () => {
     setActive(!active);
   };
+
   return (
     <div className="card-wrapperTwo">
       <div className="cardTwo">

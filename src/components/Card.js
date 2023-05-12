@@ -1,14 +1,13 @@
 import "../style/Cards.css";
 import { useState } from "react";
-import { supabase } from "../lib/supabaseClient";
 import { Link } from "react-router-dom";
+
+const imgUrl =
+    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
 export const Card = (props) => {
   const [active, setActive] = useState(false);
-
-  const imgUrl =
-    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
-
+  
   const handleClick = () => {
     setActive(!active);
   };

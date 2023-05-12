@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { LinkedItems } from "../components/LinkedItems.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSearchParams } from "react-router-dom";
-import { set } from "react-hook-form";
+
+const imgUrl =
+    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
 export const Item = () => {
   const [card, setCard] = useState({
@@ -14,17 +16,26 @@ export const Item = () => {
     location: "",
     picture: "",
   });
+
+  const imag = [
+    { id: 0, value: imgUrl + card.picture },
+    { id: 1, value: require("../images/logoImage.png") },
+    { id: 2, value: require("../images/logoImage.png") },
+    { id: 3, value: require("../images/logoImage.png") },
+  ];
+  
   const [clicked, setActive] = useState(false);
   const [searchParams] = useSearchParams();
   const [active, setActiveButton] = useState(false);
-  const handleActive = () => {
-    setActiveButton(!active);
-  };
+  const [idCat, setIdCat] = useState();
+  const [joinedCategoryName, setJoinedCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState();
+  const [dateTime, setDateTime] = useState();
+  const [postDate, setPostDate] = useState();
+  const [sliderData, setsliderData] = useState(imag[0]);
 
   const itemId = searchParams.get("id");
-  const imgUrl =
-    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
-
+ 
   useEffect(() => {
     getCard();
   }, []);
@@ -32,12 +43,19 @@ export const Item = () => {
   useEffect(() => {
     imageClick(0);
   }, [card]);
+  
+  const handleActive = () => {
+    setActiveButton(!active);
+  };
 
   const handleClick = () => {
     setActive(!clicked);
   };
 
-  const [idCat, setIdCat] = useState();
+  const imageClick = (index) => {
+    const slider = imag[index];
+    setsliderData(slider);
+  };
 
   async function getCard() {
     const { data } = await supabase
@@ -46,7 +64,7 @@ export const Item = () => {
       .eq("id", itemId)
       .single();
 
-    const { data: categoryData, error } = await supabase
+    const { data: categoryData } = await supabase
       .from("cardCategory")
       .select("*")
       .eq("cardId", itemId);
@@ -54,18 +72,14 @@ export const Item = () => {
     const categoryIds = categoryData.map((data) => {
       return data.categoryId;
     });
-    setIdCat(categoryIds);
 
+    setIdCat(categoryIds);
     setCard(data);
   }
-  const [joinedCategoryName, setJoinedCategoryName] = useState("");
-  const [categoryName, setCategoryName] = useState();
-  const [itemColor, setItemColor] = useState();
-  const [dateTime, setDateTime] = useState();
-  const [postDate, setPostDate] = useState();
+  
 
   async function getCategory() {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("Category")
       .select("name")
       .in("id", idCat)
@@ -74,27 +88,18 @@ export const Item = () => {
     const categoryNames = data.map((category) => {
       return category.name;
     });
+
     setCategoryName(categoryNames);
+
     if (categoryName.length > 1) {
       const newJoinedCategoryName = categoryName.join(", ");
+      
       setJoinedCategoryName(newJoinedCategoryName);
     } else {
       setJoinedCategoryName(categoryName);
     }
 
-    /*const { data: color, error: colorError } = await supabase
-      .from("Card")
-      .select()
-      .eq("id", itemId)
-      .single();
-
-    setItemColor(color);
-    console.log("Boja: ", color);
-
-    if (colorError) {
-      console.log("Error fetching color id");
-    }*/
-    const { data: date, error: dateError } = await supabase
+    const { data: date } = await supabase
       .from("Card")
       .select("created_at")
       .eq("id", itemId)
@@ -102,14 +107,16 @@ export const Item = () => {
 
     const dateObj = new Date(date.created_at);
     const normalTimestamp = dateObj.toISOString().split("T")[0];
-    setDateTime(normalTimestamp);
     const currentDateObj = new Date();
     const year = currentDateObj.getFullYear();
     const month = String(currentDateObj.getMonth() + 1).padStart(2, "0");
     const day = String(currentDateObj.getDate()).padStart(2, "0");
     const currentDate = `${year}/${month}/${day}`;
 
+    setDateTime(normalTimestamp);
+
     const days = getDaysBetweenDates(normalTimestamp, currentDate);
+    
     if (days > 30) {
       setPostDate("istekao");
     } else {
@@ -117,7 +124,9 @@ export const Item = () => {
       setPostDate(`${remainingDays} dana`);
     }
   }
+
   getCategory();
+
   function getDaysBetweenDates(date1, date2) {
     const oneDay = 24 * 60 * 60 * 1000;
     const startDate = new Date(date1);
@@ -127,24 +136,14 @@ export const Item = () => {
 
     return daysBetween;
   }
-  const imag = [
-    { id: 0, value: imgUrl + card.picture },
-    { id: 1, value: require("../images/logoImage.png") },
-    { id: 2, value: require("../images/logoImage.png") },
-    { id: 3, value: require("../images/logoImage.png") },
-  ];
-  const [sliderData, setsliderData] = useState(imag[0]);
 
-  const imageClick = (index) => {
-    const slider = imag[index];
-    setsliderData(slider);
-  };
+  
   return (
     <>
       <div className="mainContenr">
         <div className="images">
           <div className="mainPhoto">
-            <img src={sliderData.value} className="mainPhotoImg" />
+            <img src={sliderData.value} className="mainPhotoImg" alt="MainPoto"/>
           </div>
           <div className="otherVersions">
             {imag.map((data, i) => (
@@ -154,6 +153,7 @@ export const Item = () => {
                   src={data.value}
                   className="otherPhotosImg"
                   onClick={() => imageClick(i)}
+                  alt="OtherPhotos"
                 />
               </div>
             ))}
