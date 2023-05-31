@@ -17,6 +17,7 @@ export const NewPost = (props) => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [newPost, setNewPost] = useState({
     title: "",
     description: "",
@@ -153,65 +154,72 @@ export const NewPost = (props) => {
       .insert({
         title: newPost.title,
         description: newPost.description,
-        picture: "/mainPic",
-      })  
+      })
+      .select()
+      console.log(cardData)
+      const cardId = cardData[0].id
     if (selectedCategory != null) {
       for (let i = 0; i < selectedCategory.length; i++) {
-        await supabase
+        const { error } = await supabase
           .from("cardCategory")
-          .insert({ cardId: cardData.id, categoryId: selectedCategory[i] });
+          .insert({ cardId: cardId, categoryId: selectedCategory[i] });
+        if(error){
+          console.log(error)
+        }
       }
     }
     if (selectedLocation != null) {
-      for (let i = 0; i < selectedLocation.length; i++) {
         await supabase
-          .from("cardLocation")
-          .insert({ cardId: cardData.id, locationId: selectedLocation[i] });
-      }
+          .from("Card")
+          .insert({ locationId: selectedLocation })
+          .eq( "id", cardId)
     }
     if (selectedColor != null) {
       for (let i = 0; i < selectedColor.length; i++) {
         await supabase
           .from("cardColor")
-          .insert({ cardId: cardData.id, colorId: selectedColor[i] });
+          .insert({ cardId: cardId, colorId: selectedColor[i] })
       }
     }
     if (selectedSize != null) {
-      for (let i = 0; i < selectedSize.length; i++) {
         await supabase
-          .from("cardSize")
-          .insert({ cardId: cardData.id, sizeId: selectedSize[i] });
-      }
+          .from("Card")
+          .insert({sizeId: selectedSize })
+          .eq( "id", cardId)
     }
 
     const folderName = uuid4();
     const mainPic = "/mainPic"+ uuid4()
-    const { data } = await supabase.storage
+    const { data, error } = await supabase.storage
       .from("got-img")
       .upload(props.userSession.id + "/" + folderName + mainPic, file1.pic, {
         contentType: "image/png",
       });
+    if(error){
+      console.log(error)
+    }
     if(data){
       console.log("cardData:",cardData)
-      await supabase.from("Card").insert({folderName: folderName, picture:folderName + "/" + mainPic}).eq("id", cardData.id)
+      await supabase.from("Card").update({folderName: folderName, picture:props.userSession.id + "/" + folderName + "/" + mainPic}).eq("id", cardId)
     }
-    await supabase.storage
-      .from("got-img")
-      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file2.pic, {
-        contentType: "image/png",
-      });
-      await supabase.storage
-      .from("got-img")
-      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file3.pic, {
-        contentType: "image/png",
-      });
-      await supabase.storage
-      .from("got-img")
-      .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file4.pic, {
-        contentType: "image/png",
-      });
+    // await supabase.storage
+    //   .from("got-img")
+    //   .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file2.pic, {
+    //     contentType: "image/png",
+    //   });
+    //   await supabase.storage
+    //   .from("got-img")
+    //   .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file3.pic, {
+    //     contentType: "image/png",
+    //   });
+    //   await supabase.storage
+    //   .from("got-img")
+    //   .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file4.pic, {
+    //     contentType: "image/png",
+    //   });
 
   }
+
 
   function handleChangeForm(event) {
     setNewPost((prevFormData) => {
@@ -226,10 +234,10 @@ export const NewPost = (props) => {
     setSelectedCategory(Array.isArray(e) ? e.map((x) => x.value) : []);
   }
   function handleChangeLocation(e) {
-    setSelectedLocation(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedColor(e.value);
   }
   function handleChangeSize(e) {
-    setSelectedSize(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedColor(e.value);
   }
   function handleChangeColor(e) {
     setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
@@ -295,7 +303,6 @@ export const NewPost = (props) => {
                   <label>Lokacija</label>
                   <Select
                     options={optionsLocation}
-                    isMulti
                     placeholder="Odaberite lokaciju"
                     styles={{
                       control: (baseStyles) => ({
@@ -311,7 +318,6 @@ export const NewPost = (props) => {
                   <label>Veličina</label>
                   <Select
                     options={optionsSize}
-                    isMulti
                     placeholder="Odaberite veličinu"
                     styles={{
                       control: (baseStyles) => ({

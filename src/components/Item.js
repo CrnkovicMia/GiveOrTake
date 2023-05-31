@@ -4,11 +4,14 @@ import { useState, useEffect } from "react";
 import { LinkedItems } from "../components/LinkedItems.js";
 import { supabase } from "../lib/supabaseClient";
 import { useSearchParams } from "react-router-dom";
+import io from "socket.io-client";
+import Chat from "../components/Chat";
 
 const imgUrl =
     "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
-export const Item = () => {
+const socket = io.connect("http://localhost:3001");
+export const Item = (props) => {
   const [card, setCard] = useState({
     id: null,
     title: "",
@@ -32,9 +35,11 @@ export const Item = () => {
   const [categoryName, setCategoryName] = useState();
   const [dateTime, setDateTime] = useState();
   const [postDate, setPostDate] = useState();
+  const [showChat, setShowChat] = useState(false)
   const [sliderData, setsliderData] = useState(imag[0]);
 
   const itemId = searchParams.get("id");
+
  
   useEffect(() => {
     getCard();
@@ -136,6 +141,12 @@ export const Item = () => {
 
     return daysBetween;
   }
+
+  function getChat(){
+      socket.emit("join_room", "room");
+      setShowChat(true);
+  }
+  
 
   
   return (
@@ -255,8 +266,10 @@ export const Item = () => {
           )}
 
           <div className="itemInfoBottom">
-            <button className="kontaktirajButton">Kontaktiraj vlasnika</button>
+            <button className="kontaktirajButton" onClick={()=>{
+              getChat()}}>Kontaktiraj vlasnika</button>
           </div>
+          {showChat && <Chat socket={socket} username={props.user.email} room="room" />}
         </div>
       </div>
       <LinkedItems IDCategory={idCat} IDItem={itemId} />

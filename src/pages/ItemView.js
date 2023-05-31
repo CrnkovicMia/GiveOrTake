@@ -1,9 +1,9 @@
 import { Item } from "../components/Item.js";
 
-export const ItemView = () => {
+export const ItemView = (props) => {
   return (
     <>
-      <Item />
+      <Item user={props.user}/>
     </>
   );
 };

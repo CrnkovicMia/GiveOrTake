@@ -76,7 +76,7 @@ function App() {
                 path="/novaObjava"
                 element={<NewPost userSession={user} />}
               />
-              <Route path="/proizvod" element={<ItemView />} />
+              <Route path="/proizvod" element={<ItemView user={user}/>} />
               <Route path="/onama" element={<AboutUs />} />
               <Route path="/profil" element={<Profil userSession={user}/>} />
               <Route path="/login" element={<Login />} />
