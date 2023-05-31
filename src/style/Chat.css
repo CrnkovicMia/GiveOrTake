@@ -1,11 +1,10 @@
-
 body {
   margin: 0%;
   padding: 0%;
 }
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
-.joinChatContainer {
+/*.joinChatContainer {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -41,7 +40,7 @@ body {
 .joinChatContainer button:hover {
   background: #2e7d32;
 }
-
+*/
 .chat-window {
   width: 300px;
   height: 420px;
@@ -65,7 +64,7 @@ body {
   display: block;
   padding: 0 1em 0 2em;
   color: #fff;
-  font-weight: 700;
+  /*font-weight: 700;*/
   line-height: 45px;
 }
 

@@ -1,0 +1,102 @@
+.containerSend {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: auto;
+  margin-top: 30px;
+  background-color: white;
+}
+.imageOverSeas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color: #ed7f02;
+  font-size: 18px;
+}
+.inputElement {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px 0 10px 10px;
+  border: none;
+  background-color: rgb(227, 227, 227, 0.5);
+  border-bottom: 2px solid #ed7f02;
+}
+.inputElement:active,
+.inputElement:focus {
+  background-color: rgb(227, 227, 227, 1);
+  outline: none;
+}
+::placeholder {
+  color: grey;
+  opacity: 1;
+}
+.dateDiv {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  align-items: left;
+}
+.dateInput {
+  width: 28%;
+  padding: 8px 8px;
+  margin-top: 20px;
+}
+.labelOver {
+  display: flex;
+  align-items: left;
+  color: rgb(100, 100, 100);
+}
+.daljeButton {
+  margin-top: 35px;
+  color: #ed7f02;
+  font-size: 18px;
+  font-weight: lighter;
+  width: 30%;
+  border: none;
+  text-align: left;
+  background-color: white;
+  margin-bottom: 35px;
+}
+.buttoniOver {
+  display: flex;
+  justify-content: left;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+.alert {
+  padding: 10px;
+  background-color: #04aa6d;
+  color: white;
+  position: relative;
+}
+
+.closebtn {
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  right: 20px;
+}
+
+.closebtn:hover {
+  color: black;
+}
+.error {
+  color: red;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: left;
+  width: 80%;
+}

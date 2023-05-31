@@ -8,6 +8,24 @@
 }
 .naziv {
   font-family: "Bitter", serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.bellIcon {
+  padding-left: 15px;
+  width: 24px;
+  height: 24px;
+  fill: white;
+  stroke: black;
+}
+.bellIconClick {
+  padding-left: 15px;
+  width: 24px;
+  height: 24px;
+  fill: yellow;
+  stroke: black;
 }
 .filter {
   display: flex;

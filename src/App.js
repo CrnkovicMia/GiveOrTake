@@ -14,6 +14,7 @@ import { supabase } from "./lib/supabaseClient";
 import { useState, useEffect } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 import { ItemView } from "./pages/ItemView";
+import { Mail } from "./pages/Mail";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,6 @@ function App() {
         window.removeEventListener("scroll", handleScrollButtonVisibilty);
       };
     });
-    
 
     const session = supabase.auth.getSession();
     setUser(session?.user);
@@ -43,7 +43,7 @@ function App() {
       (event, session) => {
         switch (event) {
           case "SIGNED_IN":
-            setUser(session?.user)
+            setUser(session?.user);
             break;
 
           case "SIGNED_OUT":
@@ -76,10 +76,11 @@ function App() {
                 path="/novaObjava"
                 element={<NewPost userSession={user} />}
               />
-              <Route path="/proizvod" element={<ItemView user={user}/>} />
+              <Route path="/proizvod" element={<ItemView user={user} />} />
               <Route path="/onama" element={<AboutUs />} />
-              <Route path="/profil" element={<Profil userSession={user}/>} />
+              <Route path="/profil" element={<Profil userSession={user} />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/mail" element={<Mail />} />
             </Routes>
             <Footer />
           </Router>

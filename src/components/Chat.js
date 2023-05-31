@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import "../style/Chat.css";
+import { Link } from "react-router-dom";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -33,7 +34,11 @@ function Chat({ socket, username, room }) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat</p>
+        <Link to="/mail">
+          <p>
+            Live chat <>&rarr;</> Pošalji paket
+          </p>
+        </Link>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
