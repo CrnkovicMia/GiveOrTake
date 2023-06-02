@@ -100,3 +100,14 @@
   align-items: left;
   width: 80%;
 }
+.containerMail {
+  margin-bottom: 10px;
+}
+.clickTetxt {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: left;
+  width: 80%;
+  font-size: 14px;
+}
