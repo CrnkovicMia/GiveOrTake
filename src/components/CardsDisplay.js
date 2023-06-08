@@ -118,7 +118,11 @@ export const CardDisplay = () => {
   return (
     <div>
       <div className="card-row">{arrayDataItems}</div>
-      <LoadButton cardLoad={loadMoreCards} />
+      {cardList.length >= 15 ? (
+        <LoadButton cardLoad={loadMoreCards} />
+      ) : (
+          <div className="hidden-load-button"></div>
+  )}
     </div>
   );
 };

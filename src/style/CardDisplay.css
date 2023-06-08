@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.hidden-load-button{
+  margin-top: 180px;
+}
+
 @media only screen and (max-width: 479.99px) {
   .card-row {
     grid-template-columns: repeat(auto-fill, minmax(38%, 45%));
