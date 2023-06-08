@@ -71,7 +71,7 @@ export const OverSeasExpress = ({ visable, setVisable }) => {
         }}*/
       ></input>
       {errors.name && <p className="error">{errors.name}</p>}
-      {addressClick && <p className="clickTetxt">Ulica i kučni broj*</p>}
+      {addressClick && <p className="clickTetxt">Ulica i kućni broj*</p>}
       <input
         type="text"
         placeholder="Ulica i kučni broj*"

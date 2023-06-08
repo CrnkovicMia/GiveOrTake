@@ -14,7 +14,26 @@
   color: red;
   margin-bottom: 0;
 }
-.buttonBell {
-  margin-left: 5px;
-  padding: 5px 10px;
+.buttonBellDiv {
+  display: flex;
+}
+.buttonBellOne,
+.buttonBellTwo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.buttonBellOne {
+  margin-right: 5px;
+  background-color: #13402b;
+  border: none;
+}
+.buttonBellTwo {
+  background-color: red;
+  border: none;
+}
+.buttonBellOne:hover,
+.buttonBellTwo:hover {
+  transform: scale(1.05);
 }

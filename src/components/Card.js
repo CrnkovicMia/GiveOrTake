@@ -5,20 +5,24 @@ import { supabase } from "../lib/supabaseClient";
 import { useEffect } from "react";
 
 const imgUrl =
-    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
+  "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
 export const Card = (props) => {
   const [active, setActive] = useState(false);
   const [locationData, setLocation] = useState(" ");
 
-  useEffect(()=>{
-    getLocation()
-  },[])
+  useEffect(() => {
+    getLocation();
+  }, []);
 
-  const getLocation = async() => {
-      const { data } = await supabase.from("City").select("*").eq("id" ,props.card.locationId).single()
-      setLocation(data.name)
-  }
+  const getLocation = async () => {
+    const { data } = await supabase
+      .from("City")
+      .select("*")
+      .eq("id", props.card.locationId)
+      .single();
+    setLocation(data.name);
+  };
 
   const handleClick = () => {
     setActive(!active);
@@ -53,14 +57,22 @@ export const Card = (props) => {
             <div class="itemName">
               <h4>{props.card.title}</h4>
             </div>
-            <div class="place">
-              <img
-                src={require("../images/location.png")}
-                alt="loaction"
-                class="locationImageImage"
-              />
-              <span class="CityName">{locationData}</span>
-            </div>
+          </div>
+          <div className="cardDescriptionPlace">
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5a2.5 2.5 0 0 1 0 5z"
+                />
+              </svg>
+            </span>
+            <span class="CityName">{locationData}</span>
           </div>
           <div className="itemDescription">
             <p>{props.card.description}</p>
@@ -68,21 +80,24 @@ export const Card = (props) => {
           <div className="cardDescriptionRight">
             <Link to={`/proizvod?id=${props.card.id}`}>
               <div className="viseButtonDiv">
-                <button className="višeButton cursors buttonStyle">
-                  <span>Više</span>
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="viseSVG"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M13.3 17.275q-.3-.3-.288-.725t.313-.725L16.15 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.15L13.3 8.15q-.3-.3-.3-.713t.3-.712q.3-.3.713-.3t.712.3L19.3 11.3q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.6 4.6q-.275.275-.687.275t-.713-.3Z"
-                      />
-                    </svg>
-                  </span>
-                </button>
+                <span className="saznajVise">Saznaj više</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M9 12h6m0 0l-3 3m3-3l-3-3" />
+                  </g>
+                </svg>
               </div>
             </Link>
           </div>

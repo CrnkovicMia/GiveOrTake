@@ -13,7 +13,6 @@
   height: 350px;
   margin: 0 auto;
   margin-top: 20px;
-  margin-bottom: 1000px;
 }
 .swiper {
   width: 100%;
@@ -58,4 +57,3 @@ div.card-wrapper:hover {
     font-size: 26px;
   }
 }
-

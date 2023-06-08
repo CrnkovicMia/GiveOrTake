@@ -1,9 +1,12 @@
 import { OverSeasExpress } from "../components/OverSeasExpress";
 import { OverSeasExpressRecive } from "../components/OverSeasExpressRecive";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Mail = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [visable, SetVisable] = useState(false);
 
   return (

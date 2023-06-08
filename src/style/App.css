@@ -1,11 +1,9 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
-  color: #433e49;
 }
 a {
   text-decoration: none;
-  color: #433e49;
 }
 h2 {
   font-weight: normal;
@@ -32,4 +30,30 @@ h2 {
 }
 .singatureColor:hover {
   background-color: rgba(19, 139, 60, 0.7);
+}
+#progress {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  height: 70px;
+  width: 70px;
+  display: none;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+#progress-value {
+  display: block;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  background-color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #138b3c;
+}
+html {
+  scroll-behavior: smooth;
 }

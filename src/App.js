@@ -20,20 +20,34 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState(null);
-  const [showButton, setShowButton] = useState();
   useEffect(() => {
+    const calcScrollValue = () => {
+      const scrollProgress = document.getElementById("progress");
+      const pos = document.documentElement.scrollTop;
+      const calcHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrollValue = Math.round((pos * 100) / calcHeight);
+
+      if (pos > 100) {
+        scrollProgress.style.display = "grid";
+      } else {
+        scrollProgress.style.display = "none";
+      }
+
+      scrollProgress.addEventListener("click", () => {
+        document.documentElement.scrollTop = 0;
+      });
+
+      scrollProgress.style.background = `conic-gradient(#138b3c ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+    };
+
+    window.addEventListener("scroll", calcScrollValue);
+    window.addEventListener("load", calcScrollValue);
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-
-      const handleScrollButtonVisibilty = () => {
-        window.pageYOffset > 500 ? setShowButton(true) : setShowButton(false);
-      };
-      window.addEventListener("scroll", handleScrollButtonVisibilty);
-
-      return () => {
-        window.removeEventListener("scroll", handleScrollButtonVisibilty);
-      };
     });
 
     const session = supabase.auth.getSession();
@@ -56,6 +70,8 @@ function App() {
 
     return () => {
       authListener.subscription.unsubscribe();
+      window.removeEventListener("scroll", calcScrollValue);
+      window.removeEventListener("load", calcScrollValue);
     };
   }, [window.location]);
 
@@ -68,8 +84,26 @@ function App() {
       ) : (
         <div>
           <Router>
+            <div id="progress">
+              <span id="progress-value">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m17 14l-5-5l-5 5"
+                  />
+                </svg>
+              </span>
+            </div>
             <NavBar sessionUser={user} />
-            {showButton && <BackArrow />}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route

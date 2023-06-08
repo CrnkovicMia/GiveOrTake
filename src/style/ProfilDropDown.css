@@ -12,6 +12,7 @@
 .logout {
   border-bottom: 1px solid black;
   padding: 8px;
+  color: black;
 }
 .korisnickiprofil:hover,
 .logout:hover {

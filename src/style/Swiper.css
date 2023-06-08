@@ -12,6 +12,7 @@
   width: 50em;
   scroll-behavior: smooth;
   display: flex;
+  color: white;
 }
 .category {
   flex-shrink: 0;
@@ -23,15 +24,18 @@
   align-items: center;
   justify-content: center;
 }
-.category:focus,
-.category:active {
+.category a {
+  color: white;
+}
+.category a:focus,
+.category a:active {
   text-decoration: underline;
-  text-decoration-color: #49c474;
+  text-decoration-color: #fbd85b;
   text-decoration-thickness: 2px;
-  color: #433e49;
+  color: #fbd85b;
 }
 .category :hover {
-  color: #49c474;
+  color: #fbd85b;
 }
 .category:last-child {
   border: none;

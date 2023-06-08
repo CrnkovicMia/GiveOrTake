@@ -1,6 +1,9 @@
 import "../style/AboutUs.css";
-
+import { useEffect } from "react";
 export const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="mainAboutUs">
       <div className="one">

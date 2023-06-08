@@ -46,6 +46,7 @@ export const NewPost = (props) => {
 
   useEffect(() => {
     getInformation();
+    window.scrollTo(0, 0);
   }, []);
 
   const handleClick = (event) => {
@@ -54,7 +55,7 @@ export const NewPost = (props) => {
 
   const handleChangePic1 = (event) => {
     if (event.target?.files[0]) {
-      console.log("non")
+      console.log("non");
       setFile1({
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
@@ -95,7 +96,6 @@ export const NewPost = (props) => {
         url: URL.createObjectURL(event.target.files[0]),
         pic: event.target.files[0],
       });
-
     }
   };
 
@@ -155,52 +155,58 @@ export const NewPost = (props) => {
         title: newPost.title,
         description: newPost.description,
       })
-      .select()
-      console.log(cardData)
-      const cardId = cardData[0].id
+      .select();
+    console.log(cardData);
+    const cardId = cardData[0].id;
     if (selectedCategory != null) {
       for (let i = 0; i < selectedCategory.length; i++) {
         const { error } = await supabase
           .from("cardCategory")
           .insert({ cardId: cardId, categoryId: selectedCategory[i] });
-        if(error){
-          console.log(error)
+        if (error) {
+          console.log(error);
         }
       }
     }
     if (selectedLocation != null) {
-        await supabase
-          .from("Card")
-          .insert({ locationId: selectedLocation })
-          .eq( "id", cardId)
+      await supabase
+        .from("Card")
+        .insert({ locationId: selectedLocation })
+        .eq("id", cardId);
     }
     if (selectedColor != null) {
       for (let i = 0; i < selectedColor.length; i++) {
         await supabase
           .from("cardColor")
-          .insert({ cardId: cardId, colorId: selectedColor[i] })
+          .insert({ cardId: cardId, colorId: selectedColor[i] });
       }
     }
     if (selectedSize != null) {
-        await supabase
-          .from("Card")
-          .insert({sizeId: selectedSize })
-          .eq( "id", cardId)
+      await supabase
+        .from("Card")
+        .insert({ sizeId: selectedSize })
+        .eq("id", cardId);
     }
 
     const folderName = uuid4();
-    const mainPic = "/mainPic"+ uuid4()
+    const mainPic = "/mainPic" + uuid4();
     const { data, error } = await supabase.storage
       .from("got-img")
       .upload(props.userSession.id + "/" + folderName + mainPic, file1.pic, {
         contentType: "image/png",
       });
-    if(error){
-      console.log(error)
+    if (error) {
+      console.log(error);
     }
-    if(data){
-      console.log("cardData:",cardData)
-      await supabase.from("Card").update({folderName: folderName, picture:props.userSession.id + "/" + folderName + "/" + mainPic}).eq("id", cardId)
+    if (data) {
+      console.log("cardData:", cardData);
+      await supabase
+        .from("Card")
+        .update({
+          folderName: folderName,
+          picture: props.userSession.id + "/" + folderName + "/" + mainPic,
+        })
+        .eq("id", cardId);
     }
     // await supabase.storage
     //   .from("got-img")
@@ -217,9 +223,7 @@ export const NewPost = (props) => {
     //   .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file4.pic, {
     //     contentType: "image/png",
     //   });
-
   }
-
 
   function handleChangeForm(event) {
     setNewPost((prevFormData) => {

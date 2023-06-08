@@ -1,11 +1,14 @@
-import '../style/Profil.css';
+import "../style/Profil.css";
 
-import { ProfileInfo } from '../components/ProfileInfo';
-
-export const Profil = (props) =>{
-    return(
-        <div class="profilBody">
-            <ProfileInfo userSession={props.userSession}/>
-        </div>
-    );
+import { ProfileInfo } from "../components/ProfileInfo";
+import { useEffect } from "react";
+export const Profil = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <div class="profilBody">
+      <ProfileInfo userSession={props.userSession} />
+    </div>
+  );
 };

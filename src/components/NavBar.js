@@ -20,7 +20,6 @@ export const NavBar = (props) => {
 
   const outerContainer = document.getElementsByClassName("outer-container")[0];
 
-
   const handleSearchClick = () => {
     setSearchDrop(!searchDrop);
   };
@@ -82,7 +81,7 @@ export const NavBar = (props) => {
           <Link to={"/"}>
             <div className="logoSection">
               <img
-                src={require("../images/logo.png")}
+                src={require("../images/Logo2.png")}
                 className="logoImage"
                 alt="logo"
               />
@@ -130,7 +129,7 @@ export const NavBar = (props) => {
             {props.sessionUser ? (
               <div
                 className="loginImageDiv"
-                  onClick={() => {
+                onClick={() => {
                   handeProfilClick();
                 }}
               >
@@ -214,7 +213,7 @@ export const NavBar = (props) => {
                   viewBox="0 0 24 24"
                 >
                   <path
-                    fill="currentColor"
+                    fill="white"
                     d="m11 18l-6-6l6-6l1.4 1.4L7.825 12l4.575 4.6L11 18Zm6.6 0l-6-6l6-6L19 7.4L14.425 12L19 16.6L17.6 18Z"
                   />
                 </svg>
@@ -275,7 +274,7 @@ export const NavBar = (props) => {
                   viewBox="0 0 24 24"
                 >
                   <path
-                    fill="currentColor"
+                    fill="white"
                     d="M6.4 18L5 16.6L9.575 12L5 7.4L6.4 6l6 6l-6 6Zm6.6 0l-1.4-1.4l4.575-4.6L11.6 7.4L13 6l6 6l-6 6Z"
                   />
                 </svg>

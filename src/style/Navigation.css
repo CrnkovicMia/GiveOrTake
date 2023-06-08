@@ -2,7 +2,7 @@
   height: 80px;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: #13402b;
 }
 .navTop {
   display: flex;
@@ -40,6 +40,7 @@
 .pagesLink {
   display: block;
   text-decoration: none;
+  color: white;
   font-size: 1em;
 }
 .pagesLinkNaslovnica {
@@ -51,25 +52,26 @@
 .pagesLink a,
 .categoryLink a {
   transition: color 0.15s;
+  color: white;
 }
 .pagesLink a:hover,
 .categoryLink a:hover {
-  color: #49c474;
+  color: #fbd85b;
 }
 .active {
   text-decoration: underline;
-  text-decoration-color: #49c474;
+  text-decoration-color: #fbd85b;
   text-decoration-thickness: 2px;
-  color: #433e49;
+  color: #fbd85b;
 }
 .categoryLink a:active,
 .pagesLinkOnama a:focus,
 .pagesLinkNaslovnica a:focus,
 .categoryLink a:focus {
   text-decoration: underline;
-  text-decoration-color: #49c474;
+  text-decoration-color: #fbd85b;
+  color: #fbd85b;
   text-decoration-thickness: 2px;
-  color: #433e49;
 }
 .novaObjavaButton {
   margin-right: 5px;
@@ -89,49 +91,49 @@
   height: 1.5em;
   fill: white;
 }
-.novaObjavaButton:hover > .plusSignIcon {
-  fill: #138b3c;
-}
 .novaObjavaButton:hover {
   border-style: solid;
-  border-color: #138b3c;
+  border-color: white;
   border-width: thin;
-  color: #138b3c;
-  background-color: rgba(240, 240, 240, 0.8);
 }
 .loginImageDiv {
   display: flex;
   align-items: center;
+  color: white;
 }
 .loginImage {
   width: 2.125em;
-  fill: #433e49;
+  fill: white;
   transition: content 0.15s;
 }
 .loginImage:hover {
-  fill: #138b3c;
+  fill: #fbd85b;
 }
 
 .searchIconHide {
   display: none;
+  fill: white;
+  width: 32px;
+  height: 30px;
 }
 
 .bm-burger-button {
   position: absolute;
   display: inline-block;
-  width: 36px;
-  height: 30px;
+  width: 32px;
+  height: 28px;
   right: 36px;
   top: 22px;
   justify-self: end;
 }
 
 .bm-burger-bars {
-  background: #0e0e0e;
+  background: white;
+  transition: all 0.3s;
 }
 
 .bm-burger-bars-hover {
-  background: #a90000;
+  transform: scale(1.05);
 }
 
 .bm-cross-button {
@@ -168,8 +170,9 @@
 
 .bm-item {
   padding: 1.2em;
-  border-bottom: solid 0.5px;
+  border-bottom: solid 1px #13402b;
   display: inline-block;
+  color: black;
 }
 
 .bm-overlay {
@@ -181,7 +184,7 @@
   height: 65px;
   justify-content: center;
   box-shadow: inset 0px 11px 8px -10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(240, 240, 240, 0.8);
+  background-color: #024f33;
 }
 .navBottom {
   width: 90%;
@@ -209,9 +212,12 @@
   width: 257px;
   height: 25px;
   color: #787777;
-  border-color: rgba(72, 72, 72, 0.5);
-  border-style: solid;
-  border-width: 1px;
+  outline: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 .searchIcon {
   position: absolute;
@@ -225,7 +231,6 @@
 .slideList {
   display: none;
 }
-
 @media only screen and (max-width: 479.99px) {
   .categoryHeader {
     display: none;
@@ -239,14 +244,12 @@
   }
   .searchIconHide {
     display: block;
-    width: 30px;
-    height: 30px;
     margin: 2px 15px 0 0;
-    fill: black;
   }
   .slideList {
     display: flex;
     flex: 2;
+    color: white;
   }
   .header {
     box-shadow: inset 0px -11px 8px -10px rgba(0, 0, 0, 0.1);
@@ -269,11 +272,11 @@
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
-    fill: black;
   }
   .slideList {
     display: flex;
     flex: 2;
+    color: white;
   }
 }
 @media only screen and (min-width: 560px) and (max-width: 768px) {
@@ -303,11 +306,11 @@
     width: 30px;
     height: 30px;
     margin: 2px 15px 0 0;
-    fill: black;
   }
   .slideList {
     display: flex;
     flex: 2;
+    color: white;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023.99px) {
@@ -334,6 +337,7 @@
   .slideList {
     display: flex;
     flex: 2;
+    color: white;
   }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1279.99px) {
@@ -350,6 +354,7 @@
   .slideList {
     display: flex;
     flex: 2;
+    color: white;
   }
 }
 @media only screen and (min-width: 1280px) and (max-width: 1440px) {
