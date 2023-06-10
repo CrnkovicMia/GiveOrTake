@@ -3,7 +3,7 @@ import "../style/Item.css";
 import { useState, useEffect } from "react";
 import { LinkedItems } from "../components/LinkedItems.js";
 import { supabase } from "../lib/supabaseClient";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import io from "socket.io-client";
 import Chat from "../components/Chat";
 
@@ -29,6 +29,7 @@ export const Item = (props) => {
   
   const [clicked, setActive] = useState(false);
   const [searchParams] = useSearchParams();
+  
   const [active, setActiveButton] = useState(false);
   const [idCat, setIdCat] = useState();
   const [joinedCategoryName, setJoinedCategoryName] = useState("");
@@ -37,13 +38,23 @@ export const Item = (props) => {
   const [postDate, setPostDate] = useState();
   const [showChat, setShowChat] = useState(false)
   const [sliderData, setsliderData] = useState(imag[0]);
+  const [initialRender, setInitialRender] = useState(true);
 
   const itemId = searchParams.get("id");
-
+  const location = useLocation();
  
   useEffect(() => {
+    window.scrollTo(0, 0);
     getCard();
-  }, []);
+    console.log("fetching card...", itemId)
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (location.search !== '?id=' + itemId) {
+      
+      window.location.reload();
+    }
+  }, [location]);
 
   useEffect(() => {
     imageClick(0);
@@ -57,12 +68,19 @@ export const Item = (props) => {
     setActive(!clicked);
   };
 
+  const handleSearchParamsChange = () => {
+    window.location.reload();
+  }
+
   const imageClick = (index) => {
     const slider = imag[index];
     setsliderData(slider);
   };
 
   async function getCard() {
+    if(!initialRender){
+      window.location.reload()
+    }
     const { data } = await supabase
       .from("Card")
       .select()
@@ -80,6 +98,8 @@ export const Item = (props) => {
 
     setIdCat(categoryIds);
     setCard(data);
+    
+    setInitialRender(false);
   }
   
 
