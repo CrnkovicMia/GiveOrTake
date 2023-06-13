@@ -17,29 +17,29 @@ export const CardDisplay = () => {
   const filterSize = searchParams.get("size");
   const sort = searchParams.get("sort");
 
+
   function loadMoreCards(newCardNumber) {
     setCardNumber(cardNumber + newCardNumber);
   }
 
   useEffect(() => {
     getCards();
-  }, [searchParams, cardNumber, window.location]);
+  }, [searchParams, cardNumber]);
 
   useEffect(() => {
     setCardNumber(14);
     getCards();
-  }, [searchParams, window.location]);
+  }, [searchParams]);
 
   async function getCards() {
     if (searchInput) {
-      const { data } = await supabase
-        .from("Card")
+      const { data } = await supabase.from("Card")
         .select()
         .range(0, cardNumber)
         .ilike("title", "%" + searchInput + "%");
 
       setCards(data);
-    } else if (category) {
+    }else if (category) {
       const categoryId = await supabase
         .from("Category")
         .select("id, name")
@@ -55,48 +55,50 @@ export const CardDisplay = () => {
 
       const { data } = await supabase
         .from("Card")
-        .select()
+        .select() 
         .in("id", cardIdArray);
 
       setCards(data);
-    } else if (filterLocation || filterColor || filterSize || sort) {
-      const query = supabase.from("Card").select("*, cardColor!inner(*)");
+    }else if(filterLocation || filterColor || filterSize || sort){
+      const query = supabase.from("Card").select("*, cardColor!inner(*)")
 
-      if (filterLocation !== "null") {
-        query.filter("locationId", "eq", filterLocation);
+      if(filterLocation !== "null"){
+        query.filter("locationId", "eq", filterLocation)
       }
 
-      if (filterColor !== "null") {
-        query.filter("cardColor.colorId", "eq", filterColor);
+      if(filterColor !== "null") {
+        query.filter("cardColor.colorId", "eq", filterColor)
       }
 
-      if (filterSize !== "null") {
-        query.filter("sizeId", "eq", filterSize);
+      if(filterSize !== "null"){
+        query.filter("sizeId", "eq", filterSize)
       }
 
-      if (sort !== "null") {
-        switch (sort) {
+      if(sort !== "null"){
+        switch(sort){
           case "1":
-            query.order("created_at", { ascending: false });
+            query.order("created_at", {ascending: false})
             break;
           case "2":
-            query.order("created_at", { ascending: true });
+            query.order("created_at", {ascending: true })
             break;
           case "3":
-            query.order("title", { ascending: true });
+            query.order("title", {ascending: true })
             break;
           case "4":
-            query.order("title", { ascending: false });
+            query.order("title", {ascending: false })
             break;
           default:
             break;
+            
         }
       }
 
-      query.range(0, cardNumber);
+      query.range(0, cardNumber)
       const { data } = await query;
 
-      setCards(data);
+      setCards(data)
+      
     } else if (!searchInput && !category) {
       const { data } = await supabase
         .from("Card")
@@ -119,8 +121,8 @@ export const CardDisplay = () => {
       {cardList.length >= 15 ? (
         <LoadButton cardLoad={loadMoreCards} />
       ) : (
-        <div className="hidden-load-button"></div>
-      )}
+          <div className="hidden-load-button"></div>
+  )}
     </div>
   );
 };

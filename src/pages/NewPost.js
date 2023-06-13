@@ -175,9 +175,9 @@ export const NewPost = (props) => {
         .eq("id", cardId);
     }
     if (selectedColor != null) {
-      await supabase
-        .from("cardColor")
-        .insert({ cardId: cardId, colorId: selectedColor });
+        await supabase
+          .from("cardColor")
+          .insert({ cardId: cardId, colorId: selectedColor });
     }
     if (selectedSize != null) {
       await supabase
