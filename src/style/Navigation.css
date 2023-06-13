@@ -79,22 +79,30 @@
   height: 34px;
   font-size: 0.875em;
   border: none;
-  background-color: #138b3c;
+  background-color: #024f33;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-style: solid;
+  border-color: white;
+  border-width: thin;
   padding-right: 0.75em;
+  transition: all 0.3s;
 }
 .plusSignIcon {
   width: 1.5em;
   height: 1.5em;
   fill: white;
 }
+
 .novaObjavaButton:hover {
-  border-style: solid;
-  border-color: white;
-  border-width: thin;
+  color: #fbd85b;
+  border: 1px solid white;
+  transform: scale(1.02);
+  .plusSignIcon {
+    fill: #fbd85b;
+  }
 }
 .loginImageDiv {
   display: flex;

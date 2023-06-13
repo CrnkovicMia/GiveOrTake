@@ -8,7 +8,7 @@ import io from "socket.io-client";
 import Chat from "../components/Chat";
 
 const imgUrl =
-    "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
+  "https://xobfpixlhapreuruwsyk.supabase.co/storage/v1/object/public/got-img/";
 
 const socket = io.connect("http://localhost:3001");
 export const Item = (props) => {
@@ -22,36 +22,35 @@ export const Item = (props) => {
 
   const imag = [
     { id: 0, value: imgUrl + card.picture },
-    { id: 1, value: require("../images/logoImage.png") },
-    { id: 2, value: require("../images/logoImage.png") },
-    { id: 3, value: require("../images/logoImage.png") },
+    { id: 1, value: require("../images/IMG_8259.jpg") },
+    { id: 2, value: require("../images/IMG_8261.jpg") },
+    { id: 3, value: require("../images/IMG_8262.jpg") },
   ];
-  
+
   const [clicked, setActive] = useState(false);
   const [searchParams] = useSearchParams();
-  
+
   const [active, setActiveButton] = useState(false);
   const [idCat, setIdCat] = useState();
   const [joinedCategoryName, setJoinedCategoryName] = useState("");
   const [categoryName, setCategoryName] = useState();
   const [dateTime, setDateTime] = useState();
   const [postDate, setPostDate] = useState();
-  const [showChat, setShowChat] = useState(false)
+  const [showChat, setShowChat] = useState(false);
   const [sliderData, setsliderData] = useState(imag[0]);
   const [initialRender, setInitialRender] = useState(true);
 
   const itemId = searchParams.get("id");
   const location = useLocation();
- 
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getCard();
-    console.log("fetching card...", itemId)
+    console.log("fetching card...", itemId);
   }, [searchParams]);
 
   useEffect(() => {
-    if (location.search !== '?id=' + itemId) {
-      
+    if (location.search !== "?id=" + itemId) {
       window.location.reload();
     }
   }, [location]);
@@ -59,7 +58,7 @@ export const Item = (props) => {
   useEffect(() => {
     imageClick(0);
   }, [card]);
-  
+
   const handleActive = () => {
     setActiveButton(!active);
   };
@@ -70,7 +69,7 @@ export const Item = (props) => {
 
   const handleSearchParamsChange = () => {
     window.location.reload();
-  }
+  };
 
   const imageClick = (index) => {
     const slider = imag[index];
@@ -78,8 +77,8 @@ export const Item = (props) => {
   };
 
   async function getCard() {
-    if(!initialRender){
-      window.location.reload()
+    if (!initialRender) {
+      window.location.reload();
     }
     const { data } = await supabase
       .from("Card")
@@ -98,10 +97,9 @@ export const Item = (props) => {
 
     setIdCat(categoryIds);
     setCard(data);
-    
+
     setInitialRender(false);
   }
-  
 
   async function getCategory() {
     const { data } = await supabase
@@ -118,7 +116,7 @@ export const Item = (props) => {
 
     if (categoryName.length > 1) {
       const newJoinedCategoryName = categoryName.join(", ");
-      
+
       setJoinedCategoryName(newJoinedCategoryName);
     } else {
       setJoinedCategoryName(categoryName);
@@ -141,7 +139,7 @@ export const Item = (props) => {
     setDateTime(normalTimestamp);
 
     const days = getDaysBetweenDates(normalTimestamp, currentDate);
-    
+
     if (days > 30) {
       setPostDate("istekao");
     } else {
@@ -162,19 +160,21 @@ export const Item = (props) => {
     return daysBetween;
   }
 
-  function getChat(){
-      socket.emit("join_room", "room");
-      setShowChat(true);
+  function getChat() {
+    socket.emit("join_room", "room");
+    setShowChat(true);
   }
-  
 
-  
   return (
     <>
       <div className="mainContenr">
         <div className="images">
           <div className="mainPhoto">
-            <img src={sliderData.value} className="mainPhotoImg" alt="MainPoto"/>
+            <img
+              src={sliderData.value}
+              className="mainPhotoImg"
+              alt="MainPoto"
+            />
           </div>
           <div className="otherVersions">
             {imag.map((data, i) => (
@@ -273,8 +273,8 @@ export const Item = (props) => {
                 </div>
                 <div className="propertiesValues">
                   <span className="line">{joinedCategoryName}</span>
-                  <span className="line">/</span>
-                  <span className="line">/</span>
+                  <span className="line">41</span>
+                  <span className="line">bijela</span>
                   <span className="line">{dateTime}</span>
                   <span className="line">{postDate}</span>
                   <span className="line">3</span>
@@ -286,10 +286,18 @@ export const Item = (props) => {
           )}
 
           <div className="itemInfoBottom">
-            <button className="kontaktirajButton" onClick={()=>{
-              getChat()}}>Kontaktiraj vlasnika</button>
+            <button
+              className="kontaktirajButton"
+              onClick={() => {
+                getChat();
+              }}
+            >
+              Kontaktiraj vlasnika
+            </button>
           </div>
-          {showChat && <Chat socket={socket} username={props.user.email} room="room" />}
+          {showChat && (
+            <Chat socket={socket} username={props.user.email} room="room" />
+          )}
         </div>
       </div>
       <LinkedItems IDCategory={idCat} IDItem={itemId} />

@@ -4,12 +4,10 @@ import "../style/Chat.css";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 
-
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [messageList, setMessageList] = useState([]);
-  
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -29,30 +27,43 @@ function Chat({ socket, username, room }) {
     }
   };
 
+  useEffect(() => {
+    if (isLoaded) {
+      const timer = setTimeout(() => {
+        fetchMessageHistory();
+      }, 3000);
+    }
+  });
+
   const fetchMessageHistory = async () => {
-      setIsLoaded(true);
-    console.log("fetching --->->")
-    const { data, error } = await supabase.from('Chat').select('*').order('id');
-  
+    setIsLoaded(true);
+    console.log("fetching --->->");
+    const { data, error } = await supabase.from("Chat").select("*").order("id");
+
     if (error) {
-      console.error('Error fetching message history:', error);
+      console.error("Error fetching message history:", error);
     } else {
       console.log(data);
-      data.map((message)=>{
-        setMessageList((messageList) => [...messageList, {room: room,
-          author: message.sender,
-          message: message.message,
-          time: message.created_at
-      }])
-    })}
+      setMessageList([]);
+      data.map((message) => {
+        setMessageList((messageList) => [
+          ...messageList,
+          {
+            room: room,
+            author: message.sender,
+            message: message.message,
+            time: message.created_at,
+          },
+        ]);
+      });
+    }
   };
-  if(!isLoaded){
-  fetchMessageHistory()
-  setIsLoaded(true);
+  if (!isLoaded) {
+    fetchMessageHistory();
+    setIsLoaded(true);
   }
 
   useMemo(() => {
-    
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });

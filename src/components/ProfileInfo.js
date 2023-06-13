@@ -13,7 +13,7 @@ export const ProfileInfo = (props) => {
     profilePic: "-",
     id: 0,
   });
-    
+
   var cardList = [];
 
   async function getProfile() {
@@ -57,7 +57,7 @@ export const ProfileInfo = (props) => {
       <div className="profilInformationTwo">
         <div className="profileImageTwo">
           <img
-            src={require("../images/portret.png")}
+            src={require("../images/userimg.jpg")}
             alt="portret"
             className="profileImageImageTwo"
           />

@@ -1,6 +1,11 @@
 import "./style/App.css";
 import { NavBar } from "./components/NavBar";
-import { BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { NewPost } from "./pages/NewPost";
@@ -16,48 +21,44 @@ import PulseLoader from "react-spinners/PulseLoader";
 import { ItemView } from "./pages/ItemView";
 import { Mail } from "./pages/Mail";
 
-const ScrollComponent = () =>{
+const ScrollComponent = () => {
+  const { pathname, search } = useLocation();
+  useEffect(() => {
+    const calcScrollValue = () => {
+      const scrollProgress = document.getElementById("progress");
+      const pos = document.documentElement.scrollTop;
+      const calcHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrollValue = Math.round((pos * 100) / calcHeight);
 
-  // const { pathname, search } = useLocation();
-  // useEffect(() => {
-  //   const calcScrollValue = () => {
-  //     const scrollProgress = document.getElementById("progress");
-  //     const pos = document.documentElement.scrollTop;
-  //     const calcHeight =
-  //       document.documentElement.scrollHeight -
-  //       document.documentElement.clientHeight;
-  //     const scrollValue = Math.round((pos * 100) / calcHeight);
+      if (pos > 100) {
+        scrollProgress.style.display = "grid";
+      } else {
+        scrollProgress.style.display = "none";
+      }
 
-  //     if (pos > 100) {
-  //       scrollProgress.style.display = "grid";
-  //     } else {
-  //       scrollProgress.style.display = "none";
-  //     }
+      scrollProgress.addEventListener("click", () => {
+        document.documentElement.scrollTop = 0;
+      });
 
-  //     scrollProgress.addEventListener("click", () => {
-  //       document.documentElement.scrollTop = 0;
-  //     });
+      scrollProgress.style.background = `conic-gradient(#138b3c ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+    };
 
-  //     scrollProgress.style.background = `conic-gradient(#138b3c ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
-  //   };
+    window.addEventListener("scroll", calcScrollValue);
+    window.addEventListener("load", calcScrollValue);
 
-  //   window.addEventListener("scroll", calcScrollValue);
-  //   window.addEventListener("load", calcScrollValue);
-
-
-  //   return () => {
-  //     window.removeEventListener("scroll", calcScrollValue);
-  //     window.removeEventListener("load", calcScrollValue);
-  //   };
-  // },[pathname, search])
-
-}
+    return () => {
+      window.removeEventListener("scroll", calcScrollValue);
+      window.removeEventListener("load", calcScrollValue);
+    };
+  }, [pathname, search]);
+};
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
-
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -95,7 +96,7 @@ function App() {
       ) : (
         <div>
           <Router>
-            <ScrollComponent/>
+            <ScrollComponent />
             <div id="progress">
               <span id="progress-value">
                 <svg
