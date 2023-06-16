@@ -7,8 +7,10 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuid4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 export const NewPost = (props) => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState();
   const [cities, setCities] = useState();
   const [colors, setColors] = useState();
@@ -168,23 +170,23 @@ export const NewPost = (props) => {
         }
       }
     }
-    if (selectedLocation != null) {
+    /* if (selectedLocation != null) {
       await supabase
         .from("Card")
-        .insert({ locationId: selectedLocation })
+        .update({ locationId: selectedLocation })
         .eq("id", cardId);
-    }
+    }*/
     if (selectedColor != null) {
-        await supabase
-          .from("cardColor")
-          .insert({ cardId: cardId, colorId: selectedColor });
+      await supabase
+        .from("cardColor")
+        .insert({ cardId: cardId, colorId: selectedColor });
     }
-    if (selectedSize != null) {
+    /* if (selectedSize != null) {
       await supabase
         .from("Card")
-        .insert({ sizeId: selectedSize })
+        .update({ sizeId: selectedSize })
         .eq("id", cardId);
-    }
+    }*/
 
     const folderName = uuid4();
     const mainPic = "/mainPic" + uuid4();
@@ -221,6 +223,7 @@ export const NewPost = (props) => {
     //   .upload(props.userSession.id + "/" + folderName + "/" + uuid4(), file4.pic, {
     //     contentType: "image/png",
     //   });
+    goBack();
   }
 
   function handleChangeForm(event) {
@@ -236,13 +239,18 @@ export const NewPost = (props) => {
     setSelectedCategory(Array.isArray(e) ? e.map((x) => x.value) : []);
   }
   function handleChangeLocation(e) {
-    setSelectedColor(e.value);
+    setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
   }
   function handleChangeSize(e) {
-    setSelectedColor(e.value);
+    setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
   }
   function handleChangeColor(e) {
     setSelectedColor(Array.isArray(e) ? e.map((x) => x.value) : []);
+  }
+
+  function goBack() {
+    alert("Uspiješno ste dodali oglas!");
+    navigate("/");
   }
 
   return (

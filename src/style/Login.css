@@ -53,15 +53,15 @@
 .prijavaButton {
   margin-right: 10px;
   border: none;
-  background-color: #138b3c;
+  background-color: #13402b;
   color: white;
 }
 .registracijaButton {
   margin-left: 10px;
   border-style: solid;
-  border-color: #138b3c;
+  border-color: #13402b;
   background-color: white;
-  color: #138b3c;
+  color: #13402b;
 }
 .prijavaButton:hover,
 .registracijaButton:hover,
@@ -141,7 +141,7 @@ h5 span {
   width: 40%;
   border: none;
   color: white;
-  background-color: #138b3c;
+  background-color: #13402b;
   margin-bottom: 50px;
 }
 .prijavaButtonReg,
@@ -152,15 +152,15 @@ h5 span {
 .registracijaButtonReg {
   margin-left: 10px;
   border: none;
-  background-color: #138b3c;
+  background-color: #13402b;
   color: white;
 }
 .prijavaButtonReg {
   margin-right: 10px;
   border-style: solid;
-  border-color: #138b3c;
+  border-color: #13402b;
   background-color: white;
-  color: #138b3c;
+  color: #13402b;
 }
 @media only screen and (max-width: 479.99px) {
   .popup {

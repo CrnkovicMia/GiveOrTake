@@ -21,10 +21,10 @@ h2 {
 .buttonStyle {
   border: none;
   color: #f5f5f5;
-  background-color: #138b3c;
+  background-color: #13402b;
 }
 .singatureColor {
-  background-color: #138b3c;
+  background-color: #13402b;
   border: none;
   color: white;
 }
@@ -43,6 +43,7 @@ h2 {
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  z-index: 10000;
 }
 #progress-value {
   display: block;
@@ -53,6 +54,7 @@ h2 {
   display: grid;
   place-items: center;
   color: #138b3c;
+  z-index: 10000;
 }
 html {
   scroll-behavior: smooth;

@@ -11,6 +11,7 @@ export const TitleAndFilter = () => {
   const category = searchParams.get("kategorija");
   const [showBell, setShowBell] = useState(false);
   const [bellPopUp, setBellPopUp] = useState(false);
+  const [title, setTitle] = useState(null);
 
   const handleClick = () => {
     setActive(!active);
@@ -18,12 +19,19 @@ export const TitleAndFilter = () => {
   useEffect(() => {
     if (category) {
       setShowBell(true);
+      setTitle(category);
+    } else {
+      setTitle("");
     }
   }, [category]);
   return (
     <div className="naslovFilterSection">
       <div className="naziv">
-        <h2>NAJNOVIJI PROIZVODI</h2>
+        {title === "" ? (
+          <h2>OBJAVLJENI PROIZVODI</h2>
+        ) : (
+          category && <h2>{category.toUpperCase()}</h2>
+        )}
         {category && (
           <span>
             <svg

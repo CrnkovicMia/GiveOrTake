@@ -17,7 +17,7 @@ export const ProfileInfo = (props) => {
   var cardList = [];
 
   async function getProfile() {
-    const { data } = await supabase.from("profiles").select().single();
+    const { data } = await supabase.from("profiles").select().limit(1, 0);
     setProfile(data);
     console.log(data);
   }
@@ -64,12 +64,10 @@ export const ProfileInfo = (props) => {
         </div>
         <div className="userInformationTwo">
           <span className="informacijeTwo">
-            <strong>{profile.username}</strong>
+            <strong>ivandjakovac55</strong>
           </span>
-          <span className="informacijeTwo">{profile.email}</span>
-          <span className="informacijeTwo">
-            Broj darivanja: {profile.donationNumber}
-          </span>
+          <span className="informacijeTwo">ivandjakovac55@gmail.com</span>
+          <span className="informacijeTwo">Broj darivanja: 5</span>
           <span className="informacijeTwo">
             Broj aktivnih objava: {cards.length}
           </span>
